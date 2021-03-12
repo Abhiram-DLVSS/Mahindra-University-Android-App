@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F3F4"
+    tools:context=".FEATURES">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="190dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:text="Welcome"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MIDDLE" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="409dp"
+        android:layout_height="145dp"
+        android:background="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/BOTTOM"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_wave21"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/MIDDLE"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_wave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <Button
+        android:id="@+id/FACULTY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="FACULTY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/TIME_TABLE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="TIME TABLE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FACULTY" />
+
+    <Button
+        android:id="@+id/CLUBS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="CLUBS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
+
+    <Button
+        android:id="@+id/GRADES"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="GRADES"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CLUBS" />
+
+    <Button
+        android:id="@+id/ASSIGNMENT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="ASSIGNMENT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/FORMS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="FORMS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ASSIGNMENT" />
+
+    <Button
+        android:id="@+id/CLASS_NOTES"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="CLASS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FORMS" />
+
+    <Button
+        android:id="@+id/CULTURE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="EVENTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CLASS_NOTES" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
