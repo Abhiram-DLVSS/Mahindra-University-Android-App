@@ -2,8 +2,6 @@ package com.example.turing_login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,15 +16,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-//import com.github.ybq.android.spinkit.sprite.Sprite;
-//import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Button Login;
@@ -59,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
 
