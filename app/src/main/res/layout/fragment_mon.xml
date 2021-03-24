@@ -10,7 +10,8 @@
         android:id="@+id/textView2"
         android:layout_width="386dp"
         android:layout_height="337dp"
-        android:text="Monday"
+        android:background="#FFFFFF"
+        android:text="MOHAN"
         android:textAlignment="center"
         android:textSize="35sp" />
 </FrameLayout>

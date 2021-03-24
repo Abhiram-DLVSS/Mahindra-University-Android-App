@@ -147,4 +147,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CLASS_NOTES" />
 
+    <Button
+        android:id="@+id/fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="@color/purple_500"
+        android:text="Fee "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GRADES" />
+
+    <Button
+        android:id="@+id/LOGOUT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="#FFFFFF"
+        android:text="LOGOUT"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="logout"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

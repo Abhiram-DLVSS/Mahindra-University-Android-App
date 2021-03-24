@@ -14,23 +14,23 @@ public class PagerAdapter extends FragmentPagerAdapter{
     @NonNull
     @Override
     public Fragment getItem(int position) {
-            switch (position){
-                case 0:
+        switch (position){
+            case 0:
                 return new MonFragment();
-                case 1:
+            case 1:
                 return new TueFragment();
-                case 2:
-                    return new WedFragment();
-                case 3:
-                    return new ThuFragment();
-                case 4:
-                    return new FriFragment();
-                case 5:
-                    return new SatFragment();
-                default:
-                    return null;
+            case 2:
+                return new WedFragment();
+            case 3:
+                return new ThuFragment();
+            case 4:
+                return new FriFragment();
+            case 5:
+                return new SatFragment();
+            default:
+                return null;
 
-            }
+        }
     }
 
     @Override
