@@ -41,9 +41,7 @@
         android:id="@+id/Password"
         android:layout_width="349dp"
         android:layout_height="53dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
         android:autofillHints="PASSWORD"
         android:background="@drawable/round1"
         android:drawableStart="@drawable/ic_baseline_lock_24"
@@ -53,27 +51,23 @@
         android:inputType="textPassword"
         android:padding="16dp"
         android:paddingLeft="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/CollegeID"
+        app:layout_constraintStart_toStartOf="@+id/CollegeID"
         app:layout_constraintTop_toBottomOf="@+id/CollegeID" />
 
     <Button
         android:id="@+id/REGISTER"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/round1"
         android:backgroundTint="@color/purple_500"
         android:padding="16dp"
         android:text="REGISTER"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Password"
+        app:layout_constraintStart_toStartOf="@+id/Password"
         app:layout_constraintTop_toBottomOf="@+id/Password" />
 
     <EditText
@@ -99,7 +93,6 @@
         android:id="@+id/CollegeID"
         android:layout_width="349dp"
         android:layout_height="53dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
@@ -110,16 +103,15 @@
         android:inputType="textEmailAddress"
         android:padding="16dp"
         android:paddingStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/EmailID"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/EmailID"
         app:layout_constraintTop_toBottomOf="@+id/EmailID" />
 
     <EditText
         android:id="@+id/EmailID"
         android:layout_width="349dp"
         android:layout_height="53dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
@@ -130,24 +122,22 @@
         android:inputType="textEmailAddress"
         android:padding="16dp"
         android:paddingStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Name"
         app:layout_constraintTop_toBottomOf="@+id/Name" />
 
     <TextView
         android:id="@+id/RHead"
         android:layout_width="150dp"
         android:layout_height="79dp"
-        android:layout_marginStart="128dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="128dp"
         android:text="Register"
+        android:textAlignment="center"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.417"
-        app:layout_constraintStart_toStartOf="@+id/Topview"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Topview" />
 
     <ProgressBar

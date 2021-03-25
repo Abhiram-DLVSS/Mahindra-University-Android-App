@@ -38,16 +38,14 @@ app:layout_constraintStart_toStartOf="parent" />
         android:id="@+id/REGISTRATION"
         android:layout_width="205dp"
         android:layout_height="58dp"
-        android:layout_marginStart="128dp"
         android:layout_marginTop="56dp"
-        android:layout_marginEnd="128dp"
         android:background="@drawable/round1"
         android:backgroundTint="@color/purple_500"
         android:text="REGISTRATION"
+        android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Topview_2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
