@@ -1,7 +1,6 @@
 package com.example.turing_login;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,21 +9,28 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class FEATURES extends AppCompatActivity {
-    private Button buttonfor,timetable_button;
-    Button fee;
+    private Button buttonfor,timetable_button,faculty,fee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_e_a_t_u_r_e_s);
         fee=findViewById(R.id.fee);
+        faculty=findViewById(R.id.faculty);
         timetable_button=(Button)findViewById(R.id.TIME_TABLE);
         buttonfor=(Button)findViewById(R.id.FORMS);
         fee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gotoUrl("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
+            }
+        });
+        faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoUrl("https://www.mahindraecolecentrale.edu.in/faculty");
             }
         });
 
@@ -47,7 +53,7 @@ public class FEATURES extends AppCompatActivity {
     }
 
     private void openTimeTable() {
-        Intent intent=new Intent(this,TimeTable.class);
+        Intent intent=new Intent(this, TimeTable.class);
         startActivity(intent);
     }
 

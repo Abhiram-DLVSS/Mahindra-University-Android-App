@@ -2,6 +2,7 @@ package com.example.turing_login;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +28,15 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class MonFragment extends Fragment {
+
+    private static final String URL_DATA ="http://turing.infinityfreeapp.com/test.php";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    private int count,total;
     private List<Listitem_monfrag> listitem_monfrags;
+    //to fetch data
+    DatabaseReference reff;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,16 +87,110 @@ public class MonFragment extends Fragment {
         recyclerView= view.findViewById(R.id.recyclerView_monFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //loadRecyclerViewData();
 
         listitem_monfrags=new ArrayList<>();
-        for(int i=0;i<=10;i++){
-            Listitem_monfrag listitem_monfrag=new Listitem_monfrag(
-                    "heading"+(i+1),"testing"
-            );
-            listitem_monfrags.add(listitem_monfrag);
-        }
-        adapter=new MonAdapter(listitem_monfrags,getContext());
-        recyclerView.setAdapter(adapter);
+//        for(int i=0;i<2;i++){
+//            Listitem_monfrag listitem_monfrag=new Listitem_monfrag(
+//                    "heading"+(i+1),"testing"
+//            );
+//            listitem_monfrags.add(listitem_monfrag);
+//        }
+
+        ReadHeader();
+//        reff= FirebaseDatabase.getInstance().getReference().child("Monday").child("0");
+//        reff.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                String m1=snapshot.child("header1").getValue().toString();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        Listitem_monfrag listitem_monfrag=new Listitem_monfrag(
+//                "heading"+(1),"testing"
+//        );
+//        listitem_monfrags.add(listitem_monfrag);
+//
+//
+//        adapter=new MonAdapter(listitem_monfrags,getContext());
+//        recyclerView.setAdapter(adapter);
         return view;
     }
+    private  void ReadHeader(){
+        final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Monday");
+        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Monday");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listitem_monfrags.clear();
+                total=(int) snapshot.getChildrenCount();
+                for(count=0;count<total;count++){
+                    String chil=""+count;
+                    String m1=snapshot.child(chil).child("header").getValue().toString();
+                    String m2=snapshot.child(chil).child("time").getValue().toString();
+                    String m3=snapshot.child(chil).child("lecturer").getValue().toString();
+                    Listitem_monfrag listitem_monfrag=new Listitem_monfrag(m1,m2,m3);
+                    //  Listitem_monfrag listitem_monfrag=snapshot1.getValue(Listitem_monfrag.class);
+
+                    assert listitem_monfrag != null;
+
+                    listitem_monfrags.add(listitem_monfrag);
+
+                    adapter=new MonAdapter(listitem_monfrags,getContext());
+                    recyclerView.setAdapter(adapter);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    //  private void loadRecyclerViewData() {
+//        ProgressDialog progressDialog = new ProgressDialog(getContext());
+//        progressDialog.setMessage("Loading data....");
+//        ProgressDialog.show();
+
+//        StringRequest stringRequest=new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String s) {
+//
+//                try {
+//                    JSONObject jsonObject=new JSONObject(s);
+//                    JSONArray array=jsonObject.getJSONArray("Monday");
+//                    for(int i=0;i<array.length();i++){
+//                        JSONObject o=array.getJSONObject(i);
+//                        Listitem_monfrag item= new Listitem_monfrag(
+//                        o.getString("header"+i),o.getString("header"+i)
+//                        );
+//
+//                        listitem_monfrags.add(item);
+//                    }
+//                    adapter= new MonAdapter(listitem_monfrags,getContext());
+//                    recyclerView.setAdapter(adapter);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }
+//        );
+//        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+//        requestQueue.add(stringRequest);
+//    }
 }

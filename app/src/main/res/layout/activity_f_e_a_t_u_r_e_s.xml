@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <Button
-        android:id="@+id/FACULTY"
+        android:id="@+id/faculty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -70,7 +70,7 @@
         android:backgroundTint="@color/purple_500"
         android:text="TIME TABLE"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FACULTY" />
+        app:layout_constraintTop_toBottomOf="@+id/faculty" />
 
     <Button
         android:id="@+id/CLUBS"
