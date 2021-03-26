@@ -1,4 +1,4 @@
-package com.example.turing_login.timetable;
+package com.example.turing_login;
 
 import android.os.Bundle;
 
@@ -11,13 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.turing_login.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,10 +18,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +32,7 @@ public class MonFragment extends Fragment {
     private static final String URL_DATA ="http://turing.infinityfreeapp.com/test.php";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-
+    private int count,total;
     private List<Listitem_monfrag> listitem_monfrags;
     //to fetch data
     DatabaseReference reff;
@@ -101,12 +90,12 @@ public class MonFragment extends Fragment {
         //loadRecyclerViewData();
 
         listitem_monfrags=new ArrayList<>();
-        for(int i=0;i<2;i++){
-            Listitem_monfrag listitem_monfrag=new Listitem_monfrag(
-                    "heading"+(i+1),"testing"
-            );
-            listitem_monfrags.add(listitem_monfrag);
-        }
+//        for(int i=0;i<2;i++){
+//            Listitem_monfrag listitem_monfrag=new Listitem_monfrag(
+//                    "heading"+(i+1),"testing"
+//            );
+//            listitem_monfrags.add(listitem_monfrag);
+//        }
 
         ReadHeader();
 //        reff= FirebaseDatabase.getInstance().getReference().child("Monday").child("0");
@@ -134,18 +123,21 @@ public class MonFragment extends Fragment {
     }
     private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Monday").child("0");
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Monday");
+        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Monday");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listitem_monfrags.clear();
-                String m1=snapshot.child("header1").getValue().toString();
-                for(DataSnapshot snapshot1: snapshot.getChildren()){
-                    Listitem_monfrag listitem_monfrag=new Listitem_monfrag(
-                m1+(1),"testing"
-                );
-                  //  Listitem_monfrag listitem_monfrag=snapshot1.getValue(Listitem_monfrag.class);
+                total=(int) snapshot.getChildrenCount();
+                for(count=0;count<total;count++){
+                    String chil=""+count;
+                    String m1=snapshot.child(chil).child("header").getValue().toString();
+                    String m2=snapshot.child(chil).child("time").getValue().toString();
+                    String m3=snapshot.child(chil).child("lecturer").getValue().toString();
+                    Listitem_monfrag listitem_monfrag=new Listitem_monfrag(m1,m2,m3);
+                    //  Listitem_monfrag listitem_monfrag=snapshot1.getValue(Listitem_monfrag.class);
 
                     assert listitem_monfrag != null;
 
@@ -164,41 +156,41 @@ public class MonFragment extends Fragment {
         });
     }
 
-    private void loadRecyclerViewData() {
+    //  private void loadRecyclerViewData() {
 //        ProgressDialog progressDialog = new ProgressDialog(getContext());
 //        progressDialog.setMessage("Loading data....");
 //        ProgressDialog.show();
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-
-                try {
-                    JSONObject jsonObject=new JSONObject(s);
-                    JSONArray array=jsonObject.getJSONArray("Monday");
-                    for(int i=0;i<array.length();i++){
-                        JSONObject o=array.getJSONObject(i);
-                        Listitem_monfrag item= new Listitem_monfrag(
-                        o.getString("header"+i),o.getString("header"+i)
-                        );
-
-                        listitem_monfrags.add(item);
-                    }
-                    adapter= new MonAdapter(listitem_monfrags,getContext());
-                    recyclerView.setAdapter(adapter);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }
-        );
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-    }
+//        StringRequest stringRequest=new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String s) {
+//
+//                try {
+//                    JSONObject jsonObject=new JSONObject(s);
+//                    JSONArray array=jsonObject.getJSONArray("Monday");
+//                    for(int i=0;i<array.length();i++){
+//                        JSONObject o=array.getJSONObject(i);
+//                        Listitem_monfrag item= new Listitem_monfrag(
+//                        o.getString("header"+i),o.getString("header"+i)
+//                        );
+//
+//                        listitem_monfrags.add(item);
+//                    }
+//                    adapter= new MonAdapter(listitem_monfrags,getContext());
+//                    recyclerView.setAdapter(adapter);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }
+//        );
+//        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+//        requestQueue.add(stringRequest);
+//    }
 }

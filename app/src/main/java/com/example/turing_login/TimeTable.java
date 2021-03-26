@@ -1,11 +1,10 @@
-package com.example.turing_login.timetable;
+package com.example.turing_login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.example.turing_login.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,7 +26,7 @@ public class TimeTable extends AppCompatActivity {
         TabItem tab_sat= findViewById(R.id.sat_tab);
         ViewPager viewPager = findViewById(R.id.viewPager);
 
-        PagerAdapter_Timetable_tabs pagerAdapter= new PagerAdapter_Timetable_tabs(getSupportFragmentManager(),tabLayout.getTabCount());
+        PagerAdapter pagerAdapter= new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         Calendar c = Calendar.getInstance();
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);

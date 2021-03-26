@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".timetable.TimeTable" />
+        <activity android:name=".TimeTable" />
         <activity
             android:name=".Turing_Register"
             android:screenOrientation="portrait" />

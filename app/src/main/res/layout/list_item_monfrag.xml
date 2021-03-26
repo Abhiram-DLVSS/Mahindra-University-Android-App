@@ -19,35 +19,70 @@
         app:cardCornerRadius="20dp"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="126dp"
-            android:background="#CC0F0F"
-            android:orientation="vertical"
+            android:layout_height="112dp"
+            android:background="#EA3A4F"
+            android:orientation="horizontal"
             android:padding="@dimen/cardview_default_elevation">
 
             <TextView
                 android:id="@+id/textview_heading_monfrag"
-                android:layout_width="133dp"
-                android:layout_height="40dp"
+                android:layout_width="115dp"
+                android:layout_height="89dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="#CAB4B4"
-                android:text="Heading">
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="36dp"
+                android:background="#EA3A4F"
+                android:text="Heading"
+                android:textAlignment="textStart"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp">
 
             </TextView>
 
             <TextView
                 android:id="@+id/textview_desc_monfrag"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:background="#E6C8C8"
+                android:layout_width="178dp"
+                android:layout_height="52dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="14dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginRight="10dp"
-                android:text="Description">
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@+id/textview_heading_monfrag"
+                android:background="#EA3A4F"
+                android:text="Description"
+                android:textAlignment="center"
+                android:textColor="#F4F1F1"
+                android:textSize="20sp">
 
             </TextView>
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/textview_lecturer_monfrag"
+                android:layout_width="210dp"
+                android:layout_height="34dp"
+                android:layout_alignStart="@+id/textview_desc_monfrag"
+                android:layout_alignEnd="@+id/textview_desc_monfrag"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="15dp"
+                android:text="Lecturer"
+                android:textAlignment="center"
+                android:textColor="#FDFCFC"
+                android:textSize="18sp" />
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

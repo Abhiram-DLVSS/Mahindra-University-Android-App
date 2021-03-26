@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.turing_login.timetable.TimeTable;
 import com.google.firebase.auth.FirebaseAuth;
 
 

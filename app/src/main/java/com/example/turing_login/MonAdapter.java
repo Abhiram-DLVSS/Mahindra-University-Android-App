@@ -1,4 +1,4 @@
-package com.example.turing_login.timetable;
+package com.example.turing_login;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.turing_login.R;
 
 import java.util.List;
 
@@ -41,6 +39,7 @@ public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
 
         holder.textview_heading_monfragv.setText(listitem_monfrag.getHead());
         holder.textview_desc_monfragv.setText(listitem_monfrag.getDesc());
+        holder.textview_lect_monfragv.setText(listitem_monfrag.getLect());
 
     }
 
@@ -53,11 +52,14 @@ public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
 
         public TextView textview_heading_monfragv;
         public TextView textview_desc_monfragv;
+        public TextView textview_lect_monfragv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textview_heading_monfragv=(TextView) itemView.findViewById(R.id.textview_heading_monfrag);
             textview_desc_monfragv=(TextView) itemView.findViewById(R.id.textview_desc_monfrag);
+            textview_lect_monfragv=(TextView) itemView.findViewById(R.id.textview_lecturer_monfrag);
+
         }
     }
 }

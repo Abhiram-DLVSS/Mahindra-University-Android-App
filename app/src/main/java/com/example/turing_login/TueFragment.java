@@ -1,4 +1,4 @@
-package com.example.turing_login.timetable;
+package com.example.turing_login;
 
 import android.os.Bundle;
 
@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.turing_login.R;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WedFragment#newInstance} factory method to
+ * Use the {@link TueFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WedFragment extends Fragment {
+public class TueFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +24,7 @@ public class WedFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public WedFragment() {
+    public TueFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +34,11 @@ public class WedFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment WedFragment.
+     * @return A new instance of fragment TueFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WedFragment newInstance(String param1, String param2) {
-        WedFragment fragment = new WedFragment();
+    public static TueFragment newInstance(String param1, String param2) {
+        TueFragment fragment = new TueFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +59,6 @@ public class WedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wed, container, false);
+        return inflater.inflate(R.layout.fragment_tue, container, false);
     }
 }

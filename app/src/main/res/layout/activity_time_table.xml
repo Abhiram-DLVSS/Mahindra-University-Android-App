@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".timetable.TimeTable"
+    tools:context=".TimeTable"
     >
 
     <com.google.android.material.appbar.AppBarLayout
