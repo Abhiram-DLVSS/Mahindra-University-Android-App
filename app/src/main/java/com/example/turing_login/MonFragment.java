@@ -125,7 +125,7 @@ public class MonFragment extends Fragment {
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Monday");
         //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Monday");
-
+        reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
