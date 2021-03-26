@@ -1,10 +1,11 @@
-package com.example.turing_login;
+package com.example.turing_login.timetable;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.turing_login.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -31,21 +32,21 @@ public class TimeTable extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 
-//        if (Calendar.MONDAY == dayOfWeek) {
-//            viewPager.setCurrentItem(0, true);
-//        } else if (Calendar.TUESDAY == dayOfWeek) {
-//            viewPager.setCurrentItem(1, true);
-//        } else if (Calendar.WEDNESDAY == dayOfWeek) {
-//            viewPager.setCurrentItem(2, true);
-//        } else if (Calendar.THURSDAY == dayOfWeek) {
-//            viewPager.setCurrentItem(3, true);
-//        } else if (Calendar.FRIDAY == dayOfWeek) {
-//            viewPager.setCurrentItem(4, true);
-//        } else if (Calendar.SATURDAY == dayOfWeek) {
-//            viewPager.setCurrentItem(5, true);
-//        } else if (Calendar.SUNDAY == dayOfWeek) {
-//            viewPager.setCurrentItem(6, true);
-//        }
+        if (Calendar.MONDAY == dayOfWeek) {
+            viewPager.setCurrentItem(0, true);
+        } else if (Calendar.TUESDAY == dayOfWeek) {
+            viewPager.setCurrentItem(1, true);
+        } else if (Calendar.WEDNESDAY == dayOfWeek) {
+            viewPager.setCurrentItem(2, true);
+        } else if (Calendar.THURSDAY == dayOfWeek) {
+            viewPager.setCurrentItem(3, true);
+        } else if (Calendar.FRIDAY == dayOfWeek) {
+            viewPager.setCurrentItem(4, true);
+        } else if (Calendar.SATURDAY == dayOfWeek) {
+            viewPager.setCurrentItem(5, true);
+        } else if (Calendar.SUNDAY == dayOfWeek) {
+            viewPager.setCurrentItem(6, true);
+        }
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

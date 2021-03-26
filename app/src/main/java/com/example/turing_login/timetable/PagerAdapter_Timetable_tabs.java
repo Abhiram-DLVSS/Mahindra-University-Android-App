@@ -1,9 +1,16 @@
-package com.example.turing_login;
+package com.example.turing_login.timetable;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.turing_login.timetable.FriFragment;
+import com.example.turing_login.timetable.MonFragment;
+import com.example.turing_login.timetable.SatFragment;
+import com.example.turing_login.timetable.ThuFragment;
+import com.example.turing_login.timetable.TueFragment;
+import com.example.turing_login.timetable.WedFragment;
 
 public class PagerAdapter_Timetable_tabs extends FragmentPagerAdapter{
     private int numOfTabs;

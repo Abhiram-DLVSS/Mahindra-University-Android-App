@@ -1,4 +1,4 @@
-package com.example.turing_login;
+package com.example.turing_login.timetable;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,12 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.example.turing_login.R;
 
 import java.util.List;
 
 public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
 
+    private Context context_mon;
     private List<Listitem_monfrag> listItems_monfrag;
 
     public MonAdapter(List<Listitem_monfrag> listItems_monfrag, Context context_mon) {
@@ -22,14 +23,15 @@ public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
         this.context_mon = context_mon;
     }
 
-    private Context context_mon;
+
 
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_monfrag,parent,false);
+        View v= LayoutInflater.from(context_mon).inflate(R.layout.list_item_monfrag
+                ,parent
+                ,false);
         return new ViewHolder(v);
     }
 
@@ -51,6 +53,7 @@ public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
 
         public TextView textview_heading_monfragv;
         public TextView textview_desc_monfragv;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textview_heading_monfragv=(TextView) itemView.findViewById(R.id.textview_heading_monfrag);
