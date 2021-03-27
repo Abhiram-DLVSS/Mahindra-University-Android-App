@@ -140,7 +140,6 @@ public class MonFragment extends Fragment {
                     //  Listitem_monfrag listitem_monfrag=snapshot1.getValue(Listitem_monfrag.class);
 
                     assert listitem_monfrag != null;
-
                     listitem_monfrags.add(listitem_monfrag);
 
                     adapter=new MonAdapter(listitem_monfrags,getContext());

@@ -3,14 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MonFragment">
+    tools:context=".ThuFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="386dp"
-        android:layout_height="337dp"
-        android:text="EDITED"
-        android:textAlignment="center"
-        android:textSize="35sp" />
+        android:id="@+id/recyclerView_thuFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>
