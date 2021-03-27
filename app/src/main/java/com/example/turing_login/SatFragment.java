@@ -123,12 +123,14 @@ public class SatFragment extends Fragment {
     }
     private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Saturday");
+
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("TimeTable").child("19").child("5").child("1").child("Saturday");
         //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Satday");
         reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 listitem_satfrags.clear();
                 total=(int) snapshot.getChildrenCount();
                 for(count=0;count<total;count++){

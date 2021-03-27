@@ -123,7 +123,7 @@ public class ThuFragment extends Fragment {
     }
     private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Thursday");
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("TimeTable").child("19").child("5").child("1").child("Thursday");
         //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Thuday");
         reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {

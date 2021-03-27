@@ -22,7 +22,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="112dp"
-            android:background="#EA3A4F"
+            android:background="@color/stan"
             android:orientation="horizontal"
             android:padding="@dimen/cardview_default_elevation">
 
@@ -37,7 +37,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginBottom="36dp"
-                android:background="#EA3A4F"
+                android:background="@color/stan"
                 android:text="Heading"
                 android:textAlignment="textStart"
                 android:textColor="#FFFFFF"
@@ -59,7 +59,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="60dp"
                 android:layout_toEndOf="@+id/textview_heading_monfrag"
-                android:background="#EA3A4F"
+                android:background="@color/stan"
                 android:text="Description"
                 android:textAlignment="center"
                 android:textColor="#F4F1F1"

@@ -14,12 +14,15 @@
         android:id="@+id/tab_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EA3A4F"
+        android:background="@color/stan"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="#000000"
+        app:tabIndicatorColor="#F1AFAF"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorHeight="3dp"
+        app:tabRippleColor="@color/stan"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="#0C0A0A"
-        app:tabTextColor="#F3EFEF"
+        app:tabSelectedTextColor="#FFFFFF"
+        app:tabTextColor="#ECC7C7"
         tools:layout_editor_absoluteX="0dp">
 
         <com.google.android.material.tabs.TabItem

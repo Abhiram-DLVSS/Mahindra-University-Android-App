@@ -123,7 +123,7 @@ public class WedFragment extends Fragment {
     }
     private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Wednesday");
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("TimeTable").child("19").child("5").child("1").child("Wednesday");
         //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Wedday");
         reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
