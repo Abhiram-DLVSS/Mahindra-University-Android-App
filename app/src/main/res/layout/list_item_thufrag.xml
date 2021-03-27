@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/cardview_default_elevation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="20dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:background="#EA3A4F"
+            android:orientation="horizontal"
+            android:padding="@dimen/cardview_default_elevation">
+
+            <TextView
+                android:id="@+id/textview_heading_thufrag"
+                android:layout_width="115dp"
+                android:layout_height="89dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="36dp"
+                android:background="#EA3A4F"
+                android:text="Heading"
+                android:textAlignment="textStart"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/textview_desc_thufrag"
+                android:layout_width="178dp"
+                android:layout_height="52dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@+id/textview_heading_thufrag"
+                android:background="#EA3A4F"
+                android:text="Description"
+                android:textAlignment="center"
+                android:textColor="#F4F1F1"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/textview_lecturer_thufrag"
+                android:layout_width="210dp"
+                android:layout_height="34dp"
+                android:layout_alignStart="@+id/textview_desc_thufrag"
+                android:layout_alignEnd="@+id/textview_desc_thufrag"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="15dp"
+                android:text="Lecturer"
+                android:textAlignment="center"
+                android:textColor="#FDFCFC"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
