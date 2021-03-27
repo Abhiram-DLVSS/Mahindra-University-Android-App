@@ -1,13 +1,24 @@
 package com.example.turing_login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class FEATURES extends AppCompatActivity {
@@ -27,6 +38,20 @@ public class FEATURES extends AppCompatActivity {
                 gotoUrl("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
             }
         });
+        fee.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Uri copyUri = Uri.parse("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
+                ClipData clip = ClipData.newUri(getContentResolver(), "URI", copyUri);
+                Toast toast=Toast.makeText(getApplicationContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
+                //toast.setMargin(50,50);
+                toast.show();
+                return true;
+            }
+        });
+
+
+
         faculty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
