@@ -123,19 +123,29 @@ public class TueFragment extends Fragment {
     }
     private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("TimeTable").child("19").child("5").child("1").child("Tuesday");
-        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Tueday");
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Tueday");
         reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listitem_tuefrags.clear();
-                total=(int) snapshot.getChildrenCount();
+                String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
+                String year=rollnumber.substring(0,2);
+                String branch=rollnumber.substring(7,8);
+                String rno=rollnumber.substring(8,10);
+                String batch;
+                if(Integer.parseInt(rno)<42)
+                    batch="1";
+                else
+                    batch="2";
+
+                total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Tuesday").getChildrenCount();
                 for(count=0;count<total;count++){
                     String chil=""+count;
-                    String m1=snapshot.child(chil).child("header").getValue().toString();
-                    String m2=snapshot.child(chil).child("time").getValue().toString();
-                    String m3=snapshot.child(chil).child("lecturer").getValue().toString();
+                    String m1=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Tuesday").child(chil).child("header").getValue().toString();
+                    String m2=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Tuesday").child(chil).child("time").getValue().toString();
+                    String m3=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Tuesday").child(chil).child("lecturer").getValue().toString();
                     Listitem_tuefrag listitem_tuefrag=new Listitem_tuefrag(m1,m2,m3);
                     //  Listitem_tuefrag listitem_tuefrag=snapshot1.getValue(Listitem_tuefrag.class);
 
