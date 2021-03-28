@@ -22,4 +22,7 @@
     <style name="Theme.Turing_Login.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Turing_Login.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+
 </resources>

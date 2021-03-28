@@ -123,19 +123,31 @@ public class SatFragment extends Fragment {
     }
     private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Saturday");
-        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Satday");
+
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Satday");
         reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 listitem_satfrags.clear();
-                total=(int) snapshot.getChildrenCount();
+                String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
+                String year=rollnumber.substring(0,2);
+                String branch=rollnumber.substring(7,8);
+                String rno=rollnumber.substring(8,10);
+                String batch;
+                if(Integer.parseInt(rno)<42)
+                    batch="1";
+                else
+                    batch="2";
+
+                total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Saturday").getChildrenCount();
                 for(count=0;count<total;count++){
                     String chil=""+count;
-                    String m1=snapshot.child(chil).child("header").getValue().toString();
-                    String m2=snapshot.child(chil).child("time").getValue().toString();
-                    String m3=snapshot.child(chil).child("lecturer").getValue().toString();
+                    String m1=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Saturday").child(chil).child("header").getValue().toString();
+                    String m2=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Saturday").child(chil).child("time").getValue().toString();
+                    String m3=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Saturday").child(chil).child("lecturer").getValue().toString();
                     Listitem_satfrag listitem_satfrag=new Listitem_satfrag(m1,m2,m3);
                     //  Listitem_satfrag listitem_satfrag=snapshot1.getValue(Listitem_satfrag.class);
 
