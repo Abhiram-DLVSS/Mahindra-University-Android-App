@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     Button Register;
     EditText email, password;
     FirebaseAuth fauth;
-    ProgressBar progressBar;
     TextView signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                     password.setError("Password is required!");
                     return;
                 }
-                progressBar.setVisibility(View.VISIBLE);
                 fauth.signInWithEmailAndPassword(remail,rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -77,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(MainActivity.this, "Check the damn password!", Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
                         }
 
                     }
