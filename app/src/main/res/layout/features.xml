@@ -4,49 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F3F4"
+    android:background="#ffffff"
     tools:context=".FEATURES">
+
 
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="190dp"
         android:layout_height="46dp"
-        android:layout_marginTop="10dp"
         android:text="Welcome"
+        android:layout_marginTop="300dp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MIDDLE" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="409dp"
-        android:layout_height="145dp"
-        android:background="@color/purple_500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/BOTTOM"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:background="@drawable/ic_wave21"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/MIDDLE"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:background="@drawable/ic_wave"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <Button
         android:id="@+id/faculty"
@@ -55,8 +30,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="FACULTY"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -67,8 +43,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="TIME TABLE"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/faculty" />
 
@@ -79,8 +56,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="CLUBS"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
 
@@ -91,8 +69,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="GRADES"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CLUBS" />
 
@@ -103,8 +82,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="ASSIGNMENT"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -115,8 +95,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="FORMS"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ASSIGNMENT" />
 
@@ -127,8 +108,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="CLASS"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FORMS" />
 
@@ -139,8 +121,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="EVENTS"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CLASS_NOTES" />
 
@@ -151,24 +134,10 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/mu"
         android:text="Fee "
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GRADES" />
-
-    <Button
-        android:id="@+id/LOGOUT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/round1"
-        android:backgroundTint="#FFFFFF"
-        android:text="LOGOUT"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="logout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,6 +43,7 @@ app:layout_constraintStart_toStartOf="parent" />
         android:backgroundTint="@color/purple_500"
         android:text="REGISTRATION"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
