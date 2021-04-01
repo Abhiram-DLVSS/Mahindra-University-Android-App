@@ -1,37 +1,47 @@
 package com.example.turing_login;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
 public class FEATURES extends AppCompatActivity {
     private Button buttonfor,timetable_button,faculty,fee;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_f_e_a_t_u_r_e_s);
+        setContentView(R.layout.features);
+
+
+        //To get custom status bar color
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.stan));
+
+
+
         fee=findViewById(R.id.fee);
         faculty=findViewById(R.id.faculty);
         timetable_button=(Button)findViewById(R.id.TIME_TABLE);
         buttonfor=(Button)findViewById(R.id.FORMS);
+
         fee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +86,27 @@ public class FEATURES extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_items,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id= item.getItemId();
+                switch(id){
+                    case R.id.logout_in_menu: {
+                        Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        finish();
+
+                        }
+                        break;
+                }
+        return true;
+    }
 
     private void openTimeTable() {
         Intent intent=new Intent(this, TimeTable.class);
@@ -93,15 +124,8 @@ public class FEATURES extends AppCompatActivity {
         Intent intent=new Intent(this,FORMS.class);
         startActivity(intent);
     }
-    public void logout(View view)
-    {
-
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        finish();
-    }
     private void moveToMainActivity() {
-        Intent intent=new Intent(FEATURES.this,MainActivity.class);
+        Intent intent=new Intent(FEATURES.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

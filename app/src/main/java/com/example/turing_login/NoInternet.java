@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.google.firebase.database.FirebaseDatabase;
 
-public class nointernet extends Application {
+public class NoInternet extends Application {
 
     @Override
     public void onCreate(){

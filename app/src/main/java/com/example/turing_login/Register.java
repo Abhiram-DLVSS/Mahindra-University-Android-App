@@ -3,13 +3,14 @@ package com.example.turing_login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,13 +20,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Objects;
-
-public class Turing_Register extends AppCompatActivity {
+public class Register extends AppCompatActivity {
     EditText Name, email, id, password;
     Button register;
     FirebaseAuth fauth;
-    ProgressBar progressBar;
     private FirebaseDatabase rootnode = FirebaseDatabase.getInstance();
     private DatabaseReference root = rootnode.getReference("Users");
 
@@ -33,15 +31,15 @@ public class Turing_Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_turing__register);
+        setTheme(R.style.Theme_Turing_Login_NoActionBar);
+        setContentView(R.layout.register);
         Name = findViewById(R.id.Name);
         email = findViewById(R.id.EmailID);
         id = findViewById(R.id.CollegeID);
         password = findViewById(R.id.Password);
         fauth = FirebaseAuth.getInstance();
-        progressBar = findViewById(R.id.progressBar);
         register = findViewById(R.id.REGISTER);
-
+        id.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         if (fauth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), FEATURES.class));
             finish();
@@ -50,52 +48,65 @@ public class Turing_Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                ProgressDialog nDialog = new ProgressDialog(Register.this);
 
                 String remail = email.getText().toString().trim();
                 String rpassword = password.getText().toString().trim();
                 String rname = Name.getText().toString().trim();
                 String rid = id.getText().toString().trim();
 
+
+
                 if (TextUtils.isEmpty(remail)) {
                     email.setError("Email-ID is required!");
                     return;
                 }
-                if (TextUtils.isEmpty(rname)) {
+                else if (TextUtils.isEmpty(rname)) {
                     Name.setError("Name is required!");
                     return;
                 }
-                if (TextUtils.isEmpty(rid)) {
+                else if (TextUtils.isEmpty(rid)) {
                     id.setError("ID is required!");
                     return;
                 }
-                if (TextUtils.isEmpty(rpassword)) {
+                else if (TextUtils.isEmpty(rpassword)) {
                     password.setError("Password is required!");
                     return;
                 }
-                if (rpassword.length() < 8) {
+                else if (rpassword.length() < 8) {
                     password.setError("Turing requires 8 or more characters");
                     return;
                 }
-                progressBar.setVisibility(View.VISIBLE);
-                fauth.createUserWithEmailAndPassword(remail, rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Turing_Register.this, "Turing Realm Initiated", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), FEATURES.class));
+                else if(email.getText().toString().contains("@medhyd.ac.in")){
+                    nDialog.setMessage("Welcome!");
+                    nDialog.setIndeterminate(false);
+                    nDialog.show();
 
-                            String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    fauth.createUserWithEmailAndPassword(remail, rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                nDialog.dismiss();
+                                startActivity(new Intent(getApplicationContext(), FEATURES.class));
 
-                            root.child(currentuser).child("id").setValue(rid);
-                            root.child(currentuser).child("name").setValue(rname);
+                                String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                root.child(currentuser).child("id").setValue(rid);
+                                root.child(currentuser).child("name").setValue(rname);
 
 
-                        } else {
-                            Toast.makeText(Turing_Register.this, "Initialization Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(Register.this, "Initialization Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }
+                else
+                {
+                    Toast.makeText(Register.this, "Enter you College Email Address", Toast.LENGTH_SHORT).show();
+                }
+
+
 
             }
         });

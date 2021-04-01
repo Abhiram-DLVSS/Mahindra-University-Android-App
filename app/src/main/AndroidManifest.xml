@@ -10,8 +10,8 @@
         android:label="Mahindra University"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".nointernet"
-        android:theme="@style/Theme.Turing_Login">
+        android:name=".NoInternet"
+        android:theme="@style/splash_theme">
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".TimeTable" />
         <activity
-            android:name=".Turing_Register"
+            android:name=".Register"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -28,9 +28,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".FEATURES"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:screenOrientation="portrait" />
     </application>
 

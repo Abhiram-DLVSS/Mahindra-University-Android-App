@@ -14,7 +14,7 @@ public class FORMS extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_f_o_r_m_s);
+        setContentView(R.layout.forms);
         REGISTRATION=findViewById(R.id.REGISTRATION);
         REGISTRATION.setOnClickListener(new View.OnClickListener() {
             @Override
