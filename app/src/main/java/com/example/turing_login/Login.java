@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,6 +28,7 @@ public class Login extends AppCompatActivity {
     EditText email, password;
     FirebaseAuth fauth;
     TextView signup;
+    boolean connected=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,15 @@ public class Login extends AppCompatActivity {
         Login=(Button)findViewById(R.id.Login);
         signup=findViewById(R.id.signup);
 
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else
+            connected = false;
+
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +59,7 @@ public class Login extends AppCompatActivity {
 
         if(fauth.getCurrentUser()!=null)
         {
-            startActivity(new Intent(getApplicationContext(),FEATURES.class));
+            startActivity(new Intent(getApplicationContext(), Features.class));
             finish();
         }
 
@@ -72,30 +85,36 @@ public class Login extends AppCompatActivity {
 
                     return;
                 }
+
+                else if(connected==false){
+                    Toast.makeText(Login.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
                 else{
 
                     nDialog = new ProgressDialog(com.example.turing_login.Login.this);
                     nDialog.setMessage("Glad to see you again!");
                     nDialog.setIndeterminate(false);
                     nDialog.show();
+                    fauth.signInWithEmailAndPassword(remail,rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            //Login and save session
+
+                            if(task.isSuccessful())
+                            {
+                                startActivity(new Intent(getApplicationContext(), Features.class));
+                                nDialog.dismiss();
+                            }
+                            else {
+                                Toast.makeText(com.example.turing_login.Login.this, "Please check your Password", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+
                 }
-                fauth.signInWithEmailAndPassword(remail,rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        //Login and save session
 
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(com.example.turing_login.Login.this, "Turing is ready to serve!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),FEATURES.class));
-                            nDialog.dismiss();
-                        }
-                        else {
-                            Toast.makeText(com.example.turing_login.Login.this, "Check the damn password!", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
 
 
 

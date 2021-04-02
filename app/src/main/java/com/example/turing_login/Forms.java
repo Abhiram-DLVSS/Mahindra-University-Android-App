@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class FORMS extends AppCompatActivity {
+public class Forms extends AppCompatActivity {
     Button REGISTRATION;
 
     @Override
