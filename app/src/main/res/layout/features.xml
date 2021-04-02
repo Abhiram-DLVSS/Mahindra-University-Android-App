@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".FEATURES">
-
+    tools:context=".Features">
 
 
     <TextView
@@ -14,14 +13,14 @@
         android:layout_width="190dp"
         android:layout_height="46dp"
         android:text="Welcome"
-        android:layout_marginTop="300dp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
+        android:layout_marginTop="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/faculty"
@@ -139,5 +138,15 @@
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GRADES" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="292dp"
+        android:layout_height="256dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logoname" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class FEATURES extends AppCompatActivity {
+public class Features extends AppCompatActivity {
     private Button buttonfor,timetable_button,faculty,fee;
 
 
@@ -121,11 +121,11 @@ public class FEATURES extends AppCompatActivity {
 
     public void openFeature()
     {
-        Intent intent=new Intent(this,FORMS.class);
+        Intent intent=new Intent(this, Forms.class);
         startActivity(intent);
     }
     private void moveToMainActivity() {
-        Intent intent=new Intent(FEATURES.this, Login.class);
+        Intent intent=new Intent(Features.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

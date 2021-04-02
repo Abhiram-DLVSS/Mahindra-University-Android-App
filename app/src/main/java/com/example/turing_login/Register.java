@@ -4,7 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -26,6 +31,7 @@ public class Register extends AppCompatActivity {
     FirebaseAuth fauth;
     private FirebaseDatabase rootnode = FirebaseDatabase.getInstance();
     private DatabaseReference root = rootnode.getReference("Users");
+    boolean connected=false;
 
 
     @Override
@@ -39,9 +45,13 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.Password);
         fauth = FirebaseAuth.getInstance();
         register = findViewById(R.id.REGISTER);
+
+        Drawable errorIcon = getResources().getDrawable(R.drawable.null_layout);
+        errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth(), errorIcon.getIntrinsicHeight()));
+
         id.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         if (fauth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), FEATURES.class));
+            startActivity(new Intent(getApplicationContext(), Features.class));
             finish();
         }
         register.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +64,14 @@ public class Register extends AppCompatActivity {
                 String rpassword = password.getText().toString().trim();
                 String rname = Name.getText().toString().trim();
                 String rid = id.getText().toString().trim();
+                ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                    //we are connected to a network
+                    connected = true;
+                }
+                else
+                    connected = false;
 
 
 
@@ -69,15 +87,34 @@ public class Register extends AppCompatActivity {
                     id.setError("ID is required!");
                     return;
                 }
+                else if(!rid.contains("XJ1A0")&&rid.length()>10){
+                    id.setError("Please Check your ID");
+                }
+                else if(!rid.contains("19XJ1A05")&&!rid.contains("19XJ1A03")&&!rid.contains("19XJ1A01")&&!rid.contains("19XJ1A02")){
+                    id.setError("Please Check your ID");
+                }
+
                 else if (TextUtils.isEmpty(rpassword)) {
-                    password.setError("Password is required!");
+                    password.setError("Password is required!",errorIcon);
                     return;
                 }
                 else if (rpassword.length() < 8) {
-                    password.setError("Turing requires 8 or more characters");
+                    password.setError("Turing requires 8 or more characters",errorIcon);
                     return;
                 }
-                else if(email.getText().toString().contains("@medhyd.ac.in")){
+                else if(!email.getText().toString().contains("@mechyd.ac.in")){
+                    email.setError("Enter you College Email Address");
+
+                }
+                else if(!email.getText().toString().contains(rid.substring(0,2)+rid.substring(7,10)+"@mechyd.ac.in")){
+                    email.setError("Please check your College Email ID");
+                }
+                else if(connected==false){
+                    Toast.makeText(Register.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
+                else
+                {
                     nDialog.setMessage("Welcome!");
                     nDialog.setIndeterminate(false);
                     nDialog.show();
@@ -87,7 +124,7 @@ public class Register extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 nDialog.dismiss();
-                                startActivity(new Intent(getApplicationContext(), FEATURES.class));
+                                startActivity(new Intent(getApplicationContext(), Features.class));
 
                                 String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -100,10 +137,6 @@ public class Register extends AppCompatActivity {
                             }
                         }
                     });
-                }
-                else
-                {
-                    Toast.makeText(Register.this, "Enter you College Email Address", Toast.LENGTH_SHORT).show();
                 }
 
 
