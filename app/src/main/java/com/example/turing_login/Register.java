@@ -74,18 +74,14 @@ public class Register extends AppCompatActivity {
                     connected = false;
 
 
-
                 if (TextUtils.isEmpty(remail)) {
                     email.setError("Email-ID is required!");
-                    return;
                 }
                 else if (TextUtils.isEmpty(rname)) {
                     Name.setError("Name is required!");
-                    return;
                 }
                 else if (TextUtils.isEmpty(rid)) {
                     id.setError("ID is required!");
-                    return;
                 }
                 else if(!rid.contains("XJ1A0")&&rid.length()>10){
                     id.setError("Please Check your ID");
@@ -96,14 +92,12 @@ public class Register extends AppCompatActivity {
 
                 else if (TextUtils.isEmpty(rpassword)) {
                     password.setError("Password is required!",errorIcon);
-                    return;
                 }
                 else if (rpassword.length() < 8) {
                     password.setError("Turing requires 8 or more characters",errorIcon);
-                    return;
                 }
                 else if(!email.getText().toString().contains("@mechyd.ac.in")){
-                    email.setError("Enter you College Email Address");
+                    email.setError("Enter your College Email Address");
 
                 }
                 else if(!email.getText().toString().contains(rid.substring(0,2)+rid.substring(7,10)+"@mechyd.ac.in")){
@@ -130,8 +124,7 @@ public class Register extends AppCompatActivity {
 
                                 root.child(currentuser).child("id").setValue(rid);
                                 root.child(currentuser).child("name").setValue(rname);
-
-
+                                finish();
                             } else {
                                 Toast.makeText(Register.this, "Initialization Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
