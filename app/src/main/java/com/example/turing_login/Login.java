@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
         email=findViewById(R.id.ID);
         password=findViewById(R.id.Password);
         fauth=FirebaseAuth.getInstance();
-        Login=(Button)findViewById(R.id.Login);
+        Login=findViewById(R.id.Login);
         signup=findViewById(R.id.signup);
 
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -77,16 +77,13 @@ public class Login extends AppCompatActivity {
                 if(TextUtils.isEmpty(remail)){
                     email.setError("Please enter your Email-ID");
                     Toast.makeText(com.example.turing_login.Login.this, "Please enter your Email-ID", Toast.LENGTH_SHORT).show();
-                    return;
                 }
                 else if(TextUtils.isEmpty(rpassword)){
                     password.setError("Please enter Password",errorIcon);
-                    Toast.makeText(com.example.turing_login.Login.this, "Please enter Password", Toast.LENGTH_SHORT).show();
-
-                    return;
+                    Toast.makeText(com.example.turing_login.Login.this, "Please enter your Password", Toast.LENGTH_SHORT).show();
                 }
 
-                else if(connected==false){
+                else if(!connected){
                     Toast.makeText(Login.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                 }
 
@@ -105,9 +102,11 @@ public class Login extends AppCompatActivity {
                             {
                                 startActivity(new Intent(getApplicationContext(), Features.class));
                                 nDialog.dismiss();
+                                finish();
                             }
                             else {
-                                Toast.makeText(com.example.turing_login.Login.this, "Please check your Password", Toast.LENGTH_SHORT).show();
+                                nDialog.dismiss();
+                                Toast.makeText(com.example.turing_login.Login.this, "Please check your Password", Toast.LENGTH_LONG).show();
                             }
 
                         }

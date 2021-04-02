@@ -97,11 +97,10 @@ public class Features extends AppCompatActivity {
         int id= item.getItemId();
                 switch(id){
                     case R.id.logout_in_menu: {
-                        Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Signing out...", Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(getApplicationContext(), Login.class));
                         finish();
-
                         }
                         break;
                 }
