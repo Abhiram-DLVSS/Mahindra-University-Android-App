@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_Turing_Login_NoActionBar);
         setContentView(R.layout.register);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         Name = findViewById(R.id.Name);
         email = findViewById(R.id.EmailID);
         id = findViewById(R.id.CollegeID);
