@@ -19,7 +19,7 @@ public class Forms extends AppCompatActivity {
         REGISTRATION.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.youtube.com/watch?v=m7atGkba-Z8");
+                gotoUrl("https://docs.google.com");
             }
         });
     }

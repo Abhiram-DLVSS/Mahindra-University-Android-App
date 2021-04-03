@@ -7,39 +7,10 @@
     android:background="@color/white"
     tools:context=".Forms">
 
-<View
-android:id="@+id/Topview"
-android:layout_width="0dp"
-android:layout_height="150dp"
-android:background="@color/purple_500"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent" />
-
-<View
-android:id="@+id/Topview_2"
-android:layout_width="0dp"
-android:layout_height="100dp"
-android:background="@drawable/ic_wave"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@+id/Topview" />
-
-<View
-android:id="@+id/Bottomview"
-android:layout_width="0dp"
-android:layout_height="125dp"
-android:background="@drawable/ic_wave21"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.0"
-app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/REGISTRATION"
         android:layout_width="205dp"
         android:layout_height="58dp"
-        android:layout_marginTop="56dp"
         android:background="@drawable/round1"
         android:backgroundTint="@color/stan"
         android:text="Registration"
@@ -47,7 +18,8 @@ app:layout_constraintStart_toStartOf="parent" />
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Topview_2" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

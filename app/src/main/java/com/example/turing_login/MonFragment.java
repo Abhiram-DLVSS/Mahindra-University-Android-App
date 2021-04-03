@@ -136,11 +136,28 @@ public class MonFragment extends Fragment {
                 String year=rollnumber.substring(0,2);
                 String branch=rollnumber.substring(7,8);
                 String rno=rollnumber.substring(8,10);
-                String batch;
-                if(Integer.parseInt(rno)<42)
+                String batch="1";
+                if(Integer.parseInt(branch)==1){
+                if(Integer.parseInt(rno)<=44)
                      batch="1";
                 else
-                    batch="2";
+                    batch="3";//not there actually
+                    }
+                else if(Integer.parseInt(branch)==2){
+                    if(Integer.parseInt(rno)<=35)
+                        batch="1";
+                    else
+                        batch="2";}
+                else if(Integer.parseInt(branch)==3){
+                    if(Integer.parseInt(rno)<=35)
+                        batch="1";
+                    else
+                        batch="2";}
+                else if(Integer.parseInt(branch)==5){
+                    if(Integer.parseInt(rno)<=42)
+                        batch="1";
+                    else
+                        batch="2";}
 
                 total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Monday").getChildrenCount();
                 for(count=0;count<total;count++){
