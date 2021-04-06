@@ -29,10 +29,10 @@ import java.util.List;
  */
 public class ThuFragment extends Fragment {
 
-    private static final String URL_DATA ="http://turing.infinityfreeapp.com/test.php";
+    private static final String URL_DATA = "http://turing.infinityfreeapp.com/test.php";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private int count,total;
+    private int count, total;
     private List<Listitem_thufrag> listitem_thufrags;
     //to fetch data
     DatabaseReference reff;
@@ -83,76 +83,67 @@ public class ThuFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_thu, container, false);
-        recyclerView= view.findViewById(R.id.recyclerView_thuFrag);
+        View view = inflater.inflate(R.layout.fragment_thu, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView_thuFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         //loadRecyclerViewData();
 
-        listitem_thufrags=new ArrayList<>();
-//        for(int i=0;i<2;i++){
-//            Listitem_thufrag listitem_thufrag=new Listitem_thufrag(
-//                    "heading"+(i+1),"testing"
-//            );
-//            listitem_thufrags.add(listitem_thufrag);
-//        }
+        listitem_thufrags = new ArrayList<>();
 
         ReadHeader();
-//        reff= FirebaseDatabase.getInstance().getReference().child("Thuday").child("0");
-//        reff.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String m1=snapshot.child("header1").getValue().toString();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//        Listitem_thufrag listitem_thufrag=new Listitem_thufrag(
-//                "heading"+(1),"testing"
-//        );
-//        listitem_thufrags.add(listitem_thufrag);
-//
-//
-//        adapter=new ThuAdapter(listitem_thufrags,getContext());
-//        recyclerView.setAdapter(adapter);
         return view;
     }
-    private  void ReadHeader(){
-        final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+
+    private void ReadHeader() {
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Thuday");
         reference.keepSynced(true);
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listitem_thufrags.clear();
-                String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
-                String year=rollnumber.substring(0,2);
-                String branch=rollnumber.substring(7,8);
-                String rno=rollnumber.substring(8,10);
-                String batch;
-                if(Integer.parseInt(rno)<42)
-                    batch="1";
-                else
-                    batch="2";
+                String rollnumber = snapshot.child("Users").child(currentuser).child("id").getValue().toString();
+                String year = rollnumber.substring(0, 2);
+                String branch = rollnumber.substring(7, 8);
+                String rno = rollnumber.substring(8, 10);
+                String batch = "1";
+                if (Integer.parseInt(branch) == 1) {
+                    if (Integer.parseInt(rno) <= 44)
+                        batch = "1";
+                    else
+                        batch = "3";//not there actually
+                } else if (Integer.parseInt(branch) == 2) {
+                    if (Integer.parseInt(rno) <= 35)
+                        batch = "1";
+                    else
+                        batch = "2";
+                } else if (Integer.parseInt(branch) == 3) {
+                    if (Integer.parseInt(rno) <= 35)
+                        batch = "1";
+                    else
+                        batch = "2";
+                } else if (Integer.parseInt(branch) == 5) {
+                    if (Integer.parseInt(rno) <= 42)
+                        batch = "1";
+                    else
+                        batch = "2";
+                }
 
-                total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Thursday").getChildrenCount();
-                for(count=0;count<total;count++){
-                    String chil=""+count;
-                    String m1=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Thursday").child(chil).child("header").getValue().toString();
-                    String m2=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Thursday").child(chil).child("time").getValue().toString();
-                    String m3=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Thursday").child(chil).child("lecturer").getValue().toString();
-                    Listitem_thufrag listitem_thufrag=new Listitem_thufrag(m1,m2,m3);
-                    //  Listitem_thufrag listitem_thufrag=snapshot1.getValue(Listitem_thufrag.class);
+                total = (int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Thursday").getChildrenCount();
+                for (count = 0; count < total; count++) {
+                    String chil = "" + count;
+                    String m1 = snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Thursday").child(chil).child("header").getValue().toString();
+                    String m2 = snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Thursday").child(chil).child("time").getValue().toString();
+                    String m3 = snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Thursday").child(chil).child("lecturer").getValue().toString();
+                    Listitem_thufrag listitem_thufrag = new Listitem_thufrag(m1, m2, m3);
+                    //  Listitem_monfrag listitem_monfrag=snapshot1.getValue(Listitem_monfrag.class);
 
                     assert listitem_thufrag != null;
                     listitem_thufrags.add(listitem_thufrag);
 
-                    adapter=new ThuAdapter(listitem_thufrags,getContext());
+                    adapter = new ThuAdapter(listitem_thufrags, getContext());
                     recyclerView.setAdapter(adapter);
 
                 }
@@ -164,42 +155,4 @@ public class ThuFragment extends Fragment {
             }
         });
     }
-
-    //  private void loadRecyclerViewData() {
-//        ProgressDialog progressDialog = new ProgressDialog(getContext());
-//        progressDialog.setMessage("Loading data....");
-//        ProgressDialog.show();
-
-//        StringRequest stringRequest=new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String s) {
-//
-//                try {
-//                    JSONObject jsonObject=new JSONObject(s);
-//                    JSONArray array=jsonObject.getJSONArray("Thuday");
-//                    for(int i=0;i<array.length();i++){
-//                        JSONObject o=array.getJSONObject(i);
-//                        Listitem_thufrag item= new Listitem_thufrag(
-//                        o.getString("header"+i),o.getString("header"+i)
-//                        );
-//
-//                        listitem_thufrags.add(item);
-//                    }
-//                    adapter= new ThuAdapter(listitem_thufrags,getContext());
-//                    recyclerView.setAdapter(adapter);
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        }
-//        );
-//        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-//        requestQueue.add(stringRequest);
-//    }
 }

@@ -126,7 +126,7 @@ public class WedFragment extends Fragment {
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Wedday");
         reference.keepSynced(true);
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listitem_wedfrags.clear();
@@ -134,11 +134,28 @@ public class WedFragment extends Fragment {
                 String year=rollnumber.substring(0,2);
                 String branch=rollnumber.substring(7,8);
                 String rno=rollnumber.substring(8,10);
-                String batch;
-                if(Integer.parseInt(rno)<42)
-                    batch="1";
-                else
-                    batch="2";
+                String batch="1";
+                if(Integer.parseInt(branch)==1){
+                    if(Integer.parseInt(rno)<=44)
+                        batch="1";
+                    else
+                        batch="3";//not there actually
+                }
+                else if(Integer.parseInt(branch)==2){
+                    if(Integer.parseInt(rno)<=35)
+                        batch="1";
+                    else
+                        batch="2";}
+                else if(Integer.parseInt(branch)==3){
+                    if(Integer.parseInt(rno)<=35)
+                        batch="1";
+                    else
+                        batch="2";}
+                else if(Integer.parseInt(branch)==5){
+                    if(Integer.parseInt(rno)<=42)
+                        batch="1";
+                    else
+                        batch="2";}
 
                 total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Wednesday").getChildrenCount();
                 for(count=0;count<total;count++){
@@ -147,7 +164,7 @@ public class WedFragment extends Fragment {
                     String m2=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Wednesday").child(chil).child("time").getValue().toString();
                     String m3=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Wednesday").child(chil).child("lecturer").getValue().toString();
                     Listitem_wedfrag listitem_wedfrag=new Listitem_wedfrag(m1,m2,m3);
-                    //  Listitem_wedfrag listitem_wedfrag=snapshot1.getValue(Listitem_wedfrag.class);
+                    //  Listitem_monfrag listitem_monfrag=snapshot1.getValue(Listitem_monfrag.class);
 
                     assert listitem_wedfrag != null;
                     listitem_wedfrags.add(listitem_wedfrag);

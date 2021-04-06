@@ -12,9 +12,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +41,24 @@ public class Login extends AppCompatActivity {
         fauth=FirebaseAuth.getInstance();
         Login=findViewById(R.id.Login);
         signup=findViewById(R.id.signup);
+        ScrollView scrollView=findViewById(R.id.loginscroll);
 
+//        email.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                scrollView.fullScroll(scrollView.FOCUS_DOWN);
+//                scrollView.smoothScrollTo(signup.getLeft(), signup.getTop());
+//                Toast.makeText(Login.this, "1", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//        email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                scrollView.smoothScrollTo(signup.getLeft(), signup.getTop());
+//                Toast.makeText(Login.this, "2", Toast.LENGTH_SHORT).show();
+//            }
+//        });
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {

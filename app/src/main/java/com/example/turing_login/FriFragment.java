@@ -126,7 +126,7 @@ public class FriFragment extends Fragment {
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Friday");
         reference.keepSynced(true);
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listitem_frifrags.clear();
@@ -134,11 +134,28 @@ public class FriFragment extends Fragment {
                 String year=rollnumber.substring(0,2);
                 String branch=rollnumber.substring(7,8);
                 String rno=rollnumber.substring(8,10);
-                String batch;
-                if(Integer.parseInt(rno)<42)
-                    batch="1";
-                else
-                    batch="2";
+                String batch="1";
+                if(Integer.parseInt(branch)==1){
+                    if(Integer.parseInt(rno)<=44)
+                        batch="1";
+                    else
+                        batch="3";//not there actually
+                }
+                else if(Integer.parseInt(branch)==2){
+                    if(Integer.parseInt(rno)<=35)
+                        batch="1";
+                    else
+                        batch="2";}
+                else if(Integer.parseInt(branch)==3){
+                    if(Integer.parseInt(rno)<=35)
+                        batch="1";
+                    else
+                        batch="2";}
+                else if(Integer.parseInt(branch)==5){
+                    if(Integer.parseInt(rno)<=42)
+                        batch="1";
+                    else
+                        batch="2";}
 
                 total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Friday").getChildrenCount();
                 for(count=0;count<total;count++){
@@ -147,9 +164,9 @@ public class FriFragment extends Fragment {
                     String m2=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Friday").child(chil).child("time").getValue().toString();
                     String m3=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Friday").child(chil).child("lecturer").getValue().toString();
                     Listitem_frifrag listitem_frifrag=new Listitem_frifrag(m1,m2,m3);
-                    //  Listitem_frifrag listitem_frifrag=snapshot1.getValue(Listitem_frifrag.class);
+                    //  Listitem_monfrag listitem_monfrag=snapshot1.getValue(Listitem_monfrag.class);
 
-                    assert listitem_frifrag != null;
+                    assert listitem_frifrags != null;
                     listitem_frifrags.add(listitem_frifrag);
 
                     adapter=new FriAdapter(listitem_frifrags,getContext());
