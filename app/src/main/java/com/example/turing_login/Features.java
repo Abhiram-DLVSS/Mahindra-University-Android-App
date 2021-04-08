@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Features extends AppCompatActivity {
     private Button buttonfor,timetable_button,faculty,fee;
+    private TextView welcome;
 
 
 
@@ -27,7 +29,7 @@ public class Features extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.features);
-
+        welcome=findViewById(R.id.welcome);
 
         //To get custom status bar color
         Window window = this.getWindow();
@@ -68,7 +70,12 @@ public class Features extends AppCompatActivity {
                 gotoUrl("https://www.mahindraecolecentrale.edu.in/faculty");
             }
         });
-
+        faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFaculty();
+            }
+        });
 
         buttonfor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +93,12 @@ public class Features extends AppCompatActivity {
             }
         });
     }
+
+    private void openFaculty() {
+        Intent intent=new Intent(this,FacultyMenu.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_items,menu);
