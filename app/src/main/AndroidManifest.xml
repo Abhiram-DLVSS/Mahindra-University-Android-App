@@ -10,28 +10,32 @@
         android:label="Mahindra University"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".nointernet"
-        android:theme="@style/Theme.Turing_Login">
+        android:name=".NoInternet"
+        android:theme="@style/splash_theme">
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TimeTable" />
+        <activity android:name=".TimeTable"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".Turing_Register"
+            android:name=".Register"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Forms"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".FORMS"
-            android:screenOrientation="portrait" />
+            android:name=".Features"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme" />
         <activity
-            android:name=".FEATURES"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Login"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            />
     </application>
 
 </manifest>

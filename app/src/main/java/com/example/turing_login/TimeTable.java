@@ -1,9 +1,12 @@
 package com.example.turing_login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -15,7 +18,13 @@ public class TimeTable extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_table);
+        setContentView(R.layout.time_table);
+
+        //To get custom status bar color
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.stan));
 
         TabLayout tabLayout = findViewById(R.id.tab_bar);
         TabItem tab_mon= findViewById(R.id.mon_tab);
@@ -44,23 +53,25 @@ public class TimeTable extends AppCompatActivity {
         } else if (Calendar.SATURDAY == dayOfWeek) {
             viewPager.setCurrentItem(5, true);
         } else if (Calendar.SUNDAY == dayOfWeek) {
-            viewPager.setCurrentItem(6, true);
+            viewPager.setCurrentItem(0, true);
         }
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                //Log.d("Tabx", "onTabSelected:"+tab.getPosition());
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+               // Log.d("Tabx", "onTabUnselected:"+tab.getPosition());
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                viewPager.setCurrentItem(tab.getPosition());
+                //Log.d("Tabx", "onTabReselect:"+tab.getPosition());
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

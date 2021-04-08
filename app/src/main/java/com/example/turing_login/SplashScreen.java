@@ -10,23 +10,26 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
     FirebaseAuth fauth;
-    private static int SPLASH_TIME_OUT=3000;
+    private static int SPLASH_TIME_OUT=999;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_screen);
         fauth=FirebaseAuth.getInstance();
-        setContentView(R.layout.activity_splash_screen);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if(fauth.getCurrentUser()!=null) {
-                    Intent homeIntent = new Intent(SplashScreen.this, FEATURES.class);
+                    Intent homeIntent = new Intent(SplashScreen.this, Features.class);
                     startActivity(homeIntent);
                     finish();
                 }
                 else{
-                    Intent homeIntent = new Intent(SplashScreen.this, MainActivity.class);
+                    Intent homeIntent = new Intent(SplashScreen.this, Login.class);
                     startActivity(homeIntent);
                     finish();
                 }

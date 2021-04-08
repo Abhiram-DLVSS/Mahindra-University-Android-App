@@ -8,18 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class FORMS extends AppCompatActivity {
+public class Forms extends AppCompatActivity {
     Button REGISTRATION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_f_o_r_m_s);
+        setContentView(R.layout.forms);
         REGISTRATION=findViewById(R.id.REGISTRATION);
         REGISTRATION.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.youtube.com/watch?v=m7atGkba-Z8");
+                gotoUrl("https://docs.google.com");
             }
         });
     }
