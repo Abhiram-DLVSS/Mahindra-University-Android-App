@@ -4,11 +4,13 @@ public class Listitem_monfrag {
     private String head;
     private String desc;
     private String lect;
+    private String col;
 
-    public Listitem_monfrag(String head, String desc, String lect) {
+    public Listitem_monfrag(String head, String desc, String lect,String col) {
         this.head = head;
         this.desc = desc;
         this.lect= lect;
+        this.col=col;
     }
 
     public String getHead() {
@@ -19,7 +21,11 @@ public class Listitem_monfrag {
         return desc;
     }
 
-    public String getLect() { return lect;}
+    public String getLect() { return lect; }
+
+    public String getCol() { return col; }
+    
+    
 
 
 }

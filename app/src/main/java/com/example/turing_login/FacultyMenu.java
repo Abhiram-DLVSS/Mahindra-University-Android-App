@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,8 +29,13 @@ public class FacultyMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_faculty_menu);
         RecyclerView FacultyMenu = findViewById(R.id.FacultyMenu);
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.stan));
         List<String>titles = new ArrayList<>();
         List<Integer>images = new ArrayList<>();
         List<String>pos = new ArrayList<>();

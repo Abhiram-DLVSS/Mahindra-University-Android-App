@@ -110,7 +110,7 @@ public class TueFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(getContext(), "Fetching...tue", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Fetching...tue", Toast.LENGTH_SHORT).show();
 
                 listitem_tuefrags.clear();
                 String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
