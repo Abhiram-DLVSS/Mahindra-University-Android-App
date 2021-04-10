@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,7 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -84,16 +87,12 @@ public class TueFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view= inflater.inflate(R.layout.fragment_tue, container, false);
         recyclerView= view.findViewById(R.id.recyclerView_tueFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         listitem_tuefrags=new ArrayList<>();
-
-        ReadHeadertue();
-
+        ReadHeader();
         mSwipeRefreshLayout =view.findViewById(R.id.swipe_tue);
         mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
@@ -102,16 +101,14 @@ public class TueFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                 android.R.color.holo_blue_dark);
         return view;
     }
-    private  void ReadHeadertue(){
+    private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
-        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();        //   DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Tueday");
+        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reference.keepSynced(true);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Toast.makeText(getContext(), "Fetching...tue", Toast.LENGTH_SHORT).show();
-
                 listitem_tuefrags.clear();
                 String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
                 String year=rollnumber.substring(0,2);
@@ -138,34 +135,40 @@ public class TueFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                     if(Integer.parseInt(rno)<=42)
                         batch="1";
                     else
-                        batch="2";}
-
+                        batch="2";
+                }
                 total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Tuesday").getChildrenCount();
                 for(count=0;count<total;count++){
                     String chil=""+count;
                     String m1=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Tuesday").child(chil).child("header").getValue().toString();
                     String m2=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Tuesday").child(chil).child("time").getValue().toString();
                     String m3=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Tuesday").child(chil).child("lecturer").getValue().toString();
-                    Listitem_tuefrag listitem_tuefrag=new Listitem_tuefrag(m1,m2,m3);
-
+                    int k;
+//                    Date currentTime = Calendar.getInstance().getTime();
+                    Date d=new Date();
+                    SimpleDateFormat sdf=new SimpleDateFormat("HHmm");
+                    String currentDateTimeString = sdf.format(d);
+                    int time=Integer.parseInt(currentDateTimeString);
+                    Calendar c = Calendar.getInstance();
+                    int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+                    if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.TUESDAY == dayOfWeek)
+                        k=-7596779;
+                    else
+                        k=-1;//-16777216;
+                    Log.d("abhi", "Value of m4 is "+currentDateTimeString);
+                    Listitem_tuefrag listitem_tuefrag=new Listitem_tuefrag(m1,m2,m3,""+k);
                     assert listitem_tuefrag != null;
                     listitem_tuefrags.add(listitem_tuefrag);
-
                     adapter=new TueAdapter(listitem_tuefrags,getContext());
                     recyclerView.setAdapter(adapter);
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
     @Override
-    public void onRefresh() {
-        ReadHeadertue();
-    }
-
+    public void onRefresh() {ReadHeader();}
 }
