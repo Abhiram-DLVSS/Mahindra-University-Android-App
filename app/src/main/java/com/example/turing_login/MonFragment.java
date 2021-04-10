@@ -85,7 +85,7 @@ public class MonFragment extends Fragment implements SwipeRefreshLayout.OnRefres
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState){
 
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_mon, container, false);
