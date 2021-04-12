@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -39,7 +40,6 @@ public class TimeTable extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         Calendar c = Calendar.getInstance();
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-
         if (Calendar.MONDAY == dayOfWeek) {
             viewPager.setCurrentItem(0, true);
         } else if (Calendar.TUESDAY == dayOfWeek) {
@@ -60,18 +60,18 @@ public class TimeTable extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                //Log.d("Tabx", "onTabSelected:"+tab.getPosition());
+                Log.d("frag", "onTabSelected:"+tab.getPosition());
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-               // Log.d("Tabx", "onTabUnselected:"+tab.getPosition());
+                Log.d("frag", "onTabUnselected:"+tab.getPosition());
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                //Log.d("Tabx", "onTabReselect:"+tab.getPosition());
+               // viewPager.setCurrentItem(tab.getPosition());
+                Log.d("frag", "onTabReselect:"+tab.getPosition());
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

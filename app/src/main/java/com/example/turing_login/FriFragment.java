@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +35,6 @@ import java.util.List;
  */
 public class FriFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
-    private static final String URL_DATA ="http://turing.infinityfreeapp.com/test.php";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count,total;
@@ -42,7 +42,6 @@ public class FriFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     SwipeRefreshLayout mSwipeRefreshLayout;
     //to fetch data
     DatabaseReference reff;
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,67 +102,81 @@ public class FriFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     }
     private  void ReadHeader(){
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        reference.keepSynced(true);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
+        reference.keepSynced(false);
+
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+             //   Toast.makeText(getContext(), "Fetching...fri", Toast.LENGTH_SHORT).show();
                 listitem_frifrags.clear();
-                String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
+                String rollnumber = snapshot.child("id").getValue().toString();
                 String year=rollnumber.substring(0,2);
                 String branch=rollnumber.substring(7,8);
                 String rno=rollnumber.substring(8,10);
-                String batch="1";
-                if(Integer.parseInt(branch)==1){
-                    if(Integer.parseInt(rno)<=44)
-                        batch="1";
+                int  batch = 1;
+                if (Integer.parseInt(branch) == 1) {
+                    if (Integer.parseInt(rno) <= 44)
+                        batch = 1;
                     else
-                        batch="3";//not there actually
+                        batch = 3;//not there actually
+                } else if (Integer.parseInt(branch) == 2) {
+                    if (Integer.parseInt(rno) <= 35)
+                        batch = 1;
+                    else
+                        batch = 2;
+                } else if (Integer.parseInt(branch) == 3) {
+                    if (Integer.parseInt(rno) <= 35)
+                        batch = 1;
+                    else
+                        batch = 2;
+                } else if (Integer.parseInt(branch) == 5) {
+                    if (Integer.parseInt(rno) <= 42)
+                        batch = 1;
+                    else
+                        batch = 2;
                 }
-                else if(Integer.parseInt(branch)==2){
-                    if(Integer.parseInt(rno)<=35)
-                        batch="1";
-                    else
-                        batch="2";}
-                else if(Integer.parseInt(branch)==3){
-                    if(Integer.parseInt(rno)<=35)
-                        batch="1";
-                    else
-                        batch="2";}
-                else if(Integer.parseInt(branch)==5){
-                    if(Integer.parseInt(rno)<=42)
-                        batch="1";
-                    else
-                        batch="2";
-                }
-                total=(int) snapshot.child("TimeTable").child(year).child(branch).child("1").child("Friday").getChildrenCount();
-                for(count=0;count<total;count++){
-                    String chil=""+count;
-                    String m1=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Friday").child(chil).child("header").getValue().toString();
-                    String m2=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Friday").child(chil).child("time").getValue().toString();
-                    String m3=snapshot.child("TimeTable").child(year).child(branch).child(batch).child("Friday").child(chil).child("lecturer").getValue().toString();
-                    Log.d("abhi", "m2="+m2);
-                    int k;
+                String batnum=""+batch;
+
+                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("TimeTable");
+                reference1.keepSynced(false);
+                reference1.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        total=(int) snapshot.child(year).child(branch).child("1").child("Friday").getChildrenCount();
+                        for(count=0;count<total;count++){
+                            String chil=""+count;
+                            String m1=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("header").getValue().toString();
+                            String m2=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("time").getValue().toString();
+                            String m3=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("lecturer").getValue().toString();
+                            int k;
 //                    Date currentTime = Calendar.getInstance().getTime();
-                    Date d=new Date();
-                    SimpleDateFormat sdf=new SimpleDateFormat("HHmm");
-                    String currentDateTimeString = sdf.format(d);
-                    int time=Integer.parseInt(currentDateTimeString);
-                    Calendar c = Calendar.getInstance();
-                    int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-                    if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.FRIDAY == dayOfWeek)
-                        k=-7596779;
-                    else
-                        k=-1;//-16777216;
-                    Log.d("abhi", "Value of m4 is "+currentDateTimeString);
-                    Listitem_frifrag listitem_frifrag=new Listitem_frifrag(m1,m2,m3,""+k);
-                    assert listitem_frifrags != null;
-                    listitem_frifrags.add(listitem_frifrag);
-                    adapter=new FriAdapter(listitem_frifrags,getContext());
-                    recyclerView.setAdapter(adapter);
-                    mSwipeRefreshLayout.setRefreshing(false);
-                }
+                            Date d=new Date();
+                            SimpleDateFormat sdf=new SimpleDateFormat("HHmm");
+                            String currentDateTimeString = sdf.format(d);
+                            int time=Integer.parseInt(currentDateTimeString);
+                            Calendar c = Calendar.getInstance();
+                            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+                            if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.FRIDAY == dayOfWeek)
+                                k=-7596779;
+                            else
+                                k=-1;//-16777216;
+                            Log.d("abhi", "Value of m4 is "+currentDateTimeString);
+                            Listitem_frifrag listitem_frifrag=new Listitem_frifrag(m1,m2,m3,""+k);
+                            assert listitem_frifrag != null;
+                            listitem_frifrags.add(listitem_frifrag);
+                            adapter=new FriAdapter(listitem_frifrags,getContext());
+                            recyclerView.setAdapter(adapter);
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
