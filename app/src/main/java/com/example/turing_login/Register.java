@@ -2,6 +2,7 @@ package com.example.turing_login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,10 +14,13 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,9 +48,12 @@ public class Register extends AppCompatActivity {
         Name = findViewById(R.id.Name);
         email = findViewById(R.id.EmailID);
         id = findViewById(R.id.CollegeID);
+        ScrollView scrollView=findViewById(R.id.regsterscroll);
         password = findViewById(R.id.Password);
         fauth = FirebaseAuth.getInstance();
         register = findViewById(R.id.REGISTER);
+        ConstraintLayout constraintLayout;
+
 
         Drawable errorIcon = getResources().getDrawable(R.drawable.null_layout);
         errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth(), errorIcon.getIntrinsicHeight()));
@@ -56,6 +63,23 @@ public class Register extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Features.class));
             finish();
         }
+        constraintLayout=findViewById(R.id.registerview);
+        constraintLayout.getViewTreeObserver().addOnGlobalLayoutListener(new  ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
+                        int bottomDetector = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
+                        if(bottomDetector == 0 )
+                            Log.d("loginact", "bd="+bottomDetector);
+                        else
+                            scrollView.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +90,10 @@ public class Register extends AppCompatActivity {
                 String rpassword = password.getText().toString().trim();
                 String rname = Name.getText().toString().trim();
                 String rid = id.getText().toString().trim();
+
+
+
+
                 ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
                 if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                         connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {

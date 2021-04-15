@@ -43,7 +43,7 @@ public class ThuAdapter extends RecyclerView.Adapter<ThuAdapter.ViewHolder> {
         Log.d("Abhi",  "value of color is "+colo);
         if (color!=-1) {
             holder.textview_heading_thufragv.setTextColor(-1);
-            holder.textview_heading_thufragv.setTextColor(-1);
+            holder.textview_desc_thufragv.setTextColor(-1);
             holder.textview_lect_thufragv.setTextColor(-1);
             holder.textview_heading_thufragv.setTypeface(Typeface.DEFAULT);
         }
