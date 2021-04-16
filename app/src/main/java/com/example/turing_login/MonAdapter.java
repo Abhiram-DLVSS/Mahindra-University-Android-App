@@ -1,13 +1,17 @@
 package com.example.turing_login;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -38,6 +42,7 @@ public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
         holder.textview_heading_monfragv.setText(listitem_monfrag.getHead());
         holder.textview_desc_monfragv.setText(listitem_monfrag.getDesc());
         holder.textview_lect_monfragv.setText(listitem_monfrag.getLect());
+        holder.link=listitem_monfrag.getLink();
         int color= Integer.parseInt(listitem_monfrag.getCol());
         int colo=ContextCompat.getColor(context_mon, R.color.white);
         Log.d("Abhi",  "value of color is "+colo);
@@ -59,6 +64,7 @@ public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
         public TextView textview_lect_monfragv;
         public RelativeLayout rv;
         public CardView cv;
+        public String link;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textview_heading_monfragv=(TextView) itemView.findViewById(R.id.textview_heading_monfrag);
@@ -66,6 +72,18 @@ public class MonAdapter extends RecyclerView.Adapter<MonAdapter.ViewHolder> {
             textview_lect_monfragv=(TextView) itemView.findViewById(R.id.textview_lecturer_monfrag);
             rv=(RelativeLayout) itemView.findViewById(R.id.mon_rl);
             cv=itemView.findViewById(R.id.mon_card);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Uri copyUri = Uri.parse(link);
+                    ClipboardManager clipboard = (ClipboardManager) context_mon.getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
+                    clipboard.setPrimaryClip(clip);
+                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
+                    toast.show();
+                    return true;
+                }
+            });
         }
     }
 }

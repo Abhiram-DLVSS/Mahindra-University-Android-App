@@ -1,13 +1,17 @@
 package com.example.turing_login;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -38,6 +42,7 @@ public class SatAdapter extends RecyclerView.Adapter<SatAdapter.ViewHolder> {
         holder.textview_heading_satfragv.setText(listitem_satfrag.getHead());
         holder.textview_desc_satfragv.setText(listitem_satfrag.getDesc());
         holder.textview_lect_satfragv.setText(listitem_satfrag.getLect());
+        holder.link=listitem_satfrag.getLink();
         int color= Integer.parseInt(listitem_satfrag.getCol());
         int colo= ContextCompat.getColor(context_sat, R.color.white);
         Log.d("Abhi",  "value of color is "+colo);
@@ -59,6 +64,8 @@ public class SatAdapter extends RecyclerView.Adapter<SatAdapter.ViewHolder> {
         public TextView textview_lect_satfragv;
         public RelativeLayout rv;
         public CardView cv;
+        public String link;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textview_heading_satfragv=(TextView) itemView.findViewById(R.id.textview_heading_satfrag);
@@ -66,6 +73,18 @@ public class SatAdapter extends RecyclerView.Adapter<SatAdapter.ViewHolder> {
             textview_lect_satfragv=(TextView) itemView.findViewById(R.id.textview_lecturer_satfrag);
             rv=(RelativeLayout) itemView.findViewById(R.id.sat_rl);
             cv=itemView.findViewById(R.id.sat_card);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Uri copyUri = Uri.parse(link);
+                    ClipboardManager clipboard = (ClipboardManager) context_sat.getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
+                    clipboard.setPrimaryClip(clip);
+                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
+                    toast.show();
+                    return true;
+                }
+            });
         }
     }
 }

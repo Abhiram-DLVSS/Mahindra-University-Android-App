@@ -1,13 +1,17 @@
 package com.example.turing_login;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -38,6 +42,7 @@ public class FriAdapter extends RecyclerView.Adapter<FriAdapter.ViewHolder> {
         holder.textview_heading_frifragv.setText(listitem_frifrag.getHead());
         holder.textview_desc_frifragv.setText(listitem_frifrag.getDesc());
         holder.textview_lect_frifragv.setText(listitem_frifrag.getLect());
+        holder.link=listitem_frifrag.getLink();
         int color= Integer.parseInt(listitem_frifrag.getCol());
         int colo= ContextCompat.getColor(context_fri, R.color.white);
         Log.d("Abhi",  "value of color is "+colo);
@@ -59,13 +64,27 @@ public class FriAdapter extends RecyclerView.Adapter<FriAdapter.ViewHolder> {
         public TextView textview_lect_frifragv;
         public RelativeLayout rv;
         public CardView cv;
+        public String link;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textview_heading_frifragv=(TextView) itemView.findViewById(R.id.textview_heading_frifrag);
             textview_desc_frifragv=(TextView) itemView.findViewById(R.id.textview_desc_frifrag);
             textview_lect_frifragv=(TextView) itemView.findViewById(R.id.textview_lecturer_frifrag);
             rv=(RelativeLayout) itemView.findViewById(R.id.fri_rl);
-            cv=itemView.findViewById(R.id.fri_card);
+            cv=itemView.findViewById(R.id.fri_card);itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Uri copyUri = Uri.parse(link);
+                    ClipboardManager clipboard = (ClipboardManager) context_fri.getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
+                    clipboard.setPrimaryClip(clip);
+                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
+                    toast.show();
+                    return true;
+                }
+            });
+
         }
     }
 }

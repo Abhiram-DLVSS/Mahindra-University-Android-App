@@ -141,7 +141,7 @@ public class WedFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                 String batnum=""+batch;
 
                 DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("TimeTable");
-                reference1.keepSynced(false);
+                reference1.keepSynced(true);
                 reference1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -151,6 +151,7 @@ public class WedFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                             String m1=snapshot.child(year).child(branch).child(batnum).child("Wednesday").child(chil).child("header").getValue().toString();
                             String m2=snapshot.child(year).child(branch).child(batnum).child("Wednesday").child(chil).child("time").getValue().toString();
                             String m3=snapshot.child(year).child(branch).child(batnum).child("Wednesday").child(chil).child("lecturer").getValue().toString();
+                            String m4 = snapshot.child(year).child(branch).child(batnum).child("Wednesday").child(chil).child("link").getValue().toString();
                             int k;
 //                    Date currentTime = Calendar.getInstance().getTime();
                             Date d=new Date();
@@ -164,7 +165,7 @@ public class WedFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                             else
                                 k=-1;//-16777216;
                             Log.d("abhi", "Value of m4 is "+currentDateTimeString);
-                            Listitem_wedfrag listitem_wedfrag=new Listitem_wedfrag(m1,m2,m3,""+k);
+                            Listitem_wedfrag listitem_wedfrag=new Listitem_wedfrag(m1,m2,m3,""+k,m4);
                             assert listitem_wedfrag != null;
                             listitem_wedfrags.add(listitem_wedfrag);
                             adapter=new WedAdapter(listitem_wedfrags,getContext());

@@ -40,13 +40,17 @@ public class FacultyMenu extends AppCompatActivity {
         List<Integer>images = new ArrayList<>();
         List<String>pos = new ArrayList<>();
             final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-            DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
             String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            reference.keepSynced(true);
+
+//        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+//        reference.keepSynced(true);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
+        reference.keepSynced(false);
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
+//                    String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
+                    String rollnumber = snapshot.child("id").getValue().toString();
                     String year=rollnumber.substring(0,2);
                     String branch=rollnumber.substring(7,8);
                     if((Integer.parseInt(year)==19)&&(Integer.parseInt(branch)==5)){
