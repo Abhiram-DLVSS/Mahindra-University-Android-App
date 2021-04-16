@@ -67,16 +67,30 @@ public class Login extends AppCompatActivity {
         constraintLayout.getViewTreeObserver().addOnGlobalLayoutListener(new  ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
+//                int heightDiff = constraintLayout.getRootView().getHeight() - constraintLayout.getHeight();
+//
+//                if (heightDiff > 100) { // Value should be less than keyboard's height
+//                    Log.e("MyActivity", "keyboard opened"+scrollView.getBottom());
+//                    scrollView.scrollTo(0,scrollView.getBottom());
+////                    scrollView.fullScroll(View.FOCUS_DOWN);
+//                } else {
+//                    Log.e("MyActivity", "keyboard closed"+scrollView.getBottom());
+//                    scrollView.scrollTo(0,scrollView.getBottom());
+////                    scrollView.fullScroll(View.FOCUS_DOWN);
+//                }
                 scrollView.post(new Runnable() {
                     @Override
                     public void run() {
-                        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
-                        int bottomDetector = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
-                        if(bottomDetector == 0 )
-                            Log.d("loginact", "bd="+bottomDetector);
-                        else
-                        scrollView.fullScroll(View.FOCUS_DOWN);
+//                        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
+//                        int bottomDetector = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
+//                        if(bottomDetector == 0 )
+//                            Log.d("loginact", "bd="+bottomDetector);
+//                        else
+//                        scrollView.fullScroll(View.FOCUS_DOWN);
+                        scrollView.scrollTo(0,scrollView.getBottom());
+
                     }
+
                 });
             }
         });
