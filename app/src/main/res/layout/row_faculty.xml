@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="150dp"
+    android:layout_width="155dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
@@ -17,19 +17,11 @@
 
         <ImageView
             android:id="@+id/image_faculty"
-            android:layout_width="75dp"
-            android:layout_height="69dp"
+            android:layout_width="98dp"
+            android:layout_height="94dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_person"
-            app:tint="@color/purple_500" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#0CE80C"
-            app:srcCompat="@drawable/null_layout" />
+            android:src="@drawable/ic_person" />
 
         <TextView
             android:id="@+id/facultyName"
