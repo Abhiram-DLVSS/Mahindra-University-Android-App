@@ -44,17 +44,15 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_Turing_Login_NoActionBar);
         setContentView(R.layout.register);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        ConstraintLayout constraintLayout;
+        ScrollView scrollView=findViewById(R.id.regsterscroll);
         Name = findViewById(R.id.Name);
         email = findViewById(R.id.EmailID);
         id = findViewById(R.id.CollegeID);
-        ScrollView scrollView=findViewById(R.id.regsterscroll);
         password = findViewById(R.id.Password);
         fauth = FirebaseAuth.getInstance();
         register = findViewById(R.id.REGISTER);
-        ConstraintLayout constraintLayout;
-
-
         Drawable errorIcon = getResources().getDrawable(R.drawable.null_layout);
         errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth(), errorIcon.getIntrinsicHeight()));
 
@@ -63,21 +61,45 @@ public class Register extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Features.class));
             finish();
         }
+
         constraintLayout=findViewById(R.id.registerview);
         constraintLayout.getViewTreeObserver().addOnGlobalLayoutListener(new  ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
+//                int heightDiff = constraintLayout.getRootView().getHeight() - constraintLayout.getHeight();
+//
+//                if (heightDiff > 100) { // Value should be less than keyboard's height
+//                    Log.e("MyActivity", "keyboard opened"+scrollView.getBottom()+" ");
+////                    scrollView.scrollTo(0,scrollView.getBottom());
+////                    scrollView.fullScroll(View.FOCUS_DOWN);
+//                    scrollView.setVerticalScrollbarPosition(scrollView.getBottom());
+//                    scrollView.scrollTo(0,scrollView.getBottom());
+//                    scrollView.getVerticalScrollbarPosition();
+//                    Log.e("MyActivity", "Scrolled");
+//                } else {
+//                    Log.e("MyActivity", "keyboard closed"+scrollView.getBottom());
+//                    scrollView.scrollTo(0,scrollView.getBottom());
+////                    scrollView.fullScroll(View.FOCUS_DOWN);
+//                }
                 scrollView.post(new Runnable() {
                     @Override
                     public void run() {
-                        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
-                        int bottomDetector = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
-                        if(bottomDetector == 0 )
-                            Log.d("loginact", "bd="+bottomDetector);
-                        else
-                            scrollView.fullScroll(View.FOCUS_DOWN);
+                        scrollView.scrollTo(0,scrollView.getBottom());
+//                        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
+//                        int bottomDetector = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
+//                        if(bottomDetector == 0 )
+//                            Log.d("loginact", "bd="+bottomDetector);
+//                        else
+//                            scrollView.fullScroll(View.FOCUS_DOWN);
                     }
                 });
+            }
+        });
+        password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scrollView.scrollTo(0,scrollView.getBottom());
+                password.isFocused();
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -161,9 +183,6 @@ public class Register extends AppCompatActivity {
                         }
                     });
                 }
-
-
-
             }
         });
     }

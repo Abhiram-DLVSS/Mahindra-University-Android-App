@@ -145,7 +145,7 @@ public class WedFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                 reference1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        total=(int) snapshot.child(year).child(branch).child("1").child("Wednesday").getChildrenCount();
+                        total=(int) snapshot.child(year).child(branch).child(batnum).child("Wednesday").getChildrenCount();
                         for(count=0;count<total;count++){
                             String chil=""+count;
                             String m1=snapshot.child(year).child(branch).child(batnum).child("Wednesday").child(chil).child("header").getValue().toString();

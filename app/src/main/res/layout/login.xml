@@ -11,7 +11,13 @@
     <ScrollView
         android:id="@+id/loginscroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -63,13 +69,13 @@
                 android:layout_width="140dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/PasswordLayout"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/round3"
                 android:backgroundTint="#EB384E"
                 android:text="Login"
-                android:layout_centerHorizontal="true"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -110,9 +116,9 @@
                 android:layout_width="242dp"
                 android:layout_height="236dp"
                 android:layout_below="@+id/Welcome_mainact"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"
-                android:layout_centerHorizontal="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
