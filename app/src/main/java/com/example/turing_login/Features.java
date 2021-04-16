@@ -3,6 +3,8 @@ package com.example.turing_login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,9 +56,12 @@ public class Features extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 Uri copyUri = Uri.parse("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newUri(getContentResolver(), "URI", copyUri);
+                clipboard.setPrimaryClip(clip);
+
+
                 Toast toast=Toast.makeText(getApplicationContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
-                //toast.setMargin(50,50);
                 toast.show();
                 return true;
             }
@@ -127,7 +132,6 @@ public class Features extends AppCompatActivity {
 
     private void gotoUrl(String s) {
         Uri uri = Uri.parse(s);
-        startActivity(new Intent(Intent.ACTION_VIEW,uri));
         startActivity(new Intent(Intent.ACTION_VIEW,uri));
     }
 

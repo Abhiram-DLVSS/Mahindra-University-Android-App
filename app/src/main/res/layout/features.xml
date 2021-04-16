@@ -7,12 +7,12 @@
     android:background="#ffffff"
     tools:context=".Features">
 
-
     <TextView
         android:id="@+id/welcome"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:text="Welcome"
+        android:layout_marginTop="20dp"
+        android:text="Welcome!"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
@@ -25,12 +25,12 @@
         android:id="@+id/faculty"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/mu"
+        android:backgroundTint="@color/stan"
         android:text="FACULTY"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
@@ -38,78 +38,73 @@
         android:id="@+id/TIME_TABLE"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/mu"
+        android:backgroundTint="@color/stan"
         android:text="TIME TABLE"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/faculty" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/faculty"
+        app:layout_constraintTop_toTopOf="@+id/faculty" />
 
     <Button
         android:id="@+id/GRADES"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/mu"
+        android:backgroundTint="@color/stan"
         android:text="GRADES"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ASSIGNMENT" />
+        app:layout_constraintEnd_toEndOf="@+id/TIME_TABLE"
+        app:layout_constraintTop_toTopOf="@+id/ASSIGNMENT" />
 
     <Button
         android:id="@+id/ASSIGNMENT"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/mu"
+        android:backgroundTint="@color/stan"
         android:text="ASSIGNMENT"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/faculty"
         app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
 
     <Button
         android:id="@+id/FORMS"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/mu"
+        android:backgroundTint="@color/stan"
         android:text="FORMS"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/CULTURE"
+        app:layout_constraintStart_toStartOf="@+id/fee"
         app:layout_constraintTop_toBottomOf="@+id/CULTURE" />
 
     <Button
         android:id="@+id/CULTURE"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/mu"
+        android:backgroundTint="@color/stan"
         android:text="EVENTS"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fee" />
+        app:layout_constraintEnd_toEndOf="@+id/TIME_TABLE"
+        app:layout_constraintTop_toTopOf="@+id/fee" />
 
     <Button
         android:id="@+id/fee"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/round1"
-        android:backgroundTint="@color/mu"
+        android:backgroundTint="@color/stan"
         android:text="Fee "
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ASSIGNMENT"
         app:layout_constraintTop_toBottomOf="@+id/GRADES" />
 
     <ImageView

@@ -70,7 +70,7 @@ public class TimeTable extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-               // viewPager.setCurrentItem(tab.getPosition());
+                viewPager.setCurrentItem(tab.getPosition());
                 Log.d("frag", "onTabReselect:"+tab.getPosition());
             }
         });

@@ -23,6 +23,7 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,8 +98,8 @@ public class Login extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProgressDialog nDialog;
 
+                ProgressDialog nDialog;
                 String remail=email.getText().toString().trim();
                 String rpassword=password.getText().toString().trim();
 
