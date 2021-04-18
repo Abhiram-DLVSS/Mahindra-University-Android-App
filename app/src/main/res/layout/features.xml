@@ -80,12 +80,12 @@
         android:backgroundTint="@color/stan"
         android:text="FORMS"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/CULTURE"
+        app:layout_constraintEnd_toEndOf="@+id/event_button"
         app:layout_constraintStart_toStartOf="@+id/fee"
-        app:layout_constraintTop_toBottomOf="@+id/CULTURE" />
+        app:layout_constraintTop_toBottomOf="@+id/event_button" />
 
-    <Button
-        android:id="@+id/CULTURE"
+    d<Button
+        android:id="@+id/event_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/round1"

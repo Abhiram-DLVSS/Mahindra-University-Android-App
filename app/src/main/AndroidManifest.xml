@@ -8,12 +8,15 @@
     <application
         android:name=".NoInternet"
         android:allowBackup="true"
-        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Mahindra University"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
+        <activity android:name=".Event"
+            android:theme="@style/CustomTheme"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".FacultyMenu" />
         <activity android:name=".SplashScreen">
             <intent-filter>
