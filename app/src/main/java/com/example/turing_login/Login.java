@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -13,21 +12,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,7 +33,9 @@ public class Login extends AppCompatActivity {
     EditText email, password;
     FirebaseAuth fauth;
     TextView signup;
+    LottieAnimationView unlock,rejected;
     boolean connected=false;
+    boolean loginanimation =true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +47,8 @@ public class Login extends AppCompatActivity {
         fauth=FirebaseAuth.getInstance();
         Login=findViewById(R.id.Login);
         signup=findViewById(R.id.signup);
+        unlock=findViewById(R.id.unlock);
+        rejected=findViewById(R.id.rejected);
         ScrollView scrollView=findViewById(R.id.loginscroll);
         ConstraintLayout constraintLayout;
 
@@ -67,30 +66,16 @@ public class Login extends AppCompatActivity {
         constraintLayout.getViewTreeObserver().addOnGlobalLayoutListener(new  ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-//                int heightDiff = constraintLayout.getRootView().getHeight() - constraintLayout.getHeight();
-//
-//                if (heightDiff > 100) { // Value should be less than keyboard's height
-//                    Log.e("MyActivity", "keyboard opened"+scrollView.getBottom());
-//                    scrollView.scrollTo(0,scrollView.getBottom());
-////                    scrollView.fullScroll(View.FOCUS_DOWN);
-//                } else {
-//                    Log.e("MyActivity", "keyboard closed"+scrollView.getBottom());
-//                    scrollView.scrollTo(0,scrollView.getBottom());
-////                    scrollView.fullScroll(View.FOCUS_DOWN);
-//                }
                 scrollView.post(new Runnable() {
                     @Override
                     public void run() {
-//                        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
-//                        int bottomDetector = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
-//                        if(bottomDetector == 0 )
-//                            Log.d("loginact", "bd="+bottomDetector);
-//                        else
-//                        scrollView.fullScroll(View.FOCUS_DOWN);
-                        scrollView.scrollTo(0,scrollView.getBottom());
-
+                        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
+                        int bottomDetector = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
+                        if(bottomDetector == 0 )
+                            Log.d("loginact", "bd="+bottomDetector);
+                        else
+                        scrollView.fullScroll(View.FOCUS_DOWN);
                     }
-
                 });
             }
         });
@@ -112,46 +97,39 @@ public class Login extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ProgressDialog nDialog;
                 String remail=email.getText().toString().trim();
                 String rpassword=password.getText().toString().trim();
 
                 Drawable errorIcon = getResources().getDrawable(R.drawable.null_layout);
                 errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth(), errorIcon.getIntrinsicHeight()));
-
-//                if(TextUtils.isEmpty(remail)){
-//                    email.setError("Please enter your Email-ID");
-//                    Toast.makeText(com.example.turing_login.Login.this, "Please enter your Email-ID", Toast.LENGTH_SHORT).show();
-//                }
-//                else if(TextUtils.isEmpty(rpassword)){
-//                    password.setError("Please enter Password",errorIcon);
-//                    Toast.makeText(com.example.turing_login.Login.this, "Please enter your Password", Toast.LENGTH_SHORT).show();
-//                }
                 if(!connected){
                     Toast.makeText(Login.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                 }
                 else if(TextUtils.isEmpty(remail)||TextUtils.isEmpty(rpassword)){
-                    Toast.makeText(com.example.turing_login.Login.this, "Incorrect Username or Password.", Toast.LENGTH_LONG).show();
+                    loginanimation =true;
+                    rejected.playAnimation();
+                    loginanimation =false;
                 }
                 else{
-                    nDialog = new ProgressDialog(com.example.turing_login.Login.this);
-                    nDialog.setMessage("Glad to see you again!");
-                    nDialog.setIndeterminate(false);
-                    nDialog.show();
                     fauth.signInWithEmailAndPassword(remail,rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //Login and save session
 
                             if(task.isSuccessful()){
-                                startActivity(new Intent(getApplicationContext(), Features.class));
-                                nDialog.dismiss();
-                                finish();
+                                loginanimation =true;
+                                unlock.playAnimation();
+                                loginanimation =false;
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        startActivity(new Intent(getApplicationContext(), Features.class));
+                                        finish();
+                                    }
+                                },5500);
                             }
                             else {
-                                nDialog.dismiss();
-                                Toast.makeText(com.example.turing_login.Login.this, "Incorrect Username or Password.", Toast.LENGTH_LONG).show();
+                                rejected.playAnimation();
                             }
                         }
                     });

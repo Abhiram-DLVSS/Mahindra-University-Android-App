@@ -69,18 +69,10 @@ public class Features extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
         faculty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.mahindraecolecentrale.edu.in/faculty");
-            }
-        });
-        faculty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
                 openFaculty();
             }
         });
