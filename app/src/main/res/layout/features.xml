@@ -94,9 +94,8 @@
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/fee"
         app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
-
     <Button
-        android:id="@+id/CULTURE"
+        android:id="@+id/event_button"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_below="@+id/fee"

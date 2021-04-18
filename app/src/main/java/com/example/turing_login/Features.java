@@ -2,6 +2,7 @@ package com.example.turing_login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -21,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class Features extends AppCompatActivity {
-    private Button buttonfor,timetable_button,faculty,fee;
+    private Button buttonfor,timetable_button,faculty,fee,event;
     private TextView welcome;
 
 
@@ -43,6 +44,7 @@ public class Features extends AppCompatActivity {
 
         fee=findViewById(R.id.fee);
         faculty=findViewById(R.id.faculty);
+        event=findViewById(R.id.event_button);
         timetable_button=(Button)findViewById(R.id.TIME_TABLE);
         buttonfor=(Button)findViewById(R.id.FORMS);
 
@@ -52,6 +54,7 @@ public class Features extends AppCompatActivity {
                 gotoUrl("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
             }
         });
+
         fee.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -89,13 +92,19 @@ public class Features extends AppCompatActivity {
 
             }
         });
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEvent();
+            }
+        });
     }
 
     private void openFaculty() {
         Intent intent=new Intent(this,FacultyMenu.class);
         startActivity(intent);
     }
-
+    //Below both are for menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_items,menu);
@@ -131,6 +140,17 @@ public class Features extends AppCompatActivity {
     {
         Intent intent=new Intent(this, Forms.class);
         startActivity(intent);
+    }
+    public void openEvent()
+    {
+        ProgressDialog nDialog;
+        nDialog = new ProgressDialog(com.example.turing_login.Features.this);
+        nDialog.setMessage("Loading the Website");
+        nDialog.setIndeterminate(false);
+        nDialog.show();
+        Intent intent=new Intent(this, Event.class);
+        startActivity(intent);
+        nDialog.dismiss();
     }
     private void moveToMainActivity() {
         Intent intent=new Intent(Features.this, Login.class);
