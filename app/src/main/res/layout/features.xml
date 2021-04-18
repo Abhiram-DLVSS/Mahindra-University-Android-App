@@ -1,120 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     tools:context=".Features">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="1000dp">
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:text="Welcome!"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="88dp"
+        android:text="Welcome "
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/faculty"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="FACULTY"
-        android:textColor="#FFFFFF"
+        android:layout_height="150dp"
+        android:layout_below="@+id/welcome"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/fac"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <Button
         android:id="@+id/TIME_TABLE"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="TIME TABLE"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_height="150dp"
+        android:layout_below="@+id/welcome"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/time"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/faculty"
-        app:layout_constraintTop_toTopOf="@+id/faculty" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome">
+    </Button>
 
     <Button
         android:id="@+id/GRADES"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="GRADES"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/TIME_TABLE"
-        app:layout_constraintTop_toTopOf="@+id/ASSIGNMENT" />
+        android:layout_height="150dp"
+        android:layout_below="@+id/FORMS"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="46dp"
+        android:background="@drawable/gra"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="658dp" />
 
     <Button
         android:id="@+id/ASSIGNMENT"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="ASSIGNMENT"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/faculty"
-        app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
+        android:layout_height="150dp"
+        android:layout_below="@+id/TIME_TABLE"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/ass"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fee" />
 
     <Button
         android:id="@+id/FORMS"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="FORMS"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/CULTURE"
-        app:layout_constraintStart_toStartOf="@+id/fee"
-        app:layout_constraintTop_toBottomOf="@+id/CULTURE" />
+        android:layout_height="150dp"
+        android:layout_below="@+id/ASSIGNMENT"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/formsss"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/fee"
+        app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
 
     <Button
         android:id="@+id/CULTURE"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="EVENTS"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/TIME_TABLE"
-        app:layout_constraintTop_toTopOf="@+id/fee" />
+        android:layout_height="150dp"
+        android:layout_below="@+id/fee"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/eve"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/ASSIGNMENT"
+        app:layout_constraintTop_toBottomOf="@+id/FORMS" />
 
     <Button
         android:id="@+id/fee"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="Fee "
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/ASSIGNMENT"
-        app:layout_constraintTop_toBottomOf="@+id/GRADES" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="268dp"
-        android:layout_height="221dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/faculty"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/fee"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logoname" />
+        app:layout_constraintTop_toBottomOf="@+id/faculty" />
+</RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

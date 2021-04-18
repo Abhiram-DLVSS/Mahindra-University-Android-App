@@ -55,4 +55,6 @@ dependencies {
     //fetch
     implementation 'com.android.volley:volley:1.2.0'
     implementation 'com.google.android.material:material:1.0.0'
+    //Animations
+    implementation "com.airbnb.android:lottie:3.7.0"
 }
