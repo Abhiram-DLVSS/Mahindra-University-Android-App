@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
 
         if(fauth.getCurrentUser()!=null)
         {
-            startActivity(new Intent(getApplicationContext(), Features.class));
+            startActivity(new Intent(getApplicationContext(), TimeTable.class));
             finish();
         }
 

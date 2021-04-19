@@ -15,13 +15,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Event extends AppCompatActivity {
 
-
+    private Button button;
     private WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,6 @@ public class Event extends AppCompatActivity {
         nDialog.setMessage("Loading the Website");
         nDialog.setIndeterminate(false);
         nDialog.show();
-
         //To get custom status bar color
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -120,7 +120,8 @@ public class Event extends AppCompatActivity {
         int id= item.getItemId();
         switch(id){
             case R.id.refresh_in_event: {
-                webView.loadUrl("https://www.mahindraecolecentrale.edu.in/events");
+                finish();
+                startActivity(getIntent());
             }
             break;
         }

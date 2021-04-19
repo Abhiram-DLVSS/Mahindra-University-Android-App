@@ -66,6 +66,11 @@
         <item name="android:src">@drawable/three_dot</item>
     </style>
 
+    <style name="LabelStyle">
+        <item name="android:background">@drawable/round2fill</item>
+        <item name="android:textColor">#FFF</item>
+    </style>
+
 
 
 

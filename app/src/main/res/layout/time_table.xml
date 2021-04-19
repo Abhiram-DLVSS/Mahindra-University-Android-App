@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tt_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/stan"
@@ -24,11 +26,13 @@
         app:tabTextColor="#ECC7C7"
         tools:layout_editor_absoluteX="0dp">
 
+
         <com.google.android.material.tabs.TabItem
             android:id="@+id/mon_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:text="Monday"
+            />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tue_tab"
@@ -72,8 +76,71 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tab_bar" />
+        app:layout_constraintTop_toBottomOf="@+id/tab_bar" >
 
+    </androidx.viewpager.widget.ViewPager>
+
+    <toan.android.floatingactionmenu.FloatingActionsMenu
+        android:id="@+id/tt_fm_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:fab_menuIcon="@drawable/ic_hamburger_icon_svg"
+        android:clickable="true"
+        android:focusable="true"
+        app:fab_addButtonColorNormal="@color/stan"
+        app:fab_addButtonColorPressed="@color/mu"
+        app:fab_expandDirection="up"
+        app:fab_labelStyle="@style/LabelStyle"
+        app:fab_labelsPosition="left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:visibility="gone"
+            android:id="@+id/tt_fm_timetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:fab_colorNormal="@color/stan"
+            app:fab_colorPressed="@color/mu"
+            app:fab_icon="@drawable/ic_timetable"
+            app:fab_size="normal"
+            app:fab_title="Timetable" />
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:visibility="gone"
+            android:id="@+id/tt_fm_faculty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/stan"
+            app:fab_colorPressed="@color/mu"
+            app:fab_icon="@drawable/ic_faculty"
+            app:fab_size="normal"
+            app:fab_title="Faculty" />
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/tt_fm_events"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/stan"
+            app:fab_colorPressed="@color/mu"
+            app:fab_icon="@drawable/ic_events"
+            app:fab_size="normal"
+            app:fab_title="Events" />
+
+        <toan.android.floatingactionmenu.FloatingActionButton
+            android:id="@+id/tt_fm_fees"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/stan"
+            app:fab_colorPressed="@color/mu"
+            app:fab_icon="@drawable/ic_fee"
+            app:fab_size="normal"
+            app:fab_title="Fee" />
+    </toan.android.floatingactionmenu.FloatingActionsMenu>
     <TextView
         android:id="@+id/Name_timetable_textview"
         android:layout_width="wrap_content"
@@ -88,5 +155,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.64" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
