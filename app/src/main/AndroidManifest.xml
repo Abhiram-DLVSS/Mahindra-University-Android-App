@@ -13,10 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
-        <activity android:name=".Event"
-            android:theme="@style/CustomTheme"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity android:name=".Intents"></activity>
+        <activity
+            android:name=".Event"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme"></activity>
         <activity android:name=".FacultyMenu" />
         <activity android:name=".SplashScreen">
             <intent-filter>

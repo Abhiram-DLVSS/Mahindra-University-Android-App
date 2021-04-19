@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacultyMenu extends AppCompatActivity {
+public class FacultyMenu extends Intents {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +32,7 @@ public class FacultyMenu extends AppCompatActivity {
 
         setContentView(R.layout.activity_faculty_menu);
         RecyclerView FacultyMenu = findViewById(R.id.FacultyMenu);
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(R.color.stan));
+        statusbar();
         List<String>titles = new ArrayList<>();
         List<Integer>images = new ArrayList<>();
         List<String>pos = new ArrayList<>();

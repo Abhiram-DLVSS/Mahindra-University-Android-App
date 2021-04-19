@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Event extends AppCompatActivity {
+public class Event extends Intents {
 
     private Button button;
     private WebView webView;
@@ -33,11 +33,7 @@ public class Event extends AppCompatActivity {
         nDialog.setMessage("Loading the Website");
         nDialog.setIndeterminate(false);
         nDialog.show();
-        //To get custom status bar color
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(R.color.stan));
+        statusbar();
         webView=findViewById(R.id.event_webview);
 
         webView.getSettings().setJavaScriptEnabled(true);
