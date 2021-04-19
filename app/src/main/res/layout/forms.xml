@@ -9,6 +9,7 @@
 
     <Button
         android:id="@+id/REGISTRATION"
+        style="@style/MyDepressedButtonStyle"
         android:layout_width="205dp"
         android:layout_height="58dp"
         android:background="@drawable/round1"
@@ -22,4 +23,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <include
+        layout="@layout/activity_fab"
+        android:id="@+id/fm"
+        android:elevation="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

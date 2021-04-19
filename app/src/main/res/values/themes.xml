@@ -71,6 +71,9 @@
         <item name="android:textColor">#FFF</item>
     </style>
 
+    <style name="MyDepressedButtonStyle" parent="android:Widget.Material.Button">
+        <item name="android:stateListAnimator">@anim/customized_state_animator</item>
+    </style>
 
 
 

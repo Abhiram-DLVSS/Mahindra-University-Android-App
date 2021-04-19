@@ -1,19 +1,133 @@
 package com.example.turing_login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import toan.android.floatingactionmenu.FloatingActionButton;
+import toan.android.floatingactionmenu.FloatingActionsMenu;
+
 public class Intents extends AppCompatActivity {
+
+    public FloatingActionButton timetable_button,faculty,fee,event,grades,assignments,forms;
+    public FloatingActionsMenu floatingmenu;
+    public ConstraintLayout tt;
+    public View background;
+    public void floatinginit(){
+        floatingmenu=findViewById(R.id.fm_menu);
+        fee=findViewById(R.id.fm_fees);
+        faculty=findViewById(R.id.fm_faculty);
+        event=findViewById(R.id.fm_events);
+        timetable_button=findViewById(R.id.fm_timetable);
+        tt=findViewById(R.id.tt_fm);
+        grades=findViewById(R.id.fm_grades);
+        assignments=findViewById(R.id.fm_assignment);
+        forms=findViewById(R.id.fm_forms);
+        background=findViewById(R.id.background_dimmer);
+
+        floatingmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Intents.this, "check", Toast.LENGTH_SHORT).show();
+                floatingmenu.collapse();
+            }
+        });
+        background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                floatingmenu.collapse();
+            }
+        });
+        fee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoUrl("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
+            }
+        });
+        fee.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Uri copyUri = Uri.parse("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newUri(getContentResolver(), "URI", copyUri);
+                clipboard.setPrimaryClip(clip);
+
+
+                Toast toast=Toast.makeText(getApplicationContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
+                toast.show();
+                return true;
+            }
+        });
+
+        floatingmenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                timetable_button.setVisibility(View.VISIBLE);
+                fee.setVisibility(View.VISIBLE);
+                faculty.setVisibility(View.VISIBLE);
+                event.setVisibility(View.VISIBLE);
+                grades.setVisibility(View.VISIBLE);
+                assignments.setVisibility(View.VISIBLE);
+                forms.setVisibility(View.VISIBLE);
+                background.setVisibility(View.VISIBLE);
+                floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
+}
+            @Override
+            public void onMenuCollapsed() {
+                floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_hamburger_icon_svg,null));
+                timetable_button.setVisibility(View.GONE);
+                fee.setVisibility(View.GONE);
+                faculty.setVisibility(View.GONE);
+                event.setVisibility(View.GONE);
+                grades.setVisibility(View.GONE);
+                assignments.setVisibility(View.GONE);
+                forms.setVisibility(View.GONE);
+                background.setVisibility(View.GONE);
+            }});
+        faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFaculty();
+            }
+        });
+        timetable_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTimeTable();
+            }
+        });
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEvent();
+            }
+        });
+        forms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openForms();
+            }
+        });
+
+    }
+
 
     public void statusbar(){
         //To get custom status bar color

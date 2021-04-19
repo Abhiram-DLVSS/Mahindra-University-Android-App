@@ -104,6 +104,13 @@ public class Event extends Intents {
         });
 
         webView.loadUrl("https://www.mahindraecolecentrale.edu.in/events");
+        floatinginit();
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Event.this, "👀", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
     @Override

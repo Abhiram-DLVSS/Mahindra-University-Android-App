@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Intents">
+    <View
+        android:id="@+id/background_dimmer"
+        android:visibility="gone"
+        android:background="#A3FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <toan.android.floatingactionmenu.FloatingActionsMenu
         android:id="@+id/fm_menu"
         android:layout_width="wrap_content"

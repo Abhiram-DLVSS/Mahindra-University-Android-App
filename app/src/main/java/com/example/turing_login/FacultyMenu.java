@@ -2,15 +2,24 @@ package com.example.turing_login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import toan.android.floatingactionmenu.FloatingActionsMenu;
 
 public class FacultyMenu extends Intents {
 
@@ -39,14 +50,11 @@ public class FacultyMenu extends Intents {
             final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
             String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-//        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-//        reference.keepSynced(true);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
         reference.keepSynced(false);
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
                     String rollnumber = snapshot.child("id").getValue().toString();
                     String year=rollnumber.substring(0,2);
                     String branch=rollnumber.substring(7,8);
@@ -278,5 +286,14 @@ public class FacultyMenu extends Intents {
 
                 }
             });
-        }
+        //floating
+        floatinginit();
+        faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FacultyMenu.this, "👀", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 }
