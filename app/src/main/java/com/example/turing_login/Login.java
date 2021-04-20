@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.turing_login.timetable.TimeTable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -104,7 +105,7 @@ public class Login extends AppCompatActivity {
 
         if(fauth.getCurrentUser()!=null)
         {
-            startActivity(new Intent(getApplicationContext(), Features.class));
+            startActivity(new Intent(getApplicationContext(), TimeTable.class));
             finish();
         }
 

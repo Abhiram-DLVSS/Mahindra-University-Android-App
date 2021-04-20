@@ -1,17 +1,12 @@
 package com.example.turing_login;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Toolbar;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,32 +19,26 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacultyMenu extends AppCompatActivity {
+public class FacultyMenu extends Intents {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_faculty_menu);
+        setContentView(R.layout.fac_faculty_menu);
         RecyclerView FacultyMenu = findViewById(R.id.FacultyMenu);
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(R.color.stan));
+        statusbar();
         List<String>titles = new ArrayList<>();
         List<Integer>images = new ArrayList<>();
         List<String>pos = new ArrayList<>();
             final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
             String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-//        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-//        reference.keepSynced(true);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
         reference.keepSynced(false);
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    String rollnumber=snapshot.child("Users").child(currentuser).child("id").getValue().toString();
                     String rollnumber = snapshot.child("id").getValue().toString();
                     String year=rollnumber.substring(0,2);
                     String branch=rollnumber.substring(7,8);
@@ -75,25 +64,25 @@ public class FacultyMenu extends AppCompatActivity {
                         titles.add("Dr. Raj Narayanan");
                         titles.add("Dr. Ranjith Shankaran");
                         titles.add("Dr. Sayoni Laha");
-                        images.add(R.drawable.arya);
-                        images.add(R.drawable.rama);
-                        images.add(R.drawable.raghu);
-                        images.add(R.drawable.prafulla);
-                        images.add(R.drawable.bhanukiran);
-                        images.add(R.drawable.neha);
-                        images.add(R.drawable.om);
-                        images.add(R.drawable.pavan);
-                        images.add(R.drawable.praveen);
-                        images.add(R.drawable.rajesh);
-                        images.add(R.drawable.ravi);
-                        images.add(R.drawable.sanathan);
-                        images.add(R.drawable.sunny);
-                        images.add(R.drawable.veeraiah);
-                        images.add(R.drawable.yayati);
-                        images.add(R.drawable.ani);
-                        images.add(R.drawable.raj);
-                        images.add(R.drawable.ranjith);
-                        images.add(R.drawable.sayoni);
+                        images.add(R.drawable.fac_arya);
+                        images.add(R.drawable.fac_rama);
+                        images.add(R.drawable.fac_raghu);
+                        images.add(R.drawable.fac_prafulla);
+                        images.add(R.drawable.fac_bhanukiran);
+                        images.add(R.drawable.fac_neha);
+                        images.add(R.drawable.fac_om);
+                        images.add(R.drawable.fac_pavan);
+                        images.add(R.drawable.fac_praveen);
+                        images.add(R.drawable.fac_rajesh);
+                        images.add(R.drawable.fac_ravi);
+                        images.add(R.drawable.fac_sanathan);
+                        images.add(R.drawable.fac_sunny);
+                        images.add(R.drawable.fac_veeraiah);
+                        images.add(R.drawable.fac_yayati);
+                        images.add(R.drawable.fac_ani);
+                        images.add(R.drawable.fac_raj);
+                        images.add(R.drawable.fac_ranjith);
+                        images.add(R.drawable.fac_sayoni);
                         pos.add("DEAN RESEARCH AND HOD");
                         pos.add("PROFESSOR");
                         pos.add("ASSOCIATE PROFESSOR");
@@ -132,20 +121,20 @@ public class FacultyMenu extends AppCompatActivity {
                         titles.add("Dr. Raj Narayanan");
                         titles.add("Dr. Ranjith Shankaran");
                         titles.add("Dr. Sayoni Laha");
-                        images.add(R.drawable.prabhakar);
-                        images.add(R.drawable.visalakshi);
-                        images.add(R.drawable.jayaprakash);
-                        images.add(R.drawable.ganesh);
-                        images.add(R.drawable.ataullah);
-                        images.add(R.drawable.avirneni);
-                        images.add(R.drawable.hari);
-                        images.add(R.drawable.jyoti);
-                        images.add(R.drawable.saladi);
-                        images.add(R.drawable.venkata);
-                        images.add(R.drawable.ani);
-                        images.add(R.drawable.raj);
-                        images.add(R.drawable.ranjith);
-                        images.add(R.drawable.sayoni);
+                        images.add(R.drawable.fac_prabhakar);
+                        images.add(R.drawable.fac_visalakshi);
+                        images.add(R.drawable.fac_jayaprakash);
+                        images.add(R.drawable.fac_ganesh);
+                        images.add(R.drawable.fac_ataullah);
+                        images.add(R.drawable.fac_avirneni);
+                        images.add(R.drawable.fac_hari);
+                        images.add(R.drawable.fac_jyoti);
+                        images.add(R.drawable.fac_saladi);
+                        images.add(R.drawable.fac_venkata);
+                        images.add(R.drawable.fac_ani);
+                        images.add(R.drawable.fac_raj);
+                        images.add(R.drawable.fac_ranjith);
+                        images.add(R.drawable.fac_sayoni);
                         pos.add("ASSOCIATE PROFESSOR AND HOD");
                         pos.add("PROFESSOR");
                         pos.add("ACADEMIC ASSOCIATE");
@@ -182,23 +171,23 @@ public class FacultyMenu extends AppCompatActivity {
                         titles.add("Dr. Raj Narayanan");
                         titles.add("Dr. Ranjith Shankaran");
                         titles.add("Dr. Sayoni Laha");
-                        images.add(R.drawable.jl);
-                        images.add(R.drawable.bhuvaneswari);
-                        images.add(R.drawable.sunil);
-                        images.add(R.drawable.bhargav);
-                        images.add(R.drawable.sayantan);
-                        images.add(R.drawable.kr);
-                        images.add(R.drawable.aditya);
-                        images.add(R.drawable.ankita);
-                        images.add(R.drawable.gopinath);
-                        images.add(R.drawable.krishna);
-                        images.add(R.drawable.pooran);
-                        images.add(R.drawable.sreedhar);
-                        images.add(R.drawable.subbarao);
-                        images.add(R.drawable.ani);
-                        images.add(R.drawable.raj);
-                        images.add(R.drawable.ranjith);
-                        images.add(R.drawable.sayoni);
+                        images.add(R.drawable.fac_jl);
+                        images.add(R.drawable.fac_bhuvaneswari);
+                        images.add(R.drawable.fac_sunil);
+                        images.add(R.drawable.fac_bhargav);
+                        images.add(R.drawable.fac_sayantan);
+                        images.add(R.drawable.fac_kr);
+                        images.add(R.drawable.fac_aditya);
+                        images.add(R.drawable.fac_ankita);
+                        images.add(R.drawable.fac_gopinath);
+                        images.add(R.drawable.fac_krishna);
+                        images.add(R.drawable.fac_pooran);
+                        images.add(R.drawable.fac_sreedhar);
+                        images.add(R.drawable.fac_subbarao);
+                        images.add(R.drawable.fac_ani);
+                        images.add(R.drawable.fac_raj);
+                        images.add(R.drawable.fac_ranjith);
+                        images.add(R.drawable.fac_sayoni);
                         pos.add("PROFESSOR AND HOD");
                         pos.add("PROFESSOR");
                         pos.add("PROFESSOR");
@@ -238,23 +227,23 @@ public class FacultyMenu extends AppCompatActivity {
                         titles.add("Dr. Raj Narayanan");
                         titles.add("Dr. Ranjith Shankaran");
                         titles.add("Dr. Sayoni Laha");
-                        images.add(R.drawable.bhaskar);
-                        images.add(R.drawable.ranjith1);
-                        images.add(R.drawable.abhijit);
-                        images.add(R.drawable.jagan);
-                        images.add(R.drawable.palash);
-                        images.add(R.drawable.prasad);
-                        images.add(R.drawable.deep);
-                        images.add(R.drawable.harshavardhan);
-                        images.add(R.drawable.kondaiah);
-                        images.add(R.drawable.manish);
-                        images.add(R.drawable.ravikiran);
-                        images.add(R.drawable.sebastian);
-                        images.add(R.drawable.senbagaraman);
-                        images.add(R.drawable.ani);
-                        images.add(R.drawable.raj);
-                        images.add(R.drawable.ranjith);
-                        images.add(R.drawable.sayoni);
+                        images.add(R.drawable.fac_bhaskar);
+                        images.add(R.drawable.fac_ranjith1);
+                        images.add(R.drawable.fac_abhijit);
+                        images.add(R.drawable.fac_jagan);
+                        images.add(R.drawable.fac_palash);
+                        images.add(R.drawable.fac_prasad);
+                        images.add(R.drawable.fac_deep);
+                        images.add(R.drawable.fac_harshavardhan);
+                        images.add(R.drawable.fac_kondaiah);
+                        images.add(R.drawable.fac_manish);
+                        images.add(R.drawable.fac_ravikiran);
+                        images.add(R.drawable.fac_sebastian);
+                        images.add(R.drawable.fac_senbagaraman);
+                        images.add(R.drawable.fac_ani);
+                        images.add(R.drawable.fac_raj);
+                        images.add(R.drawable.fac_ranjith);
+                        images.add(R.drawable.fac_sayoni);
                         pos.add("PROFESSOR AND HOD");
                         pos.add("PROFESSOR");
                         pos.add("ASSOCIATE PROFESSOR");
@@ -281,5 +270,14 @@ public class FacultyMenu extends AppCompatActivity {
 
                 }
             });
-        }
+        //floating
+        floatinginit();
+        faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FacultyMenu.this, "👀", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 }

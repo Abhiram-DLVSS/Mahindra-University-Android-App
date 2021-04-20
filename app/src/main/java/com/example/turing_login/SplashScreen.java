@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SplashScreen extends AppCompatActivity {
     FirebaseAuth fauth;
     private static int SPLASH_TIME_OUT=999;
-    private LottieAnimationView loading;
+//    private LottieAnimationView loading;
 
 
 
@@ -21,31 +21,31 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
         fauth=FirebaseAuth.getInstance();
-        loading=findViewById(R.id.loading);
+//        loading=findViewById(R.id.loading);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if(fauth.getCurrentUser()!=null) {
-                    loading.playAnimation();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
+//                    loading.playAnimation();
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
                             Intent homeIntent = new Intent(SplashScreen.this, Login.class);
                             startActivity(homeIntent);
                             finish();
-                        }
-                    },5000);
+//                        }
+//                    },5000);
                 }
                 else{
-                    loading.playAnimation();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
+//                    loading.playAnimation();
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
                             Intent homeIntent = new Intent(SplashScreen.this, Login.class);
                             startActivity(homeIntent);
                             finish();
-                        }
-                    },5000);
+//                        }
+//                    },5000);
                 }
             }
         },SPLASH_TIME_OUT);

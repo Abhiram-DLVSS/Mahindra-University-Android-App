@@ -47,7 +47,7 @@
                     android:layout_marginTop="24dp"
                     android:background="@drawable/round1"
                     android:backgroundTint="#E7EBEC"
-                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="16dp"
                     android:ems="10"
                     android:hint="@string/password"

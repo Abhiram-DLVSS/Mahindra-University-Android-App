@@ -63,9 +63,17 @@
     </style>
     <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
     <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/three_dot</item>
+        <item name="android:src">@drawable/ic_three_dot</item>
     </style>
 
+    <style name="LabelStyle">
+        <item name="android:background">@drawable/round2fill</item>
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <style name="MyDepressedButtonStyle" parent="android:Widget.Material.Button">
+        <item name="android:stateListAnimator">@anim/customized_state_animator</item>
+    </style>
 
 
 

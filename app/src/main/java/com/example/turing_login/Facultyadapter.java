@@ -28,7 +28,7 @@ public class Facultyadapter extends RecyclerView.Adapter<Facultyadapter.FacultyV
     @Override
     public FacultyView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_faculty,parent,false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fac_row_faculty,parent,false);
         return new FacultyView(view);
     }
 

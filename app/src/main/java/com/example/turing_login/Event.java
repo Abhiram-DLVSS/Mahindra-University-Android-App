@@ -1,43 +1,31 @@
 package com.example.turing_login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+public class Event extends Intents {
 
-public class Event extends AppCompatActivity {
-
-
+    private Button button;
     private WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
+        setContentView(R.layout.event);
         ProgressDialog nDialog;
         nDialog = new ProgressDialog(com.example.turing_login.Event.this);
         nDialog.setMessage("Loading the Website");
         nDialog.setIndeterminate(false);
         nDialog.show();
-
-        //To get custom status bar color
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(R.color.stan));
+        statusbar();
         webView=findViewById(R.id.event_webview);
 
         webView.getSettings().setJavaScriptEnabled(true);
@@ -108,6 +96,13 @@ public class Event extends AppCompatActivity {
         });
 
         webView.loadUrl("https://www.mahindraecolecentrale.edu.in/events");
+        floatinginit();
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Event.this, "👀", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
     @Override
@@ -120,7 +115,8 @@ public class Event extends AppCompatActivity {
         int id= item.getItemId();
         switch(id){
             case R.id.refresh_in_event: {
-                webView.loadUrl("https://www.mahindraecolecentrale.edu.in/events");
+                finish();
+                startActivity(getIntent());
             }
             break;
         }

@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="stan">#8C1515</color>
     <color name="mu">#EA3A4F</color>
+    <color name="whitish">#F2FFFFFF</color>
+    <color name="invisible">#00000000</color>
 </resources>
