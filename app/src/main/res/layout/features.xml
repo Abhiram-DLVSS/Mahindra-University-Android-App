@@ -37,7 +37,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="36dp"
-        android:background="@drawable/fac"
+        android:background="@drawable/feat_fac"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
@@ -50,7 +50,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="36dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/time"
+        android:background="@drawable/feat_time"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/faculty"
         app:layout_constraintTop_toBottomOf="@+id/welcome">
@@ -64,7 +64,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="36dp"
         android:layout_marginTop="46dp"
-        android:background="@drawable/gra"
+        android:background="@drawable/feat_gra"
         android:textColor="#000000"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="658dp" />
@@ -77,7 +77,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
-        android:background="@drawable/ass"
+        android:background="@drawable/feat_assign"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fee" />
@@ -90,7 +90,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
-        android:background="@drawable/formsss"
+        android:background="@drawable/feat_formsss"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/fee"
         app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
@@ -102,7 +102,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
-        android:background="@drawable/eve"
+        android:background="@drawable/feat_eve"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/ASSIGNMENT"
         app:layout_constraintTop_toBottomOf="@+id/FORMS" />
@@ -115,7 +115,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
-        android:background="@drawable/fee"
+        android:background="@drawable/feat_fee"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/faculty" />

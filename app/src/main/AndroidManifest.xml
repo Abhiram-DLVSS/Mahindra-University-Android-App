@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TimeTable"
+            android:name=".timetable.TimeTable"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Register"

@@ -2,7 +2,6 @@ package com.example.turing_login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.app.ProgressDialog;
@@ -14,11 +13,11 @@ import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.turing_login.timetable.TimeTable;
 import com.google.firebase.auth.FirebaseAuth;
 
 import toan.android.floatingactionmenu.FloatingActionButton;
@@ -45,7 +44,6 @@ public class Intents extends AppCompatActivity {
         floatingmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Intents.this, "check", Toast.LENGTH_SHORT).show();
                 floatingmenu.collapse();
             }
         });
