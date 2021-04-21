@@ -139,7 +139,7 @@ public class Login extends AppCompatActivity {
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        startActivity(new Intent(getApplicationContext(), Features.class));
+                                        startActivity(new Intent(getApplicationContext(), TimeTable.class));
                                         finish();
                                     }
                                 },5500);
