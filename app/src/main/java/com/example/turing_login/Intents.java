@@ -10,6 +10,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,7 @@ public class Intents extends AppCompatActivity {
     public FloatingActionsMenu floatingmenu;
     public ConstraintLayout tt;
     public View background;
+    public View open,close;
     public void floatinginit(){
         floatingmenu=findViewById(R.id.fm_menu);
         fee=findViewById(R.id.fm_fees);
@@ -40,6 +42,9 @@ public class Intents extends AppCompatActivity {
         assignments=findViewById(R.id.fm_assignment);
         forms=findViewById(R.id.fm_forms);
         background=findViewById(R.id.background_dimmer);
+        open=findViewById(R.id.open);
+        close=findViewById(R.id.closed);
+
 
         floatingmenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +91,11 @@ public class Intents extends AppCompatActivity {
                 forms.setVisibility(View.VISIBLE);
                 background.setVisibility(View.VISIBLE);
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
-}
+                statusbar1();
+
+
+
+            }
             @Override
             public void onMenuCollapsed() {
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_hamburger_icon_svg,null));
@@ -98,7 +107,15 @@ public class Intents extends AppCompatActivity {
                 assignments.setVisibility(View.GONE);
                 forms.setVisibility(View.GONE);
                 background.setVisibility(View.GONE);
+                statusbar();
+
+
             }});
+
+
+
+
+
         faculty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,6 +143,40 @@ public class Intents extends AppCompatActivity {
 
     }
 
+//    @Override
+//    public void onBackPressed() {
+//
+//        if(floatingmenu.isExpanded())
+//            floatingmenu.collapse();
+//        else
+//            super.onBackPressed();
+//    }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if(floatingmenu.isExpanded())
+            floatingmenu.collapse();
+        else {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        }
+    }
+
 
     public void statusbar(){
         //To get custom status bar color
@@ -134,9 +185,19 @@ public class Intents extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.stan));
     }
+    public void statusbar1(){
+        //To get custom status bar color
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.black));
+    }
     public void openFaculty() {
+
         Intent intent=new Intent(this,FacultyMenu.class);
         startActivity(intent);
+        floatingmenu.collapse();
+        finish();
     }
     //Below both are for menu
     @Override
@@ -163,28 +224,38 @@ public class Intents extends AppCompatActivity {
     public void openTimeTable() {
         Intent intent=new Intent(this, TimeTable.class);
         startActivity(intent);
+        floatingmenu.collapse();
+        finish();
     }
 
     public void gotoUrl(String s) {
+
         Uri uri = Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW,uri));
+        floatingmenu.collapse();
+        finish();
     }
 
     public void openForms()
     {
         Intent intent=new Intent(this, Forms.class);
         startActivity(intent);
+        floatingmenu.collapse();
+        finish();
     }
     public void openEvent()
     {
+
         ProgressDialog nDialog;
         nDialog = new ProgressDialog(Intents.this);
         nDialog.setMessage("Loading the Website");
         nDialog.setIndeterminate(false);
         nDialog.show();
+        floatingmenu.collapse();
         Intent intent=new Intent(this, Event.class);
         startActivity(intent);
         nDialog.dismiss();
+        finish();
     }
     public void moveToMainActivity() {
         Intent intent=new Intent(this, Login.class);
