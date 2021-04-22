@@ -11,7 +11,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
+import com.example.turing_login.FacultyMenu;
+import com.example.turing_login.Intents;
 import com.example.turing_login.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,19 +26,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import toan.android.floatingactionmenu.FloatingActionsMenu;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragMon#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class FragMon extends Fragment { //implements SwipeRefreshLayout.OnRefreshListener {
 
+    public int flag=1;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count, total;
@@ -85,18 +94,26 @@ public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.tt_fragment_mon, container, false);
         recyclerView = view.findViewById(R.id.recyclerView_monFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem_monfrags = new ArrayList<>();
+        
        ReadHeader();
-        mSwipeRefreshLayout = view.findViewById(R.id.swipe_mon);
-        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
-                android.R.color.holo_green_dark,
-                android.R.color.holo_orange_dark,
-                android.R.color.holo_blue_dark);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+//        mSwipeRefreshLayout = view.findViewById(R.id.swipe_mon);
+//        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
+//        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
+//                android.R.color.holo_green_dark,
+//                android.R.color.holo_orange_dark,
+//                android.R.color.holo_blue_dark);
         return view;
     }
     private void ReadHeader() {
@@ -168,7 +185,7 @@ public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshLis
                     listitem_monfrags.add(listitem_monfrag);
                     adapter = new AdapterMon(listitem_monfrags, getContext());
                     recyclerView.setAdapter(adapter);
-                    mSwipeRefreshLayout.setRefreshing(false);
+//                    mSwipeRefreshLayout.setRefreshing(false);
                 }
             }
             @Override
@@ -182,6 +199,9 @@ public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshLis
             }
         });
     }
-    @Override
-    public void onRefresh() {ReadHeader();}
+//    @Override
+//    public void onRefresh() {ReadHeader();}
+
+
 }
+

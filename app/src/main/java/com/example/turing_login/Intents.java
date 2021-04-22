@@ -79,6 +79,27 @@ public class Intents extends AppCompatActivity {
             }
         });
 
+        grades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoUrl("http://www.mu-parentsportal.com/grade");
+            }
+        });
+        grades.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Uri copyUri = Uri.parse("http://www.mu-parentsportal.com/grade");
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newUri(getContentResolver(), "URI", copyUri);
+                clipboard.setPrimaryClip(clip);
+
+
+                Toast toast=Toast.makeText(getApplicationContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
+                toast.show();
+                return true;
+            }
+        });
+
         floatingmenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
@@ -256,10 +277,5 @@ public class Intents extends AppCompatActivity {
         startActivity(intent);
         nDialog.dismiss();
         finish();
-    }
-    public void moveToMainActivity() {
-        Intent intent=new Intent(this, Login.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
     }
 }

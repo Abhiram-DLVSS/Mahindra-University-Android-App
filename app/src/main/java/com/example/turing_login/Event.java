@@ -7,13 +7,17 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Event extends Intents {
+import androidx.recyclerview.widget.RecyclerView;
 
+public class Event extends Intents {
+    private int flag=1;
     private Button button;
     private WebView webView;
     @Override
@@ -55,6 +59,29 @@ public class Event extends Intents {
                 return false;
             }
         });
+        //Floating button disappears
+        webView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                int dy=scrollY-oldScrollY;
+                Log.d("chk", "onScrollChange: "+(scrollY-oldScrollY));
+                if (dy > 10&&flag==1 ){
+                    flag=0;
+                    final Animation animation = new TranslateAnimation(0,0,0,250);
+                    animation.setDuration(1000);
+                    animation.setFillAfter(true);
+                    floatingmenu.startAnimation(animation);
+                } else if (dy < -10&&flag==0){
+                    flag=1;
+                    floatingmenu.setVisible(true);
+                    final Animation animation = new TranslateAnimation(0,0,250,0);
+                    animation.setDuration(1000);
+                    animation.setFillAfter(true);
+                    floatingmenu.startAnimation(animation);
+                }
+            }
+        });
+
 //      webView.setWebViewClient(new WebViewClient());
         webView.setWebViewClient(new WebViewClient() {
             @Override
