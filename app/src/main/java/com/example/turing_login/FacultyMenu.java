@@ -4,10 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 
+import com.example.turing_login.timetable.TimeTable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FacultyMenu extends Intents {
+    private int flag=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,30 @@ public class FacultyMenu extends Intents {
         List<String>pos = new ArrayList<>();
             final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
             String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            //Floating button disappears
+        FacultyMenu.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 10&&flag==1 ){
+                    flag=0;
+                    final Animation animation = new TranslateAnimation(0,0,0,250);
+                    animation.setDuration(1000);
+                    animation.setFillAfter(true);
+                    floatingmenu.startAnimation(animation);
+                } else if (dy < -10&&flag==0){
+                    flag=1;
+                    floatingmenu.setVisible(true);
+                    final Animation animation = new TranslateAnimation(0,0,250,0);
+                    animation.setDuration(1000);
+                    animation.setFillAfter(true);
+                    floatingmenu.startAnimation(animation);
+
+                }
+            }
+        });
+
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
         reference.keepSynced(false);
