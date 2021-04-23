@@ -3,6 +3,7 @@
     <item android:drawable="@color/white"/>
         <item android:drawable="@drawable/ic_logoname"
             android:gravity="center"
-            android:width="350dp"
-            android:height="350dp"/>
+            android:width="300dp"
+            android:height="300dp"
+            />
 </layer-list>

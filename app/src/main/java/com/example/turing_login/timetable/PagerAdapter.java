@@ -28,34 +28,29 @@ public class PagerAdapter extends FragmentPagerAdapter{
                 Log.d("frag", "monday is there");
                 if(mon==null) {
                     mon = new FragMon();
-                    Log.d("frag", "monday is null");
+                    Log.d("frag", "Mon is null");
                 }
                 return mon;
             case 1:
                 Log.d("frag", "tuesday is there");
                 if(tue==null)
                     tue =new FragTue();
-                Log.d("frag", "tuesday is null");
                 return tue;
             case 2:
                 if(wed==null)
                     wed =new FragWed();
-                Log.d("frag", "wednesday is null");
                 return wed;
             case 3:
                 if(thu==null)
                     thu =new FragThu();
-                Log.d("frag", "thursday is null");
                 return thu;
             case 4:
                 if(fri==null)
                     fri =new FragFri();
-                Log.d("frag", "friday is null");
                 return fri;
             case 5:
                 if(sat==null)
                     sat =new FragSat();
-                Log.d("frag", "saturday is null");
                 return sat;
             default:
                 return null;
