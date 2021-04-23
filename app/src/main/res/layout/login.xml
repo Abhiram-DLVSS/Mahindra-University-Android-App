@@ -142,12 +142,13 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="242dp"
+                android:layout_width="222dp"
                 android:layout_height="236dp"
                 android:layout_below="@+id/Welcome_mainact"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"
                 android:layout_centerHorizontal="true"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"

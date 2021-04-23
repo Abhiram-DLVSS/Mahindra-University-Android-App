@@ -55,18 +55,19 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                 if (dy > 10&&flag==1 ){
                     flag=0;
                     final Animation animation = new TranslateAnimation(0,0,0,250);
-                    animation.setDuration(1000);
+                    animation.setDuration(500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
                 } else if (dy < -10&&flag==0){
                     flag=1;
                     floatingmenu.setVisible(true);
                     final Animation animation = new TranslateAnimation(0,0,250,0);
-                    animation.setDuration(1000);
+                    animation.setDuration(500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
 
                 }
+
             }
         });
 
@@ -182,9 +183,9 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
 
                             for(int i=0;i<=19;i++){
                                 if(free[i]==0)
-                                    row.add(getResources().getDrawable(R.drawable.round_red));
+                                    row.add(getResources().getDrawable(R.drawable.round_red_shade));
                                 else if(free[i]==1)
-                                    row.add(getResources().getDrawable(R.drawable.round_green));
+                                    row.add(getResources().getDrawable(R.drawable.round_green_shade));
                             }
                             FacultyMenu.setAdapter(new Facultyadapter(images,titles,pos,row));
 
@@ -199,6 +200,19 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
 
                 }
                 else if((Integer.parseInt(year)==19)&&(Integer.parseInt(branch)==1)){
+
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Faculty").child("CSE");
+                    reference.keepSynced(true);
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            total = (int) snapshot.getChildrenCount();
+                            int[] free = new int[total];
+                            for (count = 0; count < total; count++) {
+                                String m1 = snapshot.child(""+count).getValue().toString();
+                                free[count]=Integer.parseInt(m1);
+                                Log.d("fac", "onDataChange: "+count+"="+free[count]);
+                            }
                     GridLayoutManager gridLayoutManager= new GridLayoutManager(getApplicationContext(),2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
                     titles.add("Dr. Prabhakar Singh");
@@ -243,9 +257,35 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     pos.add("ACADEMIC ASSOCIATE");
                     pos.add("ASSOCIATE PROFESSOR");
                     pos.add("ACADEMIC ASSOCIATE");
+                    for(int i=0;i<=19;i++){
+                        if(free[i]==0)
+                            row.add(getResources().getDrawable(R.drawable.round_red_shade));
+                        else if(free[i]==1)
+                            row.add(getResources().getDrawable(R.drawable.round_green_shade));
+                    }
                     FacultyMenu.setAdapter(new Facultyadapter(images,titles,pos,row));
+
                 }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });                }
                 else if((Integer.parseInt(year)==19)&&(Integer.parseInt(branch)==2)){
+
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Faculty").child("CSE");
+                    reference.keepSynced(true);
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            total = (int) snapshot.getChildrenCount();
+                            int[] free = new int[total];
+                            for (count = 0; count < total; count++) {
+                                String m1 = snapshot.child(""+count).getValue().toString();
+                                free[count]=Integer.parseInt(m1);
+                                Log.d("fac", "onDataChange: "+count+"="+free[count]);
+                            }
                     GridLayoutManager gridLayoutManager= new GridLayoutManager(getApplicationContext(),2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
                     titles.add("Dr. J. L. Bhattacharya");
@@ -299,9 +339,35 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     pos.add("ACADEMIC ASSOCIATE");
                     pos.add("ASSOCIATE PROFESSOR");
                     pos.add("ACADEMIC ASSOCIATE");
-                    FacultyMenu.setAdapter(new Facultyadapter(images,titles,pos,row));
+                for(int i=0;i<=19;i++){
+                    if(free[i]==0)
+                        row.add(getResources().getDrawable(R.drawable.round_red_shade));
+                    else if(free[i]==1)
+                        row.add(getResources().getDrawable(R.drawable.round_green_shade));
+                }
+                FacultyMenu.setAdapter(new Facultyadapter(images,titles,pos,row));
+            }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+                    });
+
                 }
                 else if((Integer.parseInt(year)==19)&&(Integer.parseInt(branch)==3)){
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Faculty").child("CSE");
+                    reference.keepSynced(true);
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            total = (int) snapshot.getChildrenCount();
+                            int[] free = new int[total];
+                            for (count = 0; count < total; count++) {
+                                String m1 = snapshot.child(""+count).getValue().toString();
+                                free[count]=Integer.parseInt(m1);
+                                Log.d("fac", "onDataChange: "+count+"="+free[count]);
+                            }
                     GridLayoutManager gridLayoutManager= new GridLayoutManager(getApplicationContext(),2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
                     titles.add("Dr. Bhaskar Tamma");
@@ -355,8 +421,21 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     pos.add("ACADEMIC ASSOCIATE");
                     pos.add("ASSOCIATE PROFESSOR");
                     pos.add("ACADEMIC ASSOCIATE");
-                    FacultyMenu.setAdapter(new Facultyadapter(images,titles,pos,row));
+                        for(int i=0;i<=19;i++){
+                        if(free[i]==0)
+                        row.add(getResources().getDrawable(R.drawable.round_red_shade));
+                        else if(free[i]==1)
+                        row.add(getResources().getDrawable(R.drawable.round_green_shade));
+                        }
+                        FacultyMenu.setAdapter(new Facultyadapter(images,titles,pos,row));
 
+                        }
+
+@Override
+public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+        });
                 }
             }
 

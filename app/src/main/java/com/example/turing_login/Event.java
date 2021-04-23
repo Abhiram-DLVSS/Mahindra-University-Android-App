@@ -68,14 +68,14 @@ public class Event extends Intents {
                 if (dy > 10&&flag==1 ){
                     flag=0;
                     final Animation animation = new TranslateAnimation(0,0,0,250);
-                    animation.setDuration(1000);
+                    animation.setDuration(500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
                 } else if (dy < -10&&flag==0){
                     flag=1;
                     floatingmenu.setVisible(true);
                     final Animation animation = new TranslateAnimation(0,0,250,0);
-                    animation.setDuration(1000);
+                    animation.setDuration(500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
                 }
