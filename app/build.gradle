@@ -59,5 +59,7 @@ dependencies {
     implementation "com.airbnb.android:lottie:3.7.0"
     //floating
     implementation 'com.github.toanvc:floatingactionmenu:0.8.9'
+    //For Images from URL
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

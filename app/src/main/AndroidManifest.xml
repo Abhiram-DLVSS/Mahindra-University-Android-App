@@ -18,8 +18,12 @@
             android:name=".Event"
             android:screenOrientation="portrait"
             android:theme="@style/CustomTheme"></activity>
-        <activity android:name=".FacultyMenu" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".FacultyMenu"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".SplashScreen"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

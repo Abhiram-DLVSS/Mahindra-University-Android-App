@@ -12,104 +12,114 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <toan.android.floatingactionmenu.FloatingActionsMenu
-        android:id="@+id/fm_menu"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/fab_menu_scroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:textAlignment="center"
-        app:fab_addButtonColorNormal="@color/stan"
-        app:fab_addButtonColorPressed="@color/mu"
-        android:outlineAmbientShadowColor="@color/black"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-        app:fab_expandDirection="up"
-        app:fab_labelStyle="@style/LabelStyle"
-        app:fab_labelsPosition="left"
-        app:fab_menuIcon="@drawable/ic_hamburger_icon_svg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-
-        <toan.android.floatingactionmenu.FloatingActionButton
-            android:id="@+id/fm_forms"
+        <toan.android.floatingactionmenu.FloatingActionsMenu
+            android:id="@+id/fm_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/mu"
-            app:fab_icon="@drawable/ic_forms"
-            app:fab_size="normal"
-            app:fab_title="Forms" />
-
-        <toan.android.floatingactionmenu.FloatingActionButton
-            android:id="@+id/fm_grades"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:outlineAmbientShadowColor="@color/black"
             android:textAlignment="center"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/mu"
-            app:fab_icon="@drawable/ic_grade"
-            app:fab_size="normal"
-            app:fab_title="Grades" />
+            app:fab_addButtonColorNormal="@color/stan"
+            app:fab_addButtonColorPressed="@color/mu"
+            app:fab_expandDirection="up"
+            app:fab_labelStyle="@style/LabelStyle"
+            app:fab_labelsPosition="left"
+            app:fab_menuIcon="@drawable/ic_hamburger_icon_svg"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <toan.android.floatingactionmenu.FloatingActionButton
-            android:id="@+id/fm_fees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/mu"
-            app:fab_icon="@drawable/ic_rupee"
-            app:fab_size="normal"
-            app:fab_title="Fee" />
 
-        <toan.android.floatingactionmenu.FloatingActionButton
-            android:id="@+id/fm_events"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/mu"
-            app:fab_icon="@drawable/ic_eve"
-            app:fab_size="normal"
-            app:fab_title="Events" />
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_grades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/mu"
+                app:fab_icon="@drawable/ic_grade"
+                app:fab_size="normal"
+                app:fab_title="Grades" />
 
-        <toan.android.floatingactionmenu.FloatingActionButton
-            android:id="@+id/fm_assignment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/mu"
-            app:fab_icon="@drawable/ic_assignments"
-            app:fab_size="normal"
-            app:fab_title="Assignments" />
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_fees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/mu"
+                app:fab_icon="@drawable/ic_rupee"
+                app:fab_size="normal"
+                app:fab_title="Fee" />
 
-        <toan.android.floatingactionmenu.FloatingActionButton
-            android:id="@+id/fm_faculty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/mu"
-            app:fab_icon="@drawable/ic_faculty"
-            app:fab_size="normal"
-            app:fab_title="Faculty" />
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_forms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/mu"
+                app:fab_icon="@drawable/ic_forms"
+                app:fab_size="normal"
+                app:fab_title="Forms" />
 
-        <toan.android.floatingactionmenu.FloatingActionButton
-            android:id="@+id/fm_timetable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/mu"
-            app:fab_icon="@drawable/ic_timetable"
-            app:fab_size="normal"
-            app:fab_title="Timetable" />
-    </toan.android.floatingactionmenu.FloatingActionsMenu>
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_events"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/mu"
+                app:fab_icon="@drawable/ic_eve"
+                app:fab_size="normal"
+                app:fab_title="Events" />
+
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/mu"
+                app:fab_icon="@drawable/ic_assignments"
+                app:fab_size="normal"
+                app:fab_title="Assignments" />
+
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_faculty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/mu"
+                app:fab_icon="@drawable/ic_faculty"
+                app:fab_size="normal"
+                app:fab_title="Faculty" />
+
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_timetable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/mu"
+                app:fab_icon="@drawable/ic_timetable"
+                app:fab_size="normal"
+                app:fab_title="Timetable" />
+
+        </toan.android.floatingactionmenu.FloatingActionsMenu>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

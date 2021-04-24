@@ -3,19 +3,25 @@ package com.example.turing_login;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.widget.NestedScrollView;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.turing_login.timetable.TimeTable;
@@ -31,6 +37,29 @@ public class Intents extends AppCompatActivity {
     public ConstraintLayout tt;
     public View background;
     public View open,close;
+    public NestedScrollView fab_scroll;
+//    public void first_time(int k){
+//        //first time
+//        final String PREFS_NAME = "MyPrefsFile";
+//
+//        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+//        if(k==0)
+//            settings.edit().putBoolean("my_first_time", false).commit();
+//        else if(k==1)
+//            settings.edit().putBoolean("my_first_time", true).commit();
+//
+//        if (settings.getBoolean("my_first_time", true)) {
+//            //the app is being launched for first time, do something
+//            Log.d("Comments", "First time");
+//
+//            // first time task
+//            Toast.makeText(this, "First time", Toast.LENGTH_SHORT).show();
+//
+//            // record the fact that the app has been started at least once
+//
+//
+//        }
+//    }
     public void floatinginit(){
         floatingmenu=findViewById(R.id.fm_menu);
         fee=findViewById(R.id.fm_fees);
@@ -44,6 +73,7 @@ public class Intents extends AppCompatActivity {
         background=findViewById(R.id.background_dimmer);
         open=findViewById(R.id.open);
         close=findViewById(R.id.closed);
+        fab_scroll=findViewById(R.id.fab_menu_scroll);
 
 
         floatingmenu.setOnClickListener(new View.OnClickListener() {
@@ -113,9 +143,11 @@ public class Intents extends AppCompatActivity {
                 background.setVisibility(View.VISIBLE);
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
                 statusbar1();
-
-
-
+                new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            fab_scroll.scrollTo(0,fab_scroll.getBottom());
+                        }
+                    }, 50);
             }
             @Override
             public void onMenuCollapsed() {
@@ -163,15 +195,6 @@ public class Intents extends AppCompatActivity {
         });
 
     }
-
-//    @Override
-//    public void onBackPressed() {
-//
-//        if(floatingmenu.isExpanded())
-//            floatingmenu.collapse();
-//        else
-//            super.onBackPressed();
-//    }
 
     boolean doubleBackToExitPressedOnce = false;
 

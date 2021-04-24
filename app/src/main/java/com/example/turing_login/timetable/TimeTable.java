@@ -4,7 +4,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -124,16 +126,26 @@ public class TimeTable extends Intents {
                 Log.d("chk", "onScrollChange: "+(scrollX-oldScrollX));
                 if (dx !=0){
 //                    final Animation animation = new TranslateAnimation(0,0,0,250);
-//                    animation.setDuration(1000);
+//                    animation.setDuration(50);
 //                    animation.setFillAfter(true);
 //                    floatingmenu.startAnimation(animation);
-                    final Animation animation1 = new TranslateAnimation(0,0,250,0);
-                    animation1.setDuration(250);
-                    animation1.setFillAfter(true);
-                    floatingmenu.startAnimation(animation1);
-                }
+//
+//                    new Handler().postDelayed(new Runnable() {
+//
+//                        @Override
+//                        public void run() {
+                            final Animation animation1 = new TranslateAnimation(0,0,250,0);
+                            animation1.setDuration(500);
+                            animation1.setFillAfter(true);
+                            floatingmenu.startAnimation(animation1);                        }
+//                    }, 50);
+//
+//                }
             }
         });
+
+//    first_time(0);
+
     }
 
 }

@@ -22,7 +22,7 @@
             android:id="@+id/thu_rl"
             android:layout_width="match_parent"
             android:layout_height="112dp"
-            android:background="@drawable/round2"
+            android:background="@drawable/round_red"
             android:orientation="horizontal">
 
             <TextView
