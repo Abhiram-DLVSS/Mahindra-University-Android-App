@@ -4,25 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/stan"
     tools:context=".Forms">
 
-    <Button
-        android:id="@+id/REGISTRATION"
-        style="@style/MyDepressedButtonStyle"
-        android:layout_width="205dp"
-        android:layout_height="58dp"
-        android:background="@drawable/round1"
-        android:backgroundTint="@color/stan"
-        android:text="Registration"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/forms_re"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forms"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/forms_re"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
     <include
         layout="@layout/fab_menu"
         android:id="@+id/fm"

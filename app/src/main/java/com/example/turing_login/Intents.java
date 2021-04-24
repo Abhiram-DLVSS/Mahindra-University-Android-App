@@ -3,6 +3,7 @@ package com.example.turing_login;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.widget.NestedScrollView;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -18,6 +19,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.turing_login.timetable.TimeTable;
@@ -33,6 +37,7 @@ public class Intents extends AppCompatActivity {
     public ConstraintLayout tt;
     public View background;
     public View open,close;
+    public NestedScrollView fab_scroll;
 //    public void first_time(int k){
 //        //first time
 //        final String PREFS_NAME = "MyPrefsFile";
@@ -68,6 +73,7 @@ public class Intents extends AppCompatActivity {
         background=findViewById(R.id.background_dimmer);
         open=findViewById(R.id.open);
         close=findViewById(R.id.closed);
+        fab_scroll=findViewById(R.id.fab_menu_scroll);
 
 
         floatingmenu.setOnClickListener(new View.OnClickListener() {
@@ -137,9 +143,11 @@ public class Intents extends AppCompatActivity {
                 background.setVisibility(View.VISIBLE);
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
                 statusbar1();
-
-
-
+                new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            fab_scroll.scrollTo(0,fab_scroll.getBottom());
+                        }
+                    }, 50);
             }
             @Override
             public void onMenuCollapsed() {

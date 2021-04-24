@@ -1,11 +1,14 @@
 package com.example.turing_login;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -18,8 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class Event extends Intents {
     private int flag=1;
-    private Button button;
+    private Button invisibleButton;
     private WebView webView;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,6 @@ public class Event extends Intents {
         webView=findViewById(R.id.event_webview);
 
         webView.getSettings().setJavaScriptEnabled(true);
-//        webView.getSettings().setDomStorageEnabled(true);
         webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
         webView.setOnKeyListener(new View.OnKeyListener()
         {
@@ -84,17 +87,7 @@ public class Event extends Intents {
 
 //      webView.setWebViewClient(new WebViewClient());
         webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.d("testing", "shouldOverrideUrlLoading: ");
-                if (url.equals("https://www.mahindraecolecentrale.edu.in/events")){
-                    //notify the user that this url is blocked
-                    Toast.makeText(Event.this, "Blocked", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
 
-                return false;
-            }
             @Override
             public void onPageFinished(WebView view, String url) {
                 Log.d("testing", "onPageFinished: ");
@@ -115,10 +108,25 @@ public class Event extends Intents {
                         "var div = document.getElementsByClassName('footer-bar-mobile')[0];"
                         + "div.parentNode.removeChild(div);" +
                         "})()");
-                view.loadUrl("javascript:disableSection('" + "b7LICyA-1618673933600" + "');");
-                view.loadUrl("javascript:(function() { " +
-                "document.getElementsById('b7LICyA-1618673933600')[0].style.display='none'; " +
-                        "})()");
+
+                for (int i = 1; i <= 10; i++) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            view.loadUrl("javascript:(function() { " +
+                                    "var divs = document.getElementsByTagName('iframe');"
+                                    + "var div;"
+                                    + "var i = divs.length;"
+                                    + "while (i--) {"
+                                    + "  div = divs[i];"
+                                    + "  if (div.getAttribute('title') == 'chat widget') {"
+                                    + "    div.parentNode.removeChild(div);"
+                                    + "  }"
+                                    + "}"
+                                    + "})()");
+                        }
+                    }, i*1000);
+                }
             }
         });
 
