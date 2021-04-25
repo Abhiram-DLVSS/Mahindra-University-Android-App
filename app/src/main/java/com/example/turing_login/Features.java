@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class Features extends Intents {
-    private Button form,timetable_button,faculty,fee,event;
+    private Button form,timetable_button,faculty,fee,event,assignmentbtn;
     private TextView welcome;
 
 
@@ -42,6 +42,7 @@ public class Features extends Intents {
         faculty=findViewById(R.id.faculty);
         event=findViewById(R.id.event_button);
         timetable_button=(Button)findViewById(R.id.TIME_TABLE);
+        assignmentbtn=findViewById(R.id.ASSIGNMENT);
         form=(Button)findViewById(R.id.FORMS);
 
 
@@ -72,6 +73,13 @@ public class Features extends Intents {
 
                 Intent intent=new Intent(Features.this,FacultyMenu.class);
                 startActivity(intent);            }
+        });
+        assignmentbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Features.this,assignment.class);
+                startActivity(intent);
+            }
         });
 
         form.setOnClickListener(new View.OnClickListener() {
