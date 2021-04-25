@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".NoInternet"
@@ -13,11 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
-        <activity android:name=".Intents"></activity>
+        <activity android:name=".fetchpdf"></activity>
+        <activity android:name=".Fetchpdf" />
+        <activity android:name=".assignment" />
+        <activity android:name=".Intents" />
         <activity
             android:name=".Event"
             android:screenOrientation="portrait"
-            android:theme="@style/CustomTheme"></activity>
+            android:theme="@style/CustomTheme" />
         <activity android:name=".FacultyMenu" />
         <activity android:name=".SplashScreen">
             <intent-filter>
@@ -35,6 +39,9 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Forms"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".fetchactivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Features"
