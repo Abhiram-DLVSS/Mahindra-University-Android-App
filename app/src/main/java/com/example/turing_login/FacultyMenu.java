@@ -56,9 +56,17 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     flag=0;
                     final Animation animation = new TranslateAnimation(0,0,0,250);
                     animation.setDuration(500);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(flag==0)
+                                floatingmenu.setVisibility(View.GONE);
+                        }
+                    }, 500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
                 } else if (dy < -10&&flag==0){
+                    floatingmenu.setVisibility(View.VISIBLE);
                     flag=1;
                     floatingmenu.setVisible(true);
                     final Animation animation = new TranslateAnimation(0,0,250,0);

@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -58,6 +61,40 @@ public class Forms extends Intents {
 
         recyclerView=findViewById(R.id.forms_re);
         recyclerView.setHasFixedSize(true);
+
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 10&&flag==1 ){
+                    flag=0;
+                    final Animation animation = new TranslateAnimation(0,0,0,250);
+                    animation.setDuration(500);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(flag==0)
+                            floatingmenu.setVisibility(View.GONE);
+                        }
+                    }, 500);
+                    animation.setFillAfter(true);
+                    floatingmenu.startAnimation(animation);
+                } else if (dy < -10&&flag==0){
+                    floatingmenu.setVisibility(View.VISIBLE);
+                    flag=1;
+                    floatingmenu.setVisible(true);
+                    final Animation animation = new TranslateAnimation(0,0,250,0);
+                    animation.setDuration(500);
+                    animation.setFillAfter(true);
+                    floatingmenu.startAnimation(animation);
+
+                }
+
+            }
+        });
+
+
         ReadHeader();
     }
     public void ReadHeader(){

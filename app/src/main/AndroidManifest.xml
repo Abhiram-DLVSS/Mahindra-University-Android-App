@@ -16,8 +16,7 @@
         <activity android:name=".Intents"></activity>
         <activity
             android:name=".Event"
-            android:screenOrientation="portrait"
-            android:theme="@style/CustomTheme"></activity>
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".FacultyMenu"
             android:screenOrientation="portrait"
             />
