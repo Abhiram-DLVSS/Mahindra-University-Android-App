@@ -33,7 +33,7 @@ import java.util.List;
  * Use the {@link FragTue#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragTue extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+public class FragTue extends Fragment {//implements SwipeRefreshLayout.OnRefreshListener{
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -92,12 +92,12 @@ public class FragTue extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem_tuefrags=new ArrayList<>();
         ReadHeader();
-        mSwipeRefreshLayout =view.findViewById(R.id.swipe_tue);
-        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
-                android.R.color.holo_green_dark,
-                android.R.color.holo_orange_dark,
-                android.R.color.holo_blue_dark);
+//        mSwipeRefreshLayout =view.findViewById(R.id.swipe_tue);
+//        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
+//        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
+//                android.R.color.holo_green_dark,
+//                android.R.color.holo_orange_dark,
+//                android.R.color.holo_blue_dark);
         return view;
     }
     private  void ReadHeader(){
@@ -170,7 +170,7 @@ public class FragTue extends Fragment implements SwipeRefreshLayout.OnRefreshLis
                     listitem_tuefrags.add(listitem_tuefrag);
                     adapter=new AdapterTue(listitem_tuefrags,getContext());
                     recyclerView.setAdapter(adapter);
-                    mSwipeRefreshLayout.setRefreshing(false);
+//                    mSwipeRefreshLayout.setRefreshing(false);
                 }
                     }
                     @Override
@@ -184,6 +184,6 @@ public class FragTue extends Fragment implements SwipeRefreshLayout.OnRefreshLis
             }
         });
     }
-    @Override
-    public void onRefresh() {ReadHeader();}
+//    @Override
+//    public void onRefresh() {ReadHeader();}
 }

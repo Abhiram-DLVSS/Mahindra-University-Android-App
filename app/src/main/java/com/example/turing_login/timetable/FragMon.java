@@ -8,10 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
+import com.example.turing_login.FacultyMenu;
+import com.example.turing_login.Intents;
 import com.example.turing_login.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,24 +27,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import toan.android.floatingactionmenu.FloatingActionsMenu;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragMon#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class FragMon extends Fragment {
 
+    public int flag=1;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count, total;
     private List<Listitem_monfrag> listitem_monfrags;
-    SwipeRefreshLayout mSwipeRefreshLayout;
     //to fetch data
     DatabaseReference reff;
 
@@ -85,21 +94,20 @@ public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.tt_fragment_mon, container, false);
         recyclerView = view.findViewById(R.id.recyclerView_monFrag);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        listitem_monfrags = new ArrayList<>();
+
+
+        
        ReadHeader();
-        mSwipeRefreshLayout = view.findViewById(R.id.swipe_mon);
-        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
-                android.R.color.holo_green_dark,
-                android.R.color.holo_orange_dark,
-                android.R.color.holo_blue_dark);
         return view;
     }
     private void ReadHeader() {
+        Log.d("frag", "ReadHeader: ");
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        listitem_monfrags = new ArrayList<>();
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -109,7 +117,6 @@ public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-               // Toast.makeText(getContext(), "Fetching...mon", Toast.LENGTH_SHORT).show();
                 listitem_monfrags.clear();
                 String rollnumber = snapshot.child("id").getValue().toString();
                 String year = rollnumber.substring(0, 2);
@@ -168,7 +175,6 @@ public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshLis
                     listitem_monfrags.add(listitem_monfrag);
                     adapter = new AdapterMon(listitem_monfrags, getContext());
                     recyclerView.setAdapter(adapter);
-                    mSwipeRefreshLayout.setRefreshing(false);
                 }
             }
             @Override
@@ -182,6 +188,7 @@ public class FragMon extends Fragment implements SwipeRefreshLayout.OnRefreshLis
             }
         });
     }
-    @Override
-    public void onRefresh() {ReadHeader();}
+
+
 }
+

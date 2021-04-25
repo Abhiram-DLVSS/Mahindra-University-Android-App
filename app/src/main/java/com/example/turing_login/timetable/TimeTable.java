@@ -4,10 +4,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -24,13 +28,13 @@ import java.util.Calendar;
 
 public class TimeTable extends Intents {
 
+    private int flag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tt_time_table);
 
         statusbar();//to change status bar color
-
         TabLayout tabLayout = findViewById(R.id.tab_bar);
         ViewPager viewPager = findViewById(R.id.viewPager);
         ImageView imageView = findViewById(R.id.tt_3dot);
@@ -115,6 +119,33 @@ public class TimeTable extends Intents {
                 Toast.makeText(TimeTable.this, "👀", Toast.LENGTH_SHORT).show();
             }
         });
+        viewPager.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                int dx=scrollX-oldScrollX;
+                Log.d("chk", "onScrollChange: "+(scrollX-oldScrollX));
+                if (dx !=0){
+//                    final Animation animation = new TranslateAnimation(0,0,0,250);
+//                    animation.setDuration(50);
+//                    animation.setFillAfter(true);
+//                    floatingmenu.startAnimation(animation);
+//
+//                    new Handler().postDelayed(new Runnable() {
+//
+//                        @Override
+//                        public void run() {
+                            final Animation animation1 = new TranslateAnimation(0,0,250,0);
+                            animation1.setDuration(500);
+                            animation1.setFillAfter(true);
+                            floatingmenu.startAnimation(animation1);                        }
+//                    }, 50);
+//
+//                }
+            }
+        });
+
+//    first_time(0);
 
     }
+
 }

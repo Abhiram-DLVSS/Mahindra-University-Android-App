@@ -5,48 +5,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_margin="15dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="20dp"
 
     android:layout_gravity="center_horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/round2"
+    <RelativeLayout
+        android:id="@+id/fac_row_layout"
+        android:layout_width="155dp"
+        android:layout_height="230dp"
+        android:background="@drawable/round_red_shade"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image_faculty"
-            android:layout_width="98dp"
-            android:layout_height="94dp"
-            android:layout_gravity="center_horizontal"
+        <!--        <ImageView-->
+        <!--            android:id="@+id/image_faculty"-->
+        <!--            android:layout_width="98dp"-->
+        <!--            android:layout_height="94dp"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:src="@drawable/ic_person"-->
+        <!--            />-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_faculty_card"
+            android:layout_width="90dp"
+            android:layout_height="105dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="32.5dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_person" />
+            android:layout_marginEnd="32.5dp"
+            android:background="@color/stan"
+            app:cardCornerRadius="12dp">
+
+            <ImageView
+                android:id="@+id/image_faculty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Fac_pic"
+                android:src="@drawable/ic_person" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/facultyName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/image_faculty_card"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="center_horizontal"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Lecturer Name"
             android:textAlignment="center"
-            android:text="Dr.Bhattacharya"
             android:textColor="#000000"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/facultyPosition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/image_faculty_card"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="DEAN RESEARCH AND HOD"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Designation"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
     <!--<androidx.constraintlayout.widget.ConstraintLayout-->
