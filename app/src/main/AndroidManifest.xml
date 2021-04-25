@@ -21,19 +21,17 @@
         <activity
             android:name=".Event"
             android:screenOrientation="portrait"
-<<<<<<< HEAD
             android:theme="@style/CustomTheme" />
         <activity android:name=".FacultyMenu" />
         <activity android:name=".SplashScreen">
-=======
             android:theme="@style/CustomTheme"></activity>
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".FacultyMenu"
             android:screenOrientation="portrait"
             />
         <activity android:name=".SplashScreen"
             android:screenOrientation="portrait"
             >
->>>>>>> 06839a3b8996ce21929121a15fc518c711623419
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

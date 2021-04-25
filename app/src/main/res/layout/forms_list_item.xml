@@ -58,6 +58,7 @@
                 android:layout_marginBottom="55dp"
                 android:layout_toEndOf="@+id/textview_heading_form"
                 android:text="Deadline"
+                android:gravity="center"
                 android:textAlignment="center"
                 android:textColor="#F44336"
                 android:textSize="18sp">
@@ -77,6 +78,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="10dp"
                 android:text="By"
+                android:gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />

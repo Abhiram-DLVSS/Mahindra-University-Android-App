@@ -142,7 +142,7 @@ public class Intents extends AppCompatActivity {
                 forms.setVisibility(View.VISIBLE);
                 background.setVisibility(View.VISIBLE);
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
-                statusbar1();
+              //  statusbar1();
                 new Handler().postDelayed(new Runnable() {
                         public void run() {
                             fab_scroll.scrollTo(0,fab_scroll.getBottom());
@@ -160,7 +160,7 @@ public class Intents extends AppCompatActivity {
                 assignments.setVisibility(View.GONE);
                 forms.setVisibility(View.GONE);
                 background.setVisibility(View.GONE);
-                statusbar();
+                //statusbar();
 
 
             }});

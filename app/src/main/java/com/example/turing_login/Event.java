@@ -2,6 +2,7 @@ package com.example.turing_login;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,9 +16,14 @@ import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.turing_login.timetable.TimeTable;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Event extends Intents {
     private int flag=1;
@@ -34,6 +40,8 @@ public class Event extends Intents {
         nDialog.setIndeterminate(false);
         nDialog.show();
         statusbar();
+        ImageView imageView = findViewById(R.id.event_3dot);
+
         webView=findViewById(R.id.event_webview);
 
         webView.getSettings().setJavaScriptEnabled(true);
@@ -72,9 +80,17 @@ public class Event extends Intents {
                     flag=0;
                     final Animation animation = new TranslateAnimation(0,0,0,250);
                     animation.setDuration(500);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(flag==0)
+                            floatingmenu.setVisibility(View.GONE);
+                        }
+                    }, 500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
                 } else if (dy < -10&&flag==0){
+                    floatingmenu.setVisibility(View.VISIBLE);
                     flag=1;
                     floatingmenu.setVisible(true);
                     final Animation animation = new TranslateAnimation(0,0,250,0);
@@ -139,23 +155,24 @@ public class Event extends Intents {
             }
         });
 
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_in_event,menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id= item.getItemId();
-        switch(id){
-            case R.id.refresh_in_event: {
-                finish();
-                startActivity(getIntent());
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(Event.this, imageView);
+                popupMenu.getMenuInflater().inflate(R.menu.menu_in_event, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        if(menuItem.getItemId()==R.id.refresh_in_event) {
+                            openEvent();
+                            finish();
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
             }
-            break;
-        }
-        return true;
-    }
+        });
 
+    }
 }
