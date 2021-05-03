@@ -30,14 +30,15 @@
             android:outlineAmbientShadowColor="@color/black"
             android:textAlignment="center"
             app:fab_addButtonColorNormal="@color/stan"
-            app:fab_addButtonColorPressed="@color/mu"
+            app:fab_addButtonColorPressed="@color/grey_stan"
             app:fab_expandDirection="up"
             app:fab_labelStyle="@style/LabelStyle"
             app:fab_labelsPosition="left"
             app:fab_menuIcon="@drawable/ic_hamburger_icon_svg"
             app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            >
 
 
             <toan.android.floatingactionmenu.FloatingActionButton
@@ -47,7 +48,7 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/mu"
+                app:fab_colorPressed="@color/grey_white"
                 app:fab_icon="@drawable/ic_grade"
                 app:fab_size="normal"
                 app:fab_title="Grades" />
@@ -58,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/mu"
+                app:fab_colorPressed="@color/grey_white"
                 app:fab_icon="@drawable/ic_rupee"
                 app:fab_size="normal"
                 app:fab_title="Fee" />
@@ -69,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/mu"
+                app:fab_colorPressed="@color/grey_white"
                 app:fab_icon="@drawable/ic_forms"
                 app:fab_size="normal"
                 app:fab_title="Forms" />
@@ -80,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/mu"
+                app:fab_colorPressed="@color/grey_white"
                 app:fab_icon="@drawable/ic_eve"
                 app:fab_size="normal"
                 app:fab_title="Events" />
@@ -91,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/mu"
+                app:fab_colorPressed="@color/grey_white"
                 app:fab_icon="@drawable/ic_assignments"
                 app:fab_size="normal"
                 app:fab_title="Assignments" />
@@ -102,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/mu"
+                app:fab_colorPressed="@color/grey_white"
                 app:fab_icon="@drawable/ic_faculty"
                 app:fab_size="normal"
                 app:fab_title="Faculty" />
@@ -114,7 +115,7 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/mu"
+                app:fab_colorPressed="@color/grey_white"
                 app:fab_icon="@drawable/ic_timetable"
                 app:fab_size="normal"
                 app:fab_title="Timetable" />

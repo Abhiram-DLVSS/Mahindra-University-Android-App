@@ -15,11 +15,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +27,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class assignment extends AppCompatActivity {
+public class Assignment extends AppCompatActivity {
 
     Button uploadfile,fileselect,fetchfile;
     EditText filename;
@@ -51,18 +48,18 @@ public class assignment extends AppCompatActivity {
         fetchfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),fetchpdf.class));
+                startActivity(new Intent(getApplicationContext(), Fetchpdf.class));
             }
         });
         fileselect.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if(ContextCompat.checkSelfPermission(assignment.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
+                if(ContextCompat.checkSelfPermission(Assignment.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
                 {
                     selectPDF();
                 }
                 else
-                    ActivityCompat.requestPermissions(assignment.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},9);
+                    ActivityCompat.requestPermissions(Assignment.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},9);
             }
         });
         uploadfile.setOnClickListener(new View.OnClickListener(){
@@ -86,15 +83,15 @@ public class assignment extends AppCompatActivity {
                         Task<Uri> uri=taskSnapshot.getMetadata().getReference().getDownloadUrl();
                         while(!uri.isComplete());
                             Uri url=uri.getResult();
-                        uploadPDF uploadPDF=new uploadPDF(filename.getText().toString(),url.toString());
+                        UploadPDF uploadPDF=new UploadPDF(filename.getText().toString(),url.toString());
                         databaseReference.child(databaseReference.push().getKey()).setValue(uploadPDF);
-                        Toast.makeText(assignment.this,"File Successfully Uploaded",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Assignment.this,"File Successfully Uploaded",Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(assignment.this,"File Not Uploaded",Toast.LENGTH_LONG).show();
+                Toast.makeText(Assignment.this,"File Not Uploaded",Toast.LENGTH_LONG).show();
 
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -114,7 +111,7 @@ public class assignment extends AppCompatActivity {
             selectPDF();
         }
         else
-            Toast.makeText(assignment.this,"Please provide the permission",Toast.LENGTH_LONG).show();
+            Toast.makeText(Assignment.this,"Please provide the permission",Toast.LENGTH_LONG).show();
     }
 
     private void selectPDF() {
@@ -130,9 +127,9 @@ public class assignment extends AppCompatActivity {
         if(requestCode==23&&resultCode==RESULT_OK&&data!=null&&data.getData()!=null)
         {
             pdfuri=data.getData();
-            Toast.makeText(assignment.this,"File Successfully Selected",Toast.LENGTH_LONG).show();
+            Toast.makeText(Assignment.this,"File Successfully Selected",Toast.LENGTH_LONG).show();
         }
         else
-            Toast.makeText(assignment.this,"Please select a valid file",Toast.LENGTH_LONG).show();
+            Toast.makeText(Assignment.this,"Please select a valid file",Toast.LENGTH_LONG).show();
     }
 }

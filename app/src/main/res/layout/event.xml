@@ -11,7 +11,7 @@
         android:id="@+id/Name_events_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mahindra University"
+        android:text="@string/mahindra_university"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="normal|bold"

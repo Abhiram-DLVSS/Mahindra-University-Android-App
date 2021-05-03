@@ -129,7 +129,13 @@ public class Intents extends AppCompatActivity {
                 return true;
             }
         });
-
+        assignments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Intents.this, Assignment.class);
+                startActivity(intent);
+            }
+        });
         floatingmenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {

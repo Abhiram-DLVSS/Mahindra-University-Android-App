@@ -45,6 +45,7 @@ public class Event extends Intents {
         webView=findViewById(R.id.event_webview);
 
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().getDomStorageEnabled();
         webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
         webView.setOnKeyListener(new View.OnKeyListener()
         {
@@ -101,7 +102,6 @@ public class Event extends Intents {
             }
         });
 
-//      webView.setWebViewClient(new WebViewClient());
         webView.setWebViewClient(new WebViewClient() {
 
             @Override

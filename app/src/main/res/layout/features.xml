@@ -8,19 +8,16 @@
     tools:context=".Features">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="1000dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="72dp"
         android:layout_marginTop="35dp"
-        android:layout_marginEnd="88dp"
         android:text="Welcome "
+        android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
@@ -31,8 +28,8 @@
 
     <Button
         android:id="@+id/faculty"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/welcome"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="50dp"
@@ -44,8 +41,8 @@
 
     <Button
         android:id="@+id/TIME_TABLE"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/welcome"
         android:layout_alignParentStart="true"
         android:layout_marginStart="36dp"
@@ -58,25 +55,30 @@
 
     <Button
         android:id="@+id/GRADES"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/FORMS"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="46dp"
+        android:layout_alignStart="@+id/ASSIGNMENT"
+        android:layout_alignEnd="@+id/FORMS"
+        android:layout_marginStart="-6dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="0dp"
         android:background="@drawable/feat_gra"
         android:textColor="#000000"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="658dp" />
+        tools:layout_editor_absoluteY="658dp"
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/ASSIGNMENT"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/TIME_TABLE"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="36dp"
+        android:layout_alignStart="@+id/TIME_TABLE"
+        android:layout_alignEnd="@+id/TIME_TABLE"
+        android:layout_marginStart="-0dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="6dp"
         android:background="@drawable/feat_assign"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,24 +86,27 @@
 
     <Button
         android:id="@+id/FORMS"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/ASSIGNMENT"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="36dp"
+        android:layout_alignEnd="@+id/ASSIGNMENT"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="0dp"
         android:background="@drawable/feat_formsss"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/fee"
         app:layout_constraintTop_toBottomOf="@+id/TIME_TABLE" />
+
     <Button
         android:id="@+id/event_button"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/fee"
-        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/fee"
+        android:layout_alignEnd="@+id/fee"
+        android:layout_marginStart="-1dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="1dp"
         android:background="@drawable/feat_eve"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/ASSIGNMENT"
@@ -109,12 +114,14 @@
 
     <Button
         android:id="@+id/fee"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/faculty"
-        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/faculty"
+        android:layout_alignEnd="@+id/faculty"
+        android:layout_marginStart="-0dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="-1dp"
         android:background="@drawable/feat_fee"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"

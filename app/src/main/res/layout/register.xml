@@ -8,11 +8,15 @@
     android:id="@+id/registerview"
     android:background="#ffffff"
     tools:context=".Login">
-
     <ScrollView
+        android:id="@+id/regsterscroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/regsterscroll">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,12 +24,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/PasswordLayout"
-                android:layout_alignParentStart="true"
                 android:layout_width="349dp"
                 android:layout_height="53dp"
                 android:layout_below="@+id/CollegeID"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/round1"
                 app:boxBackgroundMode="none"
@@ -34,7 +39,6 @@
                 app:layout_constraintStart_toStartOf="@+id/CollegeID"
                 app:layout_constraintTop_toBottomOf="@+id/CollegeID"
                 app:passwordToggleContentDescription="show"
-                android:layout_marginTop="14dp"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -58,17 +62,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/REGISTER"
                 android:layout_width="160dp"
                 android:layout_height="55dp"
 
                 android:layout_below="@+id/PasswordLayout"
-                android:layout_alignStart="@+id/PasswordLayout"
-                android:layout_alignEnd="@+id/PasswordLayout"
-                android:layout_marginStart="84dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="14dp"
-                android:layout_marginEnd="83dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/round3"
                 android:backgroundTint="@color/mu"
@@ -89,18 +90,18 @@
                 android:layout_alignParentEnd="true"
 
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginEnd="20dp"
                 android:autofillHints=""
                 android:background="@drawable/round1"
                 android:backgroundTint="#E7EBEC"
                 android:drawableStart="@drawable/ic_baseline_person_outline_24"
+                android:drawablePadding="16dp"
                 android:ems="10"
                 android:hint="@string/name"
                 android:inputType="text"
                 android:padding="16dp"
                 android:paddingStart="16dp"
-                android:drawablePadding="16dp"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,9 +121,9 @@
                 android:background="@drawable/round1"
                 android:backgroundTint="#E7EBEC"
                 android:drawableStart="@drawable/ic_baseline_person_outline_24"
+                android:drawablePadding="16dp"
                 android:ems="10"
                 android:hint="19XJ1A0XXX"
-                android:drawablePadding="16dp"
 
                 android:inputType="textCapSentences|textEmailAddress|textCapWords|textCapCharacters"
                 android:padding="16dp"
@@ -147,8 +148,8 @@
                 android:background="@drawable/round1"
                 android:backgroundTint="#E7EBEC"
                 android:drawableStart="@drawable/ic_baseline_person_outline_24"
-                android:ems="10"
                 android:drawablePadding="16dp"
+                android:ems="10"
 
                 android:hint="@string/e_mail"
                 android:inputType="textEmailAddress"
@@ -166,31 +167,37 @@
                 android:layout_below="@+id/RHead"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="99dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="45dp"
                 android:layout_marginEnd="88dp"
+                android:scaleX="1.4"
+                android:scaleY="1.4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.547"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/RHead"
-                android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/ic_logo" />
+
+                app:srcCompat="@drawable/ic_logoname" />
+
 
             <TextView
                 android:id="@+id/RHead"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="59dp"
+                android:layout_alignStart="@+id/Name"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="40dp"
-                android:text="Register"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="🙏Welcome!"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="36sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
         </RelativeLayout>
     </ScrollView>
