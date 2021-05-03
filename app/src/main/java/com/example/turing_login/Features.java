@@ -1,7 +1,5 @@
 package com.example.turing_login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -10,17 +8,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.turing_login.timetable.TimeTable;
-import com.google.firebase.auth.FirebaseAuth;
 
 
 public class Features extends Intents {
@@ -77,7 +70,7 @@ public class Features extends Intents {
         assignmentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Features.this,assignment.class);
+                Intent intent=new Intent(Features.this, Assignment.class);
                 startActivity(intent);
             }
         });

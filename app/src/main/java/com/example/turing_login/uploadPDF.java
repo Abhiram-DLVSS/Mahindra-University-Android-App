@@ -1,14 +1,14 @@
 package com.example.turing_login;
 
-public class uploadPDF {
+public class UploadPDF {
 
     public String name1;
     public String url;
 
-    public uploadPDF() {
+    public UploadPDF() {
     }
 
-    public uploadPDF(String name1, String url) {
+    public UploadPDF(String name1, String url) {
         this.name1 = name1;
         this.url = url;
     }
