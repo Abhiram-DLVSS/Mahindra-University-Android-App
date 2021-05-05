@@ -17,10 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.turing_login.timetable.TimeTable;
-
-import java.net.URI;
-import java.sql.Time;
 import java.util.List;
 
 public class AdapterForms extends RecyclerView.Adapter<AdapterForms.ViewHolder> {
@@ -61,11 +57,11 @@ public class AdapterForms extends RecyclerView.Adapter<AdapterForms.ViewHolder> 
         public String link;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textview_heading_form=(TextView) itemView.findViewById(R.id.textview_heading_form);
-            textview_desc_form=(TextView) itemView.findViewById(R.id.textview_desc_form);
-            textview_lect_form=(TextView) itemView.findViewById(R.id.textview_lecturer_form);
-            rv=(RelativeLayout) itemView.findViewById(R.id.forms_rl);
-            cv=itemView.findViewById(R.id.forms_card);
+            textview_heading_form=(TextView) itemView.findViewById(R.id.textview_heading_assign);
+            textview_desc_form=(TextView) itemView.findViewById(R.id.textview_desc_assign);
+            textview_lect_form=(TextView) itemView.findViewById(R.id.textview_lecturer_assign);
+            rv=(RelativeLayout) itemView.findViewById(R.id.assign_rl);
+            cv=itemView.findViewById(R.id.assign_card);
             textview_heading_form.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

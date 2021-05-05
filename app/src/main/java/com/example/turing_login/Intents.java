@@ -88,7 +88,70 @@ public class Intents extends AppCompatActivity {
                 floatingmenu.collapse();
             }
         });
-        fee.setOnClickListener(new View.OnClickListener() {
+
+        floatingmenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                timetable_button.setVisibility(View.VISIBLE);
+                fee.setVisibility(View.VISIBLE);
+                faculty.setVisibility(View.VISIBLE);
+                event.setVisibility(View.VISIBLE);
+                grades.setVisibility(View.VISIBLE);
+                assignments.setVisibility(View.VISIBLE);
+                forms.setVisibility(View.VISIBLE);
+                background.setVisibility(View.VISIBLE);
+                floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
+              //  statusbar1();
+                new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            fab_scroll.scrollTo(0,fab_scroll.getBottom());
+                        }
+                    }, 50);
+            }
+            @Override
+            public void onMenuCollapsed() {
+                floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_hamburger_icon_svg,null));
+                timetable_button.setVisibility(View.GONE);
+                fee.setVisibility(View.GONE);
+                faculty.setVisibility(View.GONE);
+                event.setVisibility(View.GONE);
+                grades.setVisibility(View.GONE);
+                assignments.setVisibility(View.GONE);
+                forms.setVisibility(View.GONE);
+                background.setVisibility(View.GONE);
+                //statusbar();
+
+
+            }});
+
+
+
+
+        //Button Clicks
+        faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFaculty();
+            }
+        });
+        timetable_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTimeTable();
+            }
+        });
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEvent();
+            }
+        });
+        forms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openForms();
+            }
+        });fee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gotoUrl("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
@@ -132,71 +195,10 @@ public class Intents extends AppCompatActivity {
         assignments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Intents.this, Assignment.class);
+                Intent intent=new Intent(Intents.this, Assignment1.class);
                 startActivity(intent);
-            }
-        });
-        floatingmenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
-            @Override
-            public void onMenuExpanded() {
-                timetable_button.setVisibility(View.VISIBLE);
-                fee.setVisibility(View.VISIBLE);
-                faculty.setVisibility(View.VISIBLE);
-                event.setVisibility(View.VISIBLE);
-                grades.setVisibility(View.VISIBLE);
-                assignments.setVisibility(View.VISIBLE);
-                forms.setVisibility(View.VISIBLE);
-                background.setVisibility(View.VISIBLE);
-                floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
-              //  statusbar1();
-                new Handler().postDelayed(new Runnable() {
-                        public void run() {
-                            fab_scroll.scrollTo(0,fab_scroll.getBottom());
-                        }
-                    }, 50);
-            }
-            @Override
-            public void onMenuCollapsed() {
-                floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_hamburger_icon_svg,null));
-                timetable_button.setVisibility(View.GONE);
-                fee.setVisibility(View.GONE);
-                faculty.setVisibility(View.GONE);
-                event.setVisibility(View.GONE);
-                grades.setVisibility(View.GONE);
-                assignments.setVisibility(View.GONE);
-                forms.setVisibility(View.GONE);
-                background.setVisibility(View.GONE);
-                //statusbar();
-
-
-            }});
-
-
-
-
-
-        faculty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFaculty();
-            }
-        });
-        timetable_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openTimeTable();
-            }
-        });
-        event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openEvent();
-            }
-        });
-        forms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openForms();
+                floatingmenu.collapse();
+                finish();
             }
         });
 
