@@ -164,7 +164,6 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Log.d("abhi", "Value of m4 is "+currentDateTimeString);
                             Listitem_thufrag listitem_thufrag=new Listitem_thufrag(m1,m2,m3,""+k,m4);
                             assert listitem_thufrag != null;
                             listitem_thufrags.add(listitem_thufrag);

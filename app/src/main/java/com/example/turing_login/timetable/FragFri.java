@@ -164,7 +164,6 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Log.d("abhi", "Value of m4 is "+currentDateTimeString);
                             Listitem_frifrag listitem_frifrag=new Listitem_frifrag(m1,m2,m3,""+k,m4);
                             assert listitem_frifrag != null;
                             listitem_frifrags.add(listitem_frifrag);

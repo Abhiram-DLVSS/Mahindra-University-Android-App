@@ -25,14 +25,14 @@ public class PagerAdapter extends FragmentPagerAdapter{
        // Log.d("frag", "Position "+position);
         switch (position){
             case 0:
-                Log.d("frag", "monday is there");
+//                Log.d("frag", "monday is there");
                 if(mon==null) {
                     mon = new FragMon();
-                    Log.d("frag", "Mon is null");
+//                    Log.d("frag", "Mon is null");
                 }
                 return mon;
             case 1:
-                Log.d("frag", "tuesday is there");
+//                Log.d("frag", "tuesday is there");
                 if(tue==null)
                     tue =new FragTue();
                 return tue;

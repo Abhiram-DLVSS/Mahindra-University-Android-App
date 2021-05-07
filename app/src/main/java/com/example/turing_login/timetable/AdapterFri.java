@@ -47,7 +47,6 @@ public class AdapterFri extends RecyclerView.Adapter<AdapterFri.ViewHolder> {
         holder.link=listitem_frifrag.getLink();
         int color= Integer.parseInt(listitem_frifrag.getCol());
         int colo= ContextCompat.getColor(context_fri, R.color.white);
-        Log.d("Abhi",  "value of color is "+colo);
         if (color!=-1) {
             holder.textview_heading_frifragv.setTextColor(-1);
             holder.textview_desc_frifragv.setTextColor(-1);

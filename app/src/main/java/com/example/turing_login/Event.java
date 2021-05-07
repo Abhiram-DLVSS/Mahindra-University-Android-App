@@ -76,7 +76,7 @@ public class Event extends Intents {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 int dy=scrollY-oldScrollY;
-                Log.d("chk", "onScrollChange: "+(scrollY-oldScrollY));
+//                Log.d("chk", "onScrollChange: "+(scrollY-oldScrollY));
                 if (dy > 10&&flag==1 ){
                     flag=0;
                     final Animation animation = new TranslateAnimation(0,0,0,250);
@@ -106,7 +106,7 @@ public class Event extends Intents {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                Log.d("testing", "onPageFinished: ");
+//                Log.d("testing", "onPageFinished: ");
                 nDialog.dismiss();
                 view.loadUrl("javascript:(function() { " +
                         "var head = document.getElementsByTagName('header')[0];"

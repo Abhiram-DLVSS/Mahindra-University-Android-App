@@ -47,7 +47,6 @@ public class AdapterWed extends RecyclerView.Adapter<AdapterWed.ViewHolder> {
         holder.link=listitem_wedfrag.getLink();
         int color= Integer.parseInt(listitem_wedfrag.getCol());
         int colo= ContextCompat.getColor(context_wed, R.color.white);
-        Log.d("Abhi",  "value of color is "+colo);
         if (color!=-1) {
             holder.textview_heading_wedfragv.setTextColor(-1);
             holder.textview_desc_wedfragv.setTextColor(-1);

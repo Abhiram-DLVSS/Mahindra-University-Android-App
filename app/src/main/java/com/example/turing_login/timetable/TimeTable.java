@@ -16,10 +16,12 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.turing_login.BottomSheet;
 import com.example.turing_login.Features;
 import com.example.turing_login.Intents;
 import com.example.turing_login.Login;
 import com.example.turing_login.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -52,11 +54,15 @@ public class TimeTable extends Intents {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         if(menuItem.getItemId()==R.id.logout_in_menu) {
+
+                            BottomSheet bottomSheet = new BottomSheet();
+                            bottomSheet.show(getSupportFragmentManager(),
+                                    "ModalBottomSheet");
                             // Toast message on menu item clicked
-                            Toast.makeText(TimeTable.this, "Signing out...", Toast.LENGTH_SHORT).show();
-                            FirebaseAuth.getInstance().signOut();
-                            startActivity(new Intent(getApplicationContext(), Login.class));
-                            finish();
+//                            Toast.makeText(TimeTable.this, "Signing out...", Toast.LENGTH_SHORT).show();
+//                            FirebaseAuth.getInstance().signOut();
+//                            startActivity(new Intent(getApplicationContext(), Login.class));
+//                            finish();
                         }
                         else if(menuItem.getItemId()==R.id.feat_menu) {
                             Intent intent=new Intent(TimeTable.this, Features.class);
@@ -95,18 +101,15 @@ public class TimeTable extends Intents {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                Log.d("frag", "onTabSelected:"+tab.getPosition());
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                Log.d("frag", "onTabUnselected:"+tab.getPosition());
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                Log.d("frag", "onTabReselect:"+tab.getPosition());
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -123,7 +126,8 @@ public class TimeTable extends Intents {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 int dx=scrollX-oldScrollX;
-                Log.d("chk", "onScrollChange: "+(scrollX-oldScrollX));
+//                Log.d("chk", "onScrollChange: "+(scrollX-oldScrollX));
+
                 if (dx !=0){
 //                    final Animation animation = new TranslateAnimation(0,0,0,250);
 //                    animation.setDuration(50);

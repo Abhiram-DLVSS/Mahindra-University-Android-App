@@ -105,7 +105,7 @@ public class FragMon extends Fragment {
         return view;
     }
     private void ReadHeader() {
-        Log.d("frag", "ReadHeader: ");
+//        Log.d("frag", "ReadHeader: ");
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem_monfrags = new ArrayList<>();
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
