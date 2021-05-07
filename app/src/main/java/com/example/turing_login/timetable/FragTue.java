@@ -164,7 +164,6 @@ public class FragTue extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                         k=-7596779;
                     else
                         k=-1;//-16777216;
-                    Log.d("abhi", "Value of m4 is "+currentDateTimeString);
                     Listitem_tuefrag listitem_tuefrag=new Listitem_tuefrag(m1,m2,m3,""+k,m4);
                     assert listitem_tuefrag != null;
                     listitem_tuefrags.add(listitem_tuefrag);

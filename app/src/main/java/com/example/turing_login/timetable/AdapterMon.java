@@ -47,7 +47,6 @@ public class AdapterMon extends RecyclerView.Adapter<AdapterMon.ViewHolder> {
         holder.link=listitem_monfrag.getLink();
         int color= Integer.parseInt(listitem_monfrag.getCol());
         int colo=ContextCompat.getColor(context_mon, R.color.white);
-        Log.d("Abhi",  "value of color is "+colo);
         if (color!=-1) {
             holder.textview_heading_monfragv.setTextColor(-1);
             holder.textview_desc_monfragv.setTextColor(-1);

@@ -47,7 +47,6 @@ public class AdapterSat extends RecyclerView.Adapter<AdapterSat.ViewHolder> {
         holder.link=listitem_satfrag.getLink();
         int color= Integer.parseInt(listitem_satfrag.getCol());
         int colo= ContextCompat.getColor(context_sat, R.color.white);
-        Log.d("Abhi",  "value of color is "+colo);
         if (color!=-1) {
             holder.textview_heading_satfragv.setTextColor(-1);
             holder.textview_desc_satfragv.setTextColor(-1);

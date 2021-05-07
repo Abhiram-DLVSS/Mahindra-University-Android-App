@@ -164,7 +164,6 @@ public class FragSat extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Log.d("abhi", "Value of m4 is "+currentDateTimeString);
                             Listitem_satfrag listitem_satfrag=new Listitem_satfrag(m1,m2,m3,""+k,m4);
                             assert listitem_satfrag != null;
                             listitem_satfrags.add(listitem_satfrag);

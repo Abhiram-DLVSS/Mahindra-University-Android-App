@@ -47,7 +47,6 @@ public class AdapterThu extends RecyclerView.Adapter<AdapterThu.ViewHolder> {
         holder.link=listitem_thufrag.getLink();
         int color= Integer.parseInt(listitem_thufrag.getCol());
         int colo= ContextCompat.getColor(context_thu, R.color.white);
-        Log.d("Abhi",  "value of color is "+colo);
         if (color!=-1) {
             holder.textview_heading_thufragv.setTextColor(-1);
             holder.textview_desc_thufragv.setTextColor(-1);

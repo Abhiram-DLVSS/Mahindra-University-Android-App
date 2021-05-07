@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/bar_sheet"
+        android:layout_width="150dp"
+        android:layout_height="19dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:scaleX="1.4"
+        android:scaleY="2"
+        app:srcCompat="@drawable/ic_hor_bar">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/Logout_in_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bar_sheet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Log out?"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:padding="10dp"
+        android:id="@+id/confirm_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nothing"
+        android:layout_marginTop="-0dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toStartOf="@+id/nothing"
+        android:background="@drawable/round_red_shade_radius"
+        android:text="Yes, Log out"
+        android:textAppearance="@style/MyTheme.ActionBar.TitleTextStyle"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/nothing"
+        android:layout_below="@+id/Logout_in_sheet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancel_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/nothing"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/confirm_sheet"
+        android:background="@drawable/null_layout"
+        android:text="Cancel"
+        android:textColor="@color/mu"
+        android:textSize="15sp" />
+
+</RelativeLayout>

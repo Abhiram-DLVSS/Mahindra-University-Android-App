@@ -125,7 +125,6 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                             for (count = 0; count < total; count++) {
                                 String m1 = snapshot.child(""+count).getValue().toString();
                                 free[count]=Integer.parseInt(m1);
-                                Log.d("fac", "onDataChange: "+count+"="+free[count]);
                             }
 
                             GridLayoutManager gridLayoutManager= new GridLayoutManager(getApplicationContext(),2);
@@ -219,7 +218,6 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                             for (count = 0; count < total; count++) {
                                 String m1 = snapshot.child(""+count).getValue().toString();
                                 free[count]=Integer.parseInt(m1);
-                                Log.d("fac", "onDataChange: "+count+"="+free[count]);
                             }
                     GridLayoutManager gridLayoutManager= new GridLayoutManager(getApplicationContext(),2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
@@ -292,7 +290,6 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                             for (count = 0; count < total; count++) {
                                 String m1 = snapshot.child(""+count).getValue().toString();
                                 free[count]=Integer.parseInt(m1);
-                                Log.d("fac", "onDataChange: "+count+"="+free[count]);
                             }
                     GridLayoutManager gridLayoutManager= new GridLayoutManager(getApplicationContext(),2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);

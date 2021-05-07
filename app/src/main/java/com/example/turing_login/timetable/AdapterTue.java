@@ -47,7 +47,6 @@ public class AdapterTue extends RecyclerView.Adapter<AdapterTue.ViewHolder> {
         holder.link=listitem_tuefrag.getLink();
         int color= Integer.parseInt(listitem_tuefrag.getCol());
         int colo= ContextCompat.getColor(context_tue, R.color.white);
-        Log.d("Abhi",  "value of color is "+colo);
         if (color!=-1) {
             holder.textview_heading_tuefragv.setTextColor(-1);
             holder.textview_desc_tuefragv.setTextColor(-1);
