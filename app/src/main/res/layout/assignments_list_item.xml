@@ -71,7 +71,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/upload_button"
@@ -82,7 +82,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/round_red_shade"
                 android:text="Upload"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/arrow_img"

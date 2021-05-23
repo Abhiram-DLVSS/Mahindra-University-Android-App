@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
     FirebaseAuth fauth;
-    private static int SPLASH_TIME_OUT=999;
+    private static int SPLASH_TIME_OUT=100;
 //    private LottieAnimationView loading;
 
 
