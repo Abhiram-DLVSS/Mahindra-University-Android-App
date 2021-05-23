@@ -13,6 +13,6 @@
     <item
         android:id="@+id/feat_menu"
         android:title="Features"
-        android:visible="true"
+        android:visible="false"
         app:showAsAction="collapseActionView" />
 </menu>

@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
-        <activity android:name=".Fetchpdf"></activity>
+        <activity android:name=".Fetchpdf" />
         <activity android:name=".Assignment" />
         <activity android:name=".Intents" />
         <activity

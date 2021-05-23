@@ -25,6 +25,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.turing_login.timetable.TimeTable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -60,7 +61,7 @@ public class Register extends AppCompatActivity {
 
         id.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         if (fauth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), Features.class));
+            startActivity(new Intent(getApplicationContext(), TimeTable.class));
             finish();
         }
         constraintLayout=findViewById(R.id.registerview);
@@ -136,7 +137,7 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     nDialog.dismiss();
-                                    startActivity(new Intent(getApplicationContext(), Features.class));
+                                    startActivity(new Intent(getApplicationContext(), TimeTable.class));
 
                                     String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
