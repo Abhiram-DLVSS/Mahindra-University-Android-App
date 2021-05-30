@@ -3,8 +3,10 @@ package com.example.turing_login.timetable;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.turing_login.R;
 
 import java.util.List;
+import android.os.Vibrator;
 
 public class AdapterTue extends RecyclerView.Adapter<AdapterTue.ViewHolder> {
 
@@ -74,15 +77,47 @@ public class AdapterTue extends RecyclerView.Adapter<AdapterTue.ViewHolder> {
             textview_lect_tuefragv=(TextView) itemView.findViewById(R.id.textview_lecturer_tuefrag);
             rv=(RelativeLayout) itemView.findViewById(R.id.tue_rl);
             cv=itemView.findViewById(R.id.tue_card);
+            textview_heading_tuefragv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri copyUri = Uri.parse(link);
+//                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
+                    Toast toast;
+                    if( copyUri.toString().equals("null")){
+                        toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
+                        toast.show();}
+                    else{
+//                        ClipboardManager clipboard = (ClipboardManager) context_wed.getSystemService(Context.CLIPBOARD_SERVICE);
+//                        ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
+//                        clipboard.setPrimaryClip(clip);
+//                        toast=Toast.makeText(itemView.getContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
+//                        toast.show();
+                        context_tue.startActivity(new Intent(Intent.ACTION_VIEW,copyUri));
+                        // Get instance of Vibrator from current Context
+                        Vibrator vib = (Vibrator) context_tue.getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 400 milliseconds
+                        vib.vibrate(40);}
+                }
+            });
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     Uri copyUri = Uri.parse(link);
-                    ClipboardManager clipboard = (ClipboardManager) context_tue.getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
-                    clipboard.setPrimaryClip(clip);
-                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
-                    toast.show();
+                    //                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
+                    Toast toast;
+                    if( copyUri.toString().equals("null")){
+                        toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
+                        toast.show();}
+                    else{
+                        ClipboardManager clipboard = (ClipboardManager) context_tue.getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
+                        clipboard.setPrimaryClip(clip);
+                        toast=Toast.makeText(itemView.getContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
+                        toast.show();
+                        // Get instance of Vibrator from current Context
+                        Vibrator vib = (Vibrator) context_tue.getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 400 milliseconds
+                        vib.vibrate(40);}
                     return true;
                 }
             });

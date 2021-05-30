@@ -105,7 +105,7 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
-        reference.keepSynced(false);
+        reference.keepSynced(true);
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

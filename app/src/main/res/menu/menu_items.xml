@@ -15,4 +15,14 @@
         android:title="Features"
         android:visible="false"
         app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/feedback"
+        android:title="Feedback"
+        android:visible="false"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/aboutUs"
+        android:title="About Us"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
 </menu>

@@ -112,7 +112,7 @@ public class FragMon extends Fragment {
         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
-        reference.keepSynced(false);
+        reference.keepSynced(true);
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -60,7 +60,6 @@ public class Facultyadapter extends RecyclerView.Adapter<Facultyadapter.FacultyV
             facultyname=(TextView)itemView.findViewById(R.id.facultyName);
             facultyposition=(TextView)itemView.findViewById(R.id.facultyPosition);
             facultybg=(View)itemView.findViewById(R.id.fac_row_layout);
-
         }
     }
 }

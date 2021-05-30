@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,15 +69,19 @@ public class AdapterForms extends RecyclerView.Adapter<AdapterForms.ViewHolder> 
                     gotoUrl(link);
                 }
             });
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            textview_heading_form.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     Uri copyUri = Uri.parse(link);
                     ClipboardManager clipboard = (ClipboardManager) context_form.getSystemService(Context.CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
                     clipboard.setPrimaryClip(clip);
-                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
+                    Toast toast=Toast.makeText(itemView.getContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
                     toast.show();
+                    // Get instance of Vibrator from current Context
+                    Vibrator vib = (Vibrator) context_form.getSystemService(Context.VIBRATOR_SERVICE);
+                    // Vibrate for 400 milliseconds
+                    vib.vibrate(40);
                     return true;
                 }
             });

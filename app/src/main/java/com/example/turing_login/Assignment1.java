@@ -59,6 +59,8 @@ public class Assignment1 extends Intents {
         });
 
 
+
+
         recyclerView=findViewById(R.id.assign_re);
         recyclerView.setHasFixedSize(true);
 

@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -168,6 +169,10 @@ public class Intents extends AppCompatActivity {
 
                 Toast toast=Toast.makeText(getApplicationContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
                 toast.show();
+                // Get instance of Vibrator from current Context
+                Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                // Vibrate for 400 milliseconds
+                vib.vibrate(40);
                 return true;
             }
         });
@@ -189,6 +194,10 @@ public class Intents extends AppCompatActivity {
 
                 Toast toast=Toast.makeText(getApplicationContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
                 toast.show();
+                // Get instance of Vibrator from current Context
+                Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                // Vibrate for 400 milliseconds
+                vib.vibrate(40);
                 return true;
             }
         });

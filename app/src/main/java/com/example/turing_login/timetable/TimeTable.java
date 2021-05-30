@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,8 +17,10 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.turing_login.AboutUs;
 import com.example.turing_login.BottomSheet;
 import com.example.turing_login.Features;
+import com.example.turing_login.Forms;
 import com.example.turing_login.Intents;
 import com.example.turing_login.Login;
 import com.example.turing_login.R;
@@ -68,6 +71,16 @@ public class TimeTable extends Intents {
                             Intent intent=new Intent(TimeTable.this, Features.class);
                             startActivity(intent);
                             finish();
+                        }
+                        else if(menuItem.getItemId()==R.id.feedback) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            Uri data = Uri.parse("mailto:devturing21@gmail.com?subject=" + Uri.encode("Mahindra University App Feedback") + "&body=" + Uri.encode("~Write here~"));
+                            intent.setData(data);
+                            startActivity(intent);
+                        }
+                        else if(menuItem.getItemId()==R.id.aboutUs) {
+                            Intent intent=new Intent(getApplicationContext(), AboutUs.class);
+                            startActivity(intent);
                         }
                         return true;
                     }
