@@ -1,14 +1,13 @@
 package com.example.turing_login.timetable;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.ClipData;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,23 +16,22 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.turing_login.AboutUs;
 import com.example.turing_login.BottomSheet;
-import com.example.turing_login.Features;
-import com.example.turing_login.Forms;
+import com.example.turing_login.BuildConfig;
 import com.example.turing_login.Intents;
-import com.example.turing_login.Login;
 import com.example.turing_login.R;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
 import java.util.Calendar;
 
 public class TimeTable extends Intents {
 
-    private int flag=1;
+    private final int flag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +42,6 @@ public class TimeTable extends Intents {
         ViewPager viewPager = findViewById(R.id.viewPager);
         ImageView imageView = findViewById(R.id.tt_3dot);
 
-
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,24 +50,38 @@ public class TimeTable extends Intents {
 
                 // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.menu_items, popupMenu.getMenu());
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
+                ref.keepSynced(true);
+                ref.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                        String chk= snapshot.child("Update").getValue().toString();
+                        Menu menu=popupMenu.getMenu();
+                        MenuItem update= menu.findItem(R.id.update);
+                        String versionName = BuildConfig.VERSION_NAME;
+
+                        update.setVisible(!chk.equals(versionName));
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("chk", "Error: "+error);
+                    }
+                });
+
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+
                         if(menuItem.getItemId()==R.id.logout_in_menu) {
 
                             BottomSheet bottomSheet = new BottomSheet();
                             bottomSheet.show(getSupportFragmentManager(),
                                     "ModalBottomSheet");
-                            // Toast message on menu item clicked
-//                            Toast.makeText(TimeTable.this, "Signing out...", Toast.LENGTH_SHORT).show();
-//                            FirebaseAuth.getInstance().signOut();
-//                            startActivity(new Intent(getApplicationContext(), Login.class));
-//                            finish();
-                        }
-                        else if(menuItem.getItemId()==R.id.feat_menu) {
-                            Intent intent=new Intent(TimeTable.this, Features.class);
-                            startActivity(intent);
-                            finish();
                         }
                         else if(menuItem.getItemId()==R.id.feedback) {
                             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -78,8 +89,10 @@ public class TimeTable extends Intents {
                             intent.setData(data);
                             startActivity(intent);
                         }
-                        else if(menuItem.getItemId()==R.id.aboutUs) {
-                            Intent intent=new Intent(getApplicationContext(), AboutUs.class);
+                        else if(menuItem.getItemId()==R.id.update) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            Uri data = Uri.parse("https://drive.google.com/drive/folders/1JOOQGWbeiIwJ2jVWP7P9fbNgHXFRPylN");
+                            intent.setData(data);
                             startActivity(intent);
                         }
                         return true;
@@ -110,6 +123,7 @@ public class TimeTable extends Intents {
             viewPager.setCurrentItem(0, true);
         }
 
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -139,34 +153,13 @@ public class TimeTable extends Intents {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 int dx=scrollX-oldScrollX;
-//                Log.d("chk", "onScrollChange: "+(scrollX-oldScrollX));
-
                 if (dx !=0){
-//                    final Animation animation = new TranslateAnimation(0,0,0,250);
-//                    animation.setDuration(50);
-//                    animation.setFillAfter(true);
-//                    floatingmenu.startAnimation(animation);
-//
-//                    new Handler().postDelayed(new Runnable() {
-//
-//                        @Override
-//                        public void run() {
                             final Animation animation1 = new TranslateAnimation(0,0,250,0);
                             animation1.setDuration(500);
                             animation1.setFillAfter(true);
-                            floatingmenu.startAnimation(animation1);                        }
-//                    }, 50);
-//
-//                }
+                            floatingmenu.startAnimation(animation1);
+                }
             }
         });
-
-
-
-//    first_time(0);
-
-
     }
-
-
 }

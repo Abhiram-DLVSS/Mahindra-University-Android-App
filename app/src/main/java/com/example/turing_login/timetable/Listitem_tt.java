@@ -1,13 +1,13 @@
 package com.example.turing_login.timetable;
 
-public class Listitem_frifrag {
-    private String head;
-    private String desc;
-    private String lect;
-    private String col;
-    private String link;
+public class Listitem_tt {
+    private final String head;
+    private final String desc;
+    private final String lect;
+    private final String col;
+    private final String link;
 
-    public Listitem_frifrag(String head, String desc, String lect,String col,String link) {
+    public Listitem_tt(String head, String desc, String lect, String col, String link) {
         this.head = head;
         this.desc = desc;
         this.lect= lect;

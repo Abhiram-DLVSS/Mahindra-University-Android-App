@@ -1,7 +1,6 @@
 package com.example.turing_login;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,11 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.turing_login.timetable.AdapterMon;
-import com.example.turing_login.timetable.Listitem_monfrag;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,10 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Forms extends Intents {
@@ -88,9 +81,7 @@ public class Forms extends Intents {
                     animation.setDuration(500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
-
                 }
-
             }
         });
 
@@ -111,33 +102,6 @@ public class Forms extends Intents {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listitem_forms.clear();
-//                String rollnumber = snapshot.child("id").getValue().toString();
-//                String year = rollnumber.substring(0, 2);
-//                String branch = rollnumber.substring(7, 8);
-//                String rno = rollnumber.substring(8, 10);
-//                int  batch = 1;
-//                if (Integer.parseInt(branch) == 1) {
-//                    if (Integer.parseInt(rno) <= 44)
-//                        batch = 1;
-//                    else
-//                        batch = 3;//not there actually
-//                } else if (Integer.parseInt(branch) == 2) {
-//                    if (Integer.parseInt(rno) <= 35)
-//                        batch = 1;
-//                    else
-//                        batch = 2;
-//                } else if (Integer.parseInt(branch) == 3) {
-//                    if (Integer.parseInt(rno) <= 35)
-//                        batch = 1;
-//                    else
-//                        batch = 2;
-//                } else if (Integer.parseInt(branch) == 5) {
-//                    if (Integer.parseInt(rno) <= 42)
-//                        batch = 1;
-//                    else
-//                        batch = 2;
-//                }
-//                String batnum=""+batch;
 
                 DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Forms");
                 reference1.keepSynced(true);
@@ -152,23 +116,6 @@ public class Forms extends Intents {
                             String m2 = snapshot.child(chil).child("time").getValue().toString();
                             String m3=snapshot.child(chil).child("by").getValue().toString();
                             String m4 = snapshot.child(chil).child("link").getValue().toString();
-
-//                            String m1="hello";
-//                            String m2="hello";
-//                            String m3="hello";
-//                            String m4="hello";
-
-//                            int k;
-//                            Date d=new Date();
-//                            SimpleDateFormat sdf=new SimpleDateFormat("HHmm");
-//                            String currentDateTimeString = sdf.format(d);
-//                            int time=Integer.parseInt(currentDateTimeString);
-//                            Calendar c = Calendar.getInstance();
-//                            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-//                            if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.MONDAY == dayOfWeek)
-//                                k=-7596779;
-//                            else
-//                                k=-1;//-16777216;
                             Log.d("forms", "onDataChange: "+m1+m2+m3+m4);
                             Listitem_form listitem_form = new Listitem_form(m1, m2, m3,m4);
                             assert listitem_form != null;

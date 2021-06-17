@@ -1,10 +1,10 @@
 package com.example.turing_login;
 
 public class Listitem_assign {
-    private String head;
-    private String desc;
-    private String lect;
-    private String link;
+    private final String head;
+    private final String desc;
+    private final String lect;
+    private final String link;
 
     public Listitem_assign(String head, String desc, String lect, String link) {
         this.head = head;

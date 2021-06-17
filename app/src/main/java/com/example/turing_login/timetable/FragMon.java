@@ -47,7 +47,7 @@ public class FragMon extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count, total;
-    private List<Listitem_monfrag> listitem_monfrags;
+    private List<Listitem_tt> listitem_monfrags;
     //to fetch data
     DatabaseReference reff;
 
@@ -95,13 +95,13 @@ public class FragMon extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.tt_fragment_mon, container, false);
-        recyclerView = view.findViewById(R.id.recyclerView_monFrag);
+        View view = inflater.inflate(R.layout.tt_fragment_box, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView_boxFrag);
         recyclerView.setHasFixedSize(true);
 
 
-        
-       ReadHeader();
+
+        ReadHeader();
         return view;
     }
     private void ReadHeader() {
@@ -146,41 +146,42 @@ public class FragMon extends Fragment {
                 }
                 String batnum=""+batch;
 
+
                 DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("TimeTable");
                 reference1.keepSynced(true);
                 reference1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                total = (int) snapshot.child(year).child(branch).child("1").child("Monday").getChildrenCount();
-                for (count = 0; count < total; count++) {
-                    String chil = "" + count;
-                    String m1 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("header").getValue().toString();
-                    String m2 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("time").getValue().toString();
-                    String m3 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("lecturer").getValue().toString();
-                    String m4 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("link").getValue().toString();
-                    int k;
+                        total = (int) snapshot.child(year).child(branch).child("1").child("Monday").getChildrenCount();
+                        for (count = 0; count < total; count++) {
+                            String chil = "" + count;
+                            String m1 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("header").getValue().toString();
+                            String m2 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("time").getValue().toString();
+                            String m3 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("lecturer").getValue().toString();
+                            String m4 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("link").getValue().toString();
+                            int k;
 //                    Date currentTime = Calendar.getInstance().getTime();
-                    Date d=new Date();
-                    SimpleDateFormat sdf=new SimpleDateFormat("HHmm");
-                    String currentDateTimeString = sdf.format(d);
-                    int time=Integer.parseInt(currentDateTimeString);
-                    Calendar c = Calendar.getInstance();
-                    int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-                   if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.MONDAY == dayOfWeek)
-                       k=-7596779;
-                   else
-                       k=-1;//-16777216;
-                    Listitem_monfrag listitem_monfrag = new Listitem_monfrag(m1, m2, m3,""+k,m4);
-                    assert listitem_monfrag != null;
-                    listitem_monfrags.add(listitem_monfrag);
-                    adapter = new AdapterMon(listitem_monfrags, getContext());
-                    recyclerView.setAdapter(adapter);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+                            Date d=new Date();
+                            SimpleDateFormat sdf=new SimpleDateFormat("HHmm");
+                            String currentDateTimeString = sdf.format(d);
+                            int time=Integer.parseInt(currentDateTimeString);
+                            Calendar c = Calendar.getInstance();
+                            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+                            if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.MONDAY == dayOfWeek)
+                                k=-7596779;
+                            else
+                                k=-1;//-16777216;
+                            Listitem_tt listitem_monfrag = new Listitem_tt(m1, m2, m3,""+k,m4);
+                            assert listitem_monfrag != null;
+                            listitem_monfrags.add(listitem_monfrag);
+                            adapter = new AdapterBox(listitem_monfrags, getContext());
+                            recyclerView.setAdapter(adapter);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
 
             }
             @Override

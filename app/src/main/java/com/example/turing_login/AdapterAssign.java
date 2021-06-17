@@ -28,8 +28,8 @@ import java.util.List;
 
 public class AdapterAssign extends RecyclerView.Adapter<AdapterAssign.ViewHolder> {
 
-    private Context context_assign;
-    private List<Listitem_assign> listitem_assigns;
+    private final Context context_assign;
+    private final List<Listitem_assign> listitem_assigns;
     public AdapterAssign(List<Listitem_assign> listitem_assigns, Context context_assign) {
         this.listitem_assigns = listitem_assigns;
         this.context_assign = context_assign;

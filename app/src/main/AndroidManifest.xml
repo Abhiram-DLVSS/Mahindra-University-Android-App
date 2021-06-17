@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -15,17 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
-        <activity android:name=".AboutUs"></activity>
         <activity android:name=".Fetchpdf" />
         <activity android:name=".Assignment" />
         <activity android:name=".Intents" />
         <activity
             android:name=".Event"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.NoActionBar" /> <!-- <activity android:name=".FacultyMenu" /> -->
-        <!-- <activity android:name=".SplashScreen"> -->
-        <!-- android:theme="@style/CustomTheme"></activity> -->
-        <!-- android:screenOrientation="portrait"></activity> -->
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".FacultyMenu"
             android:screenOrientation="portrait" />
@@ -50,13 +45,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Assignment1"
-            android:screenOrientation="portrait" /> <!-- <activity -->
-        <!-- android:name=".fetchactivity" -->
-        <!-- android:screenOrientation="portrait" /> -->
-        <activity
-            android:name=".Features"
-            android:screenOrientation="portrait"
-            android:theme="@style/CustomTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Login"
             android:screenOrientation="portrait"

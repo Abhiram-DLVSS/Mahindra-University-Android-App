@@ -39,9 +39,6 @@ public class Fetchpdf extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UploadPDF uploadPDF= UploadPDFS.get(position);
                 Intent intent=new Intent();
-//                intent.setType(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(uploadPDF.url));
-//                Uri uri=https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjklarC35nwAhVZgtgFHYUsDScQPAgI;
                 intent.setData(Uri.parse("https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjklarC35nwAhVZgtgFHYUsDScQPAgI"));
                 startActivity(intent);
             }

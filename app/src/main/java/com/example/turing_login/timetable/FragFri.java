@@ -38,7 +38,7 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count,total;
-    private List<Listitem_frifrag> listitem_frifrags;
+    private List<Listitem_tt> listitem_frifrags;
     SwipeRefreshLayout mSwipeRefreshLayout;
     //to fetch data
     DatabaseReference reff;
@@ -86,18 +86,12 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.tt_fragment_fri, container, false);
-        recyclerView= view.findViewById(R.id.recyclerView_friFrag);
+        View view= inflater.inflate(R.layout.tt_fragment_box, container, false);
+        recyclerView= view.findViewById(R.id.recyclerView_boxFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem_frifrags=new ArrayList<>();
         ReadHeader();
-//        mSwipeRefreshLayout =view.findViewById(R.id.swipe_fri);
-//        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
-//        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
-//                android.R.color.holo_green_dark,
-//                android.R.color.holo_orange_dark,
-//                android.R.color.holo_blue_dark);
         return view;
     }
     private  void ReadHeader(){
@@ -110,7 +104,7 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-             //   Toast.makeText(getContext(), "Fetching...fri", Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(getContext(), "Fetching...fri", Toast.LENGTH_SHORT).show();
                 listitem_frifrags.clear();
                 String rollnumber = snapshot.child("id").getValue().toString();
                 String year=rollnumber.substring(0,2);
@@ -164,12 +158,11 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Listitem_frifrag listitem_frifrag=new Listitem_frifrag(m1,m2,m3,""+k,m4);
+                            Listitem_tt listitem_frifrag=new Listitem_tt(m1,m2,m3,""+k,m4);
                             assert listitem_frifrag != null;
                             listitem_frifrags.add(listitem_frifrag);
-                            adapter=new AdapterFri(listitem_frifrags,getContext());
+                            adapter=new AdapterBox(listitem_frifrags,getContext());
                             recyclerView.setAdapter(adapter);
-//                            mSwipeRefreshLayout.setRefreshing(false);
                         }
                     }
                     @Override
@@ -183,6 +176,4 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
             }
         });
     }
-//    @Override
-//    public void onRefresh() {ReadHeader();}
 }

@@ -38,8 +38,8 @@ public class Register extends AppCompatActivity {
     EditText Name, email, id, password;
     Button register;
     FirebaseAuth fauth;
-    private FirebaseDatabase rootnode = FirebaseDatabase.getInstance();
-    private DatabaseReference root = rootnode.getReference("Users");
+    private final FirebaseDatabase rootnode = FirebaseDatabase.getInstance();
+    private final DatabaseReference root = rootnode.getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +112,6 @@ public class Register extends AppCompatActivity {
                     }
                     else if(!email.getText().toString().contains("@mechyd.ac.in")){
                         email.setError("Enter your College Email Address");
-
                     }
                     else if(!email.getText().toString().contains(rid.substring(0,2)+rid.substring(7,10)+"@mechyd.ac.in")){
                         email.setError("Please check your College Email ID");

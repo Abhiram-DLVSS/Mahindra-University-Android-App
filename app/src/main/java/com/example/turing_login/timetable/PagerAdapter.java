@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class PagerAdapter extends FragmentPagerAdapter{
-    private int numOfTabs;
+    private final int numOfTabs;
     private static FragMon mon;
     private static FragTue tue;
     private static FragWed wed;

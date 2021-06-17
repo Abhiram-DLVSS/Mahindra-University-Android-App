@@ -38,7 +38,7 @@ public class FragWed extends Fragment {//implements SwipeRefreshLayout.OnRefresh
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count,total;
-    private List<Listitem_wedfrag> listitem_wedfrags;
+    private List<Listitem_tt> listitem_wedfrags;
     SwipeRefreshLayout mSwipeRefreshLayout;
     //to fetch data
     DatabaseReference reff;
@@ -86,18 +86,12 @@ public class FragWed extends Fragment {//implements SwipeRefreshLayout.OnRefresh
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.tt_fragment_wed, container, false);
-        recyclerView= view.findViewById(R.id.recyclerView_wedFrag);
+        View view= inflater.inflate(R.layout.tt_fragment_box, container, false);
+        recyclerView= view.findViewById(R.id.recyclerView_boxFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem_wedfrags=new ArrayList<>();
         ReadHeader();
-//        mSwipeRefreshLayout =view.findViewById(R.id.swipe_wed);
-//        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
-//        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
-//                android.R.color.holo_green_dark,
-//                android.R.color.holo_orange_dark,
-//                android.R.color.holo_blue_dark);
         return view;
     }
     private  void ReadHeader(){
@@ -164,10 +158,10 @@ public class FragWed extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Listitem_wedfrag listitem_wedfrag=new Listitem_wedfrag(m1,m2,m3,""+k,m4);
+                            Listitem_tt listitem_wedfrag=new Listitem_tt(m1,m2,m3,""+k,m4);
                             assert listitem_wedfrag != null;
                             listitem_wedfrags.add(listitem_wedfrag);
-                            adapter=new AdapterWed(listitem_wedfrags,getContext());
+                            adapter=new AdapterBox(listitem_wedfrags,getContext());
                             recyclerView.setAdapter(adapter);
 //                            mSwipeRefreshLayout.setRefreshing(false);
                         }

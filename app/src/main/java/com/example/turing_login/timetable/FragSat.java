@@ -38,7 +38,7 @@ public class FragSat extends Fragment {//implements SwipeRefreshLayout.OnRefresh
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count,total;
-    private List<Listitem_satfrag> listitem_satfrags;
+    private List<Listitem_tt> listitem_satfrags;
     SwipeRefreshLayout mSwipeRefreshLayout;
     //to fetch data
     DatabaseReference reff;
@@ -86,18 +86,12 @@ public class FragSat extends Fragment {//implements SwipeRefreshLayout.OnRefresh
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.tt_fragment_sat, container, false);
-        recyclerView= view.findViewById(R.id.recyclerView_satFrag);
+        View view= inflater.inflate(R.layout.tt_fragment_box, container, false);
+        recyclerView= view.findViewById(R.id.recyclerView_boxFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem_satfrags=new ArrayList<>();
         ReadHeader();
-//        mSwipeRefreshLayout =view.findViewById(R.id.swipe_sat);
-//        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
-//        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
-//                android.R.color.holo_green_dark,
-//                android.R.color.holo_orange_dark,
-//                android.R.color.holo_blue_dark);
         return view;
     }
     private  void ReadHeader(){
@@ -110,7 +104,7 @@ public class FragSat extends Fragment {//implements SwipeRefreshLayout.OnRefresh
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-              //  Toast.makeText(getContext(), "Fetching...sat", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getContext(), "Fetching...sat", Toast.LENGTH_SHORT).show();
                 listitem_satfrags.clear();
                 String rollnumber = snapshot.child("id").getValue().toString();
                 String year=rollnumber.substring(0,2);
@@ -164,10 +158,10 @@ public class FragSat extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Listitem_satfrag listitem_satfrag=new Listitem_satfrag(m1,m2,m3,""+k,m4);
+                            Listitem_tt listitem_satfrag=new Listitem_tt(m1,m2,m3,""+k,m4);
                             assert listitem_satfrag != null;
                             listitem_satfrags.add(listitem_satfrag);
-                            adapter=new AdapterSat(listitem_satfrags,getContext());
+                            adapter=new AdapterBox(listitem_satfrags,getContext());
                             recyclerView.setAdapter(adapter);
 //                            mSwipeRefreshLayout.setRefreshing(false);
                         }

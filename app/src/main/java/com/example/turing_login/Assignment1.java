@@ -1,7 +1,6 @@
 package com.example.turing_login;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,11 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.turing_login.timetable.AdapterMon;
-import com.example.turing_login.timetable.Listitem_monfrag;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,10 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Assignment1 extends Intents {
@@ -127,12 +120,6 @@ public class Assignment1 extends Intents {
                             String m2 = snapshot.child(chil).child("time").getValue().toString();
                             String m3= snapshot.child(chil).child("by").getValue().toString();
                             String m4 = snapshot.child(chil).child("link").getValue().toString();
-
-//                            String m1="hello";
-//                            String m2="hello";
-//                            String m3="hello";
-//                            String m4="hello";
-
                             Log.d("Assignment", "onDataChange: "+m1+m2+m3+m4);
                             Listitem_assign listitem_assign = new Listitem_assign(m1, m2, m3,m4);
                             assert listitem_assign != null;

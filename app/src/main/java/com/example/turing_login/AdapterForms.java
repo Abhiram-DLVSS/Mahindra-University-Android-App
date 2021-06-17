@@ -22,8 +22,8 @@ import java.util.List;
 
 public class AdapterForms extends RecyclerView.Adapter<AdapterForms.ViewHolder> {
 
-    private Context context_form;
-    private List<Listitem_form> listItems_forms;
+    private final Context context_form;
+    private final List<Listitem_form> listItems_forms;
     public AdapterForms(List<Listitem_form> listItems_forms, Context context_form) {
         this.listItems_forms = listItems_forms;
         this.context_form = context_form;

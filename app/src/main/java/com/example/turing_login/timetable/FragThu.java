@@ -38,7 +38,7 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count,total;
-    private List<Listitem_thufrag> listitem_thufrags;
+    private List<Listitem_tt> listitem_thufrags;
     SwipeRefreshLayout mSwipeRefreshLayout;
     //to fetch data
     DatabaseReference reff;
@@ -86,18 +86,12 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.tt_fragment_thu, container, false);
-        recyclerView= view.findViewById(R.id.recyclerView_thuFrag);
+        View view= inflater.inflate(R.layout.tt_fragment_box, container, false);
+        recyclerView= view.findViewById(R.id.recyclerView_boxFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem_thufrags=new ArrayList<>();
         ReadHeader();
-//        mSwipeRefreshLayout =view.findViewById(R.id.swipe_thu);
-//        mSwipeRefreshLayout.setOnRefreshListener(this::onRefresh);
-//        mSwipeRefreshLayout.setColorSchemeResources(R.color.stan,
-//                android.R.color.holo_green_dark,
-//                android.R.color.holo_orange_dark,
-//                android.R.color.holo_blue_dark);
         return view;
     }
     private  void ReadHeader(){
@@ -164,10 +158,10 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Listitem_thufrag listitem_thufrag=new Listitem_thufrag(m1,m2,m3,""+k,m4);
+                            Listitem_tt listitem_thufrag=new Listitem_tt(m1,m2,m3,""+k,m4);
                             assert listitem_thufrag != null;
                             listitem_thufrags.add(listitem_thufrag);
-                            adapter=new AdapterThu(listitem_thufrags,getContext());
+                            adapter=new AdapterBox(listitem_thufrags,getContext());
                             recyclerView.setAdapter(adapter);
 //                            mSwipeRefreshLayout.setRefreshing(false);
                         }

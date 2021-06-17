@@ -1,5 +1,6 @@
 package com.example.turing_login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
@@ -27,6 +28,11 @@ import android.widget.Toast;
 
 import com.example.turing_login.timetable.TimeTable;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import toan.android.floatingactionmenu.FloatingActionButton;
 import toan.android.floatingactionmenu.FloatingActionsMenu;
@@ -39,28 +45,6 @@ public class Intents extends AppCompatActivity {
     public View background;
     public View open,close;
     public NestedScrollView fab_scroll;
-//    public void first_time(int k){
-//        //first time
-//        final String PREFS_NAME = "MyPrefsFile";
-//
-//        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-//        if(k==0)
-//            settings.edit().putBoolean("my_first_time", false).commit();
-//        else if(k==1)
-//            settings.edit().putBoolean("my_first_time", true).commit();
-//
-//        if (settings.getBoolean("my_first_time", true)) {
-//            //the app is being launched for first time, do something
-//            Log.d("Comments", "First time");
-//
-//            // first time task
-//            Toast.makeText(this, "First time", Toast.LENGTH_SHORT).show();
-//
-//            // record the fact that the app has been started at least once
-//
-//
-//        }
-//    }
     public void floatinginit(){
         floatingmenu=findViewById(R.id.fm_menu);
         fee=findViewById(R.id.fm_fees);
@@ -93,16 +77,55 @@ public class Intents extends AppCompatActivity {
         floatingmenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                timetable_button.setVisibility(View.VISIBLE);
-                fee.setVisibility(View.VISIBLE);
-                faculty.setVisibility(View.VISIBLE);
-                event.setVisibility(View.VISIBLE);
-                grades.setVisibility(View.VISIBLE);
-                assignments.setVisibility(View.VISIBLE);
-                forms.setVisibility(View.VISIBLE);
+//                timetable_button.setVisibility(View.VISIBLE);
+//                fee.setVisibility(View.VISIBLE);
+//                faculty.setVisibility(View.VISIBLE);
+//                event.setVisibility(View.VISIBLE);
+//                grades.setVisibility(View.VISIBLE);
+//                assignments.setVisibility(View.VISIBLE);
+//                forms.setVisibility(View.VISIBLE);
                 background.setVisibility(View.VISIBLE);
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
-              //  statusbar1();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
+                ref.keepSynced(true);
+                ref.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.child("Timetable").getValue().toString().equals("0"))
+                        timetable_button.setVisibility(View.GONE);
+                        else
+                            timetable_button.setVisibility(View.VISIBLE);
+                        if(snapshot.child("Fee").getValue().toString().equals("0"))
+                        fee.setVisibility(View.GONE);
+                        else
+                            fee.setVisibility(View.VISIBLE);
+                        if(snapshot.child("Faculty").getValue().toString().equals("0"))
+                            faculty.setVisibility(View.GONE);
+                        else
+                            faculty.setVisibility(View.VISIBLE);
+                        if(snapshot.child("Events").getValue().toString().equals("0"))
+                            event.setVisibility(View.GONE);
+                        else
+                            event.setVisibility(View.VISIBLE);
+                        if(snapshot.child("Grades").getValue().toString().equals("0"))
+                            grades.setVisibility(View.GONE);
+                        else
+                            grades.setVisibility(View.VISIBLE);
+                        if(snapshot.child("Assignments").getValue().toString().equals("0"))
+                            assignments.setVisibility(View.GONE);
+                        else
+                            assignments.setVisibility(View.VISIBLE);
+                        if(snapshot.child("Forms").getValue().toString().equals("0"))
+                            forms.setVisibility(View.GONE);
+                        else
+                            forms.setVisibility(View.VISIBLE);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("chk", "Error: "+error);
+                    }
+                });
                 new Handler().postDelayed(new Runnable() {
                         public void run() {
                             fab_scroll.scrollTo(0,fab_scroll.getBottom());
