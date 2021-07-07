@@ -30,6 +30,8 @@
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/round1"
                 app:boxBackgroundMode="none"
+
+                android:visibility="gone"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +55,7 @@
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:padding="16dp"
+                    android:visibility="gone"
                     android:paddingStart="16dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -65,7 +68,7 @@
                 android:layout_below="@+id/PasswordLayout"
                 style="@style/MyDepressedButtonStyle"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/round3"
                 android:text="Login"
@@ -77,7 +80,7 @@
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/PasswordLayout">
+                app:layout_constraintTop_toBottomOf="@+id/ID">
             </androidx.appcompat.widget.AppCompatButton>
 
             <com.airbnb.lottie.LottieAnimationView
@@ -122,40 +125,25 @@
                 android:scaleY="1.5"
                 app:lottie_rawRes="@raw/rejected" />
 
-<!--            <com.airbnb.lottie.LottieAnimationView-->
-<!--                android:id="@+id/nointernet"-->
-<!--                android:layout_width="75dp"-->
-<!--                android:layout_height="75dp"-->
-<!--                android:layout_below="@+id/Login"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_marginStart="160dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="150dp"-->
-<!--                app:lottie_rawRes="@raw/nointernet" />-->
-
             <EditText
                 android:id="@+id/ID"
-                android:layout_width="349dp"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/imageView"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="20dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginRight="10dp"
                 android:autofillHints=""
                 android:background="@drawable/round1"
                 android:backgroundTint="#E7EBEC"
                 android:drawableStart="@drawable/ic_baseline_person_outline_24"
                 android:drawablePadding="16dp"
+                android:layout_centerHorizontal="true"
                 android:ems="10"
-                android:hint="Email"
-                android:textAlignment="textStart"
-                android:inputType="textEmailAddress"
+                android:inputType="textCapSentences|textEmailAddress|textCapWords|textCapCharacters"
+                android:hint="19XJ1A0XXX"
                 android:paddingStart="16dp"
+                android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -165,7 +153,7 @@
                 android:layout_width="222dp"
                 android:layout_height="236dp"
                 android:layout_below="@+id/Welcome_mainact"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="45dp"
                 android:layout_centerHorizontal="true"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
@@ -181,9 +169,9 @@
                 android:id="@+id/Welcome_mainact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/ID"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:text="👋Hi there!"
                 android:textAlignment="center"
@@ -195,37 +183,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textView"
-                android:layout_alignBottom="@+id/textView"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:layout_toEndOf="@+id/textView"
-                android:text="Register."
-                android:textColor="@color/mu"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Login" />
+
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Login"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="84dp"
-                android:layout_marginBottom="20dp"
-                android:text="Not a member?"
-                android:textColor="#4C3C3C"
-                android:textSize="18sp"
-                android:textStyle="normal" />
+                android:layout_alignStart="@+id/ID"
+                android:layout_alignBottom="@+id/ID"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="60dp"
+                android:text="College ID"
+                android:textColor="#000000"
+                android:textSize="16sp" />
 
 
         </RelativeLayout>

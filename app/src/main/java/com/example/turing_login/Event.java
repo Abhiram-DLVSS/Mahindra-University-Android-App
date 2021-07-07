@@ -36,7 +36,7 @@ public class Event extends Intents {
         setContentView(R.layout.event);
         ProgressDialog nDialog;
         nDialog = new ProgressDialog(com.example.turing_login.Event.this);
-        nDialog.setMessage("Loading the Website");
+        nDialog.setMessage("Loading...");
         nDialog.setIndeterminate(false);
         nDialog.show();
         statusbar();

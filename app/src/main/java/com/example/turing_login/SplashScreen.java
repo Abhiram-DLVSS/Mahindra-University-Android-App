@@ -3,11 +3,15 @@ package com.example.turing_login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.turing_login.timetable.TimeTable;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.sql.Time;
 
 public class SplashScreen extends AppCompatActivity {
     FirebaseAuth fauth;
@@ -20,8 +24,12 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(fauth.getCurrentUser()!=null) {
-                            Intent homeIntent = new Intent(SplashScreen.this, Login.class);
+                DatabaseHelper mDatabaseHelper = new DatabaseHelper(getApplicationContext());
+                Cursor data = mDatabaseHelper.getData();
+
+
+                if(data.moveToNext()) {
+                            Intent homeIntent = new Intent(SplashScreen.this, TimeTable.class);
                             startActivity(homeIntent);
                             finish();
                 }

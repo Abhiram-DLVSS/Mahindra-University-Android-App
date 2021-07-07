@@ -1,5 +1,6 @@
 package com.example.turing_login.timetable;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.turing_login.DatabaseHelper;
 import com.example.turing_login.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -95,19 +97,21 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
         return view;
     }
     private  void ReadHeader(){
-        final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
-        reference.keepSynced(true);
-
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Toast.makeText(getContext(), "Fetching...thu", Toast.LENGTH_SHORT).show();
+//        final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+//        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
+//        reference.keepSynced(true);
+//
+//        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                //Toast.makeText(getContext(), "Fetching...thu", Toast.LENGTH_SHORT).show();
                 listitem_thufrags.clear();
-                String rollnumber = snapshot.child("id").getValue().toString();
-                String year=rollnumber.substring(0,2);
+        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
+        Cursor data = mDatabaseHelper.getData();
+        data.moveToNext();
+        String rollnumber = data.getString(1);                String year=rollnumber.substring(0,2);
                 String branch=rollnumber.substring(7,8);
                 String rno=rollnumber.substring(8,10);
                 int  batch = 1;
@@ -170,12 +174,12 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
                     public void onCancelled(@NonNull DatabaseError error) {
                     }
                 });
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+//
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
     }
 //    @Override
 //    public void onRefresh() {ReadHeader();}

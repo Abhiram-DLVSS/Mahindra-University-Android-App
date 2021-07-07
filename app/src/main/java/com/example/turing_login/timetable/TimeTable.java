@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.turing_login.BottomSheet;
 import com.example.turing_login.BuildConfig;
+import com.example.turing_login.DatabaseHelper;
 import com.example.turing_login.Intents;
 import com.example.turing_login.R;
 import com.google.android.material.tabs.TabLayout;
@@ -41,6 +43,28 @@ public class TimeTable extends Intents {
         TabLayout tabLayout = findViewById(R.id.tab_bar);
         ViewPager viewPager = findViewById(R.id.viewPager);
         ImageView imageView = findViewById(R.id.tt_3dot);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
+        ref.keepSynced(true);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String chk= snapshot.child("Update").getValue().toString();
+                String versionName = BuildConfig.VERSION_NAME;
+                if(!chk.equals(versionName))
+                    imageView.setImageResource(R.drawable.tt_3dotscircle);
+                else
+                    imageView.setImageResource(R.drawable.ic_three_dot);
+                String menu= snapshot.child("Menu").getValue().toString();
+                if(menu.equals("0"))
+                    floatingmenu.setVisibility(View.INVISIBLE);
+                else
+                    floatingmenu.setVisibility(View.VISIBLE);
+
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +88,10 @@ public class TimeTable extends Intents {
                         String versionName = BuildConfig.VERSION_NAME;
 
                         update.setVisible(!chk.equals(versionName));
-
+                        if(!chk.equals(versionName))
+                            imageView.setImageResource(R.drawable.tt_3dotscircle);
+                        else
+                            imageView.setImageResource(R.drawable.ic_three_dot);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -83,9 +110,9 @@ public class TimeTable extends Intents {
                             bottomSheet.show(getSupportFragmentManager(),
                                     "ModalBottomSheet");
                         }
-                        else if(menuItem.getItemId()==R.id.feedback) {
+                        else if(menuItem.getItemId()==R.id.contact) {
                             Intent intent = new Intent(Intent.ACTION_VIEW);
-                            Uri data = Uri.parse("mailto:devturing21@gmail.com?subject=" + Uri.encode("Mahindra University App Feedback") + "&body=" + Uri.encode("~Write here~"));
+                            Uri data = Uri.parse("mailto:devturing21@gmail.com?subject=" + Uri.encode("Mahindra University App") + "&body=" + Uri.encode("~Write here~"));
                             intent.setData(data);
                             startActivity(intent);
                         }
@@ -103,7 +130,7 @@ public class TimeTable extends Intents {
             }
         });
 
-        PagerAdapter pagerAdapter= new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        PagerAdapter pagerAdapter= new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount(),getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
         Calendar c = Calendar.getInstance();
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
@@ -140,25 +167,18 @@ public class TimeTable extends Intents {
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
         //floating
         floatinginit();
+        //Sql data
+        DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
+        Cursor data = mDatabaseHelper.getData();
+        data.moveToNext();
+        data.getString(1);
+//        Toast.makeText(TimeTable.this, data.getString(1), Toast.LENGTH_SHORT).show();
         timetable_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(TimeTable.this, "👀", Toast.LENGTH_SHORT).show();
-            }
-        });
-        viewPager.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                int dx=scrollX-oldScrollX;
-                if (dx !=0){
-                            final Animation animation1 = new TranslateAnimation(0,0,250,0);
-                            animation1.setDuration(500);
-                            animation1.setFillAfter(true);
-                            floatingmenu.startAnimation(animation1);
-                }
             }
         });
     }

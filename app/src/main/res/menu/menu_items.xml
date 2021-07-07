@@ -16,13 +16,13 @@
         android:visible="false"
         app:showAsAction="collapseActionView" />
     <item
-        android:id="@+id/feedback"
-        android:title="Feedback"
+        android:id="@+id/contact"
+        android:title="Contact Us"
         android:visible="true"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/update"
-        android:title="Update🔻"
+        android:title="Update Available🔻"
         android:visible="false"
         app:showAsAction="collapseActionView" />
 </menu>

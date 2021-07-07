@@ -1,11 +1,15 @@
 package com.example.turing_login.timetable;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransitionImpl;
 
 public class PagerAdapter extends FragmentPagerAdapter{
     private final int numOfTabs;
@@ -15,46 +19,46 @@ public class PagerAdapter extends FragmentPagerAdapter{
     private static FragThu thu;
     private static FragFri fri;
     private static FragSat sat;
-    public PagerAdapter(FragmentManager fm, int numOfTabs){
+    private static Context context;
+    public PagerAdapter(FragmentManager fm, int numOfTabs, Context context){
         super(fm);
         this.numOfTabs= numOfTabs;
+        this.context=context;
     }
     @NonNull
     @Override
     public Fragment getItem(int position) {
-       // Log.d("frag", "Position "+position);
+//    if(mon==null||tue==null||wed==null||thu==null||fri==null||sat==null) {
+//        Log.d("frag", "getItem: Check");
+//        if (mon == null)
+//            mon = new FragMon();
+//        if (tue == null)
+//            tue = new FragTue();
+//        if (wed == null)
+//            wed = new FragWed();
+//        if (thu == null)
+//            thu = new FragThu();
+//        if (fri == null)
+//            fri = new FragFri();
+//        if (sat == null)
+//            sat = new FragSat();
+//    }
+        Log.d("frag", "getItem:"+position);
         switch (position){
             case 0:
-//                Log.d("frag", "monday is there");
-                if(mon==null) {
-                    mon = new FragMon();
-//                    Log.d("frag", "Mon is null");
-                }
-                return mon;
+                return new FragMon();
             case 1:
-//                Log.d("frag", "tuesday is there");
-                if(tue==null)
-                    tue =new FragTue();
-                return tue;
+                return new FragTue();
             case 2:
-                if(wed==null)
-                    wed =new FragWed();
-                return wed;
+                return new FragWed();
             case 3:
-                if(thu==null)
-                    thu =new FragThu();
-                return thu;
+                return new FragThu();
             case 4:
-                if(fri==null)
-                    fri =new FragFri();
-                return fri;
+                return new FragFri();
             case 5:
-                if(sat==null)
-                    sat =new FragSat();
-                return sat;
+                return new FragSat();
             default:
                 return null;
-
         }
     }
 

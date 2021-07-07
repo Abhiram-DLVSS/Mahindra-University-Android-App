@@ -1,6 +1,9 @@
 package com.example.turing_login;
 
+import android.app.ActivityManager;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,10 @@ import androidx.annotation.Nullable;
 import com.example.turing_login.timetable.TimeTable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.File;
+
+import static android.content.Context.ACTIVITY_SERVICE;
 
 public class BottomSheet extends BottomSheetDialogFragment {
 
@@ -33,6 +40,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
             {
 
                 FirebaseAuth.getInstance().signOut();
+                getContext().deleteDatabase("User");
                 startActivity(new Intent(getContext(), Login.class));
                 dismiss();
             }
@@ -47,4 +55,5 @@ public class BottomSheet extends BottomSheetDialogFragment {
         });
         return v;
     }
+
 }

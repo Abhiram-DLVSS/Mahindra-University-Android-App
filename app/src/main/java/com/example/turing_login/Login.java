@@ -14,9 +14,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.GetChars;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
@@ -39,7 +41,9 @@ public class Login extends AppCompatActivity {
     FirebaseAuth fauth;
     TextView signup;
     LottieAnimationView unlock,rejected,checkmark;
+    DatabaseHelper mDatabaseHelper;
     boolean loginanimation =true;
+    Snackbar snackbar_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +54,6 @@ public class Login extends AppCompatActivity {
         password=findViewById(R.id.Password);
         fauth=FirebaseAuth.getInstance();
         Login=findViewById(R.id.Login);
-        signup=findViewById(R.id.signup);
         unlock=findViewById(R.id.unlock);
         checkmark=findViewById(R.id.checkmark);
         rejected=findViewById(R.id.rejected);
@@ -58,6 +61,7 @@ public class Login extends AppCompatActivity {
         ConstraintLayout constraintLayout;
         checkmark.setVisibility(View.INVISIBLE);
 
+        email.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
 
         constraintLayout=findViewById(R.id.loginview);
@@ -73,13 +77,15 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("Select", "Selected Signup");
-                openRegister();
-            }
-        });
+        snackbar_id = Snackbar
+                .make(constraintLayout, "Please Check your College ID", Snackbar.LENGTH_LONG)
+                .setAction("Edit", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        email.requestFocus();
+                    }
+                });
+        snackbar_id.setActionTextColor(getResources().getColor(R.color.mu));
 
         if(fauth.getCurrentUser()!=null)
         {
@@ -96,6 +102,7 @@ public class Login extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 rejected.setVisibility(View.INVISIBLE);
                 Login.setVisibility(View.VISIBLE);
+
             }
 
             @Override
@@ -103,28 +110,43 @@ public class Login extends AppCompatActivity {
 
             }
         });
-        password.addTextChangedListener(new TextWatcher() {
+        email.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public boolean onTouch(View v, MotionEvent event) {
+                Login.setEnabled(true);
                 rejected.setVisibility(View.INVISIBLE);
                 Login.setVisibility(View.VISIBLE);
-            }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                return false;
             }
         });
+//        password.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                rejected.setVisibility(View.INVISIBLE);
+//                Login.setVisibility(View.VISIBLE);
+//                Login.setEnabled(true);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Login.setEnabled(false);
                 String remail=email.getText().toString().trim();
                 String rpassword=password.getText().toString().trim();
+
+
 
                 Drawable errorIcon = getResources().getDrawable(R.drawable.null_layout);
                 errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth(), errorIcon.getIntrinsicHeight()));
@@ -132,20 +154,25 @@ public class Login extends AppCompatActivity {
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             //we are connected to a network
-            if(TextUtils.isEmpty(remail)||TextUtils.isEmpty(rpassword)){
-                loginanimation =true;
-                Login.setVisibility(View.INVISIBLE);
-                rejected.setVisibility(View.VISIBLE);
-                rejected.playAnimation();
-                loginanimation =false;
+            if(TextUtils.isEmpty(remail)){
+                rejected();
+
+            }
+            else if(!remail.contains("XJ1A0")&&email.length()>10){
+                rejected();
+            }
+            else if(!remail.contains("19XJ1A05")&&!remail.contains("19XJ1A03")&&!remail.contains("19XJ1A01")&&!remail.contains("19XJ1A02")){
+                rejected();
             }
             else{
-                fauth.signInWithEmailAndPassword(remail,rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                fauth.signInWithEmailAndPassword(remail,rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
                         //Login and save session
 
-                        if(task.isSuccessful()){
+//                        if(task.isSuccessful()){
+                mDatabaseHelper = new DatabaseHelper(Login.this);
+                mDatabaseHelper.addData(email.getText().toString());
                             loginanimation =true;
                             rejected.setVisibility(View.INVISIBLE);
                             checkmark.setVisibility(View.VISIBLE);
@@ -162,14 +189,14 @@ public class Login extends AppCompatActivity {
                                     finish();
                                 }
                             },2000);
-                        }
-                        else {
-                            Login.setVisibility(View.INVISIBLE);
-                            rejected.setVisibility(View.VISIBLE);
-                            rejected.playAnimation();
-                        }
-                    }
-                });
+//                        }
+//                        else {
+//                            Login.setVisibility(View.INVISIBLE);
+//                            rejected.setVisibility(View.VISIBLE);
+//                            rejected.playAnimation();
+//                        }
+//                    }
+//                });
             }
         }
         else{
@@ -185,6 +212,7 @@ public class Login extends AppCompatActivity {
                     });
             snackbar.setActionTextColor(getResources().getColor(R.color.mu));
             snackbar.show();
+            Login.setEnabled(true);
         }
 
 
@@ -192,10 +220,17 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void openRegister() {
-        Intent intent=new Intent(this, Register.class);
-        startActivity(intent);
+    private void rejected() {
+        loginanimation =true;
+        Login.setVisibility(View.INVISIBLE);
+        rejected.setVisibility(View.VISIBLE);
+        rejected.playAnimation();
+        loginanimation =false;
+        Login.setEnabled(true);
+        snackbar_id.show();
+
     }
+
     @Override
     public void onBackPressed() {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);

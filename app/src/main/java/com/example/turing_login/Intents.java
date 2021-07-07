@@ -39,7 +39,7 @@ import toan.android.floatingactionmenu.FloatingActionsMenu;
 
 public class Intents extends AppCompatActivity {
 
-    public FloatingActionButton timetable_button,faculty,fee,event,grades,assignments,forms;
+    public FloatingActionButton timetable_button,fee,event,grades;
     public FloatingActionsMenu floatingmenu;
     public ConstraintLayout tt;
     public View background;
@@ -48,13 +48,10 @@ public class Intents extends AppCompatActivity {
     public void floatinginit(){
         floatingmenu=findViewById(R.id.fm_menu);
         fee=findViewById(R.id.fm_fees);
-        faculty=findViewById(R.id.fm_faculty);
         event=findViewById(R.id.fm_events);
         timetable_button=findViewById(R.id.fm_timetable);
         tt=findViewById(R.id.tt_fm);
         grades=findViewById(R.id.fm_grades);
-        assignments=findViewById(R.id.fm_assignment);
-        forms=findViewById(R.id.fm_forms);
         background=findViewById(R.id.background_dimmer);
         open=findViewById(R.id.open);
         close=findViewById(R.id.closed);
@@ -82,8 +79,6 @@ public class Intents extends AppCompatActivity {
 //                faculty.setVisibility(View.VISIBLE);
 //                event.setVisibility(View.VISIBLE);
 //                grades.setVisibility(View.VISIBLE);
-//                assignments.setVisibility(View.VISIBLE);
-//                forms.setVisibility(View.VISIBLE);
                 background.setVisibility(View.VISIBLE);
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
@@ -100,10 +95,6 @@ public class Intents extends AppCompatActivity {
                         fee.setVisibility(View.GONE);
                         else
                             fee.setVisibility(View.VISIBLE);
-                        if(snapshot.child("Faculty").getValue().toString().equals("0"))
-                            faculty.setVisibility(View.GONE);
-                        else
-                            faculty.setVisibility(View.VISIBLE);
                         if(snapshot.child("Events").getValue().toString().equals("0"))
                             event.setVisibility(View.GONE);
                         else
@@ -112,14 +103,6 @@ public class Intents extends AppCompatActivity {
                             grades.setVisibility(View.GONE);
                         else
                             grades.setVisibility(View.VISIBLE);
-                        if(snapshot.child("Assignments").getValue().toString().equals("0"))
-                            assignments.setVisibility(View.GONE);
-                        else
-                            assignments.setVisibility(View.VISIBLE);
-                        if(snapshot.child("Forms").getValue().toString().equals("0"))
-                            forms.setVisibility(View.GONE);
-                        else
-                            forms.setVisibility(View.VISIBLE);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -137,27 +120,16 @@ public class Intents extends AppCompatActivity {
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_hamburger_icon_svg,null));
                 timetable_button.setVisibility(View.GONE);
                 fee.setVisibility(View.GONE);
-                faculty.setVisibility(View.GONE);
                 event.setVisibility(View.GONE);
                 grades.setVisibility(View.GONE);
-                assignments.setVisibility(View.GONE);
-                forms.setVisibility(View.GONE);
                 background.setVisibility(View.GONE);
-                //statusbar();
-
-
             }});
 
 
 
 
         //Button Clicks
-        faculty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFaculty();
-            }
-        });
+
         timetable_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,12 +142,7 @@ public class Intents extends AppCompatActivity {
                 openEvent();
             }
         });
-        forms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openForms();
-            }
-        });fee.setOnClickListener(new View.OnClickListener() {
+        fee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gotoUrl("https://mahindraecolecentrale.unicampus.in/ERPLogin.aspx?type=std");
@@ -203,13 +170,13 @@ public class Intents extends AppCompatActivity {
         grades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("http://www.mu-parentsportal.com/grade");
+                gotoUrl("http://mu-parentsportal.com/grade");
             }
         });
         grades.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Uri copyUri = Uri.parse("http://www.mu-parentsportal.com/grade");
+                Uri copyUri = Uri.parse("http://mu-parentsportal.com/grade");
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newUri(getContentResolver(), "URI", copyUri);
                 clipboard.setPrimaryClip(clip);
@@ -224,41 +191,16 @@ public class Intents extends AppCompatActivity {
                 return true;
             }
         });
-        assignments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(Intents.this, Assignment1.class);
-                startActivity(intent);
-                floatingmenu.collapse();
-                finish();
-            }
-        });
 
     }
-
-    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
         if(floatingmenu.isExpanded())
             floatingmenu.collapse();
-        else {
-            if (doubleBackToExitPressedOnce) {
-                super.onBackPressed();
-                return;
-            }
+        else
+            this.finish();
 
-            this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
-
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce = false;
-                }
-            }, 2000);
-        }
     }
 
 
@@ -275,13 +217,6 @@ public class Intents extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
-    }
-    public void openFaculty() {
-
-        Intent intent=new Intent(this,FacultyMenu.class);
-        startActivity(intent);
-        floatingmenu.collapse();
-        finish();
     }
     //Below both are for menu
     @Override
@@ -309,7 +244,7 @@ public class Intents extends AppCompatActivity {
         Intent intent=new Intent(this, TimeTable.class);
         startActivity(intent);
         floatingmenu.collapse();
-        finish();
+//        finish();
     }
 
     public void gotoUrl(String s) {
@@ -317,15 +252,7 @@ public class Intents extends AppCompatActivity {
         Uri uri = Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW,uri));
         floatingmenu.collapse();
-        finish();
-    }
-
-    public void openForms()
-    {
-        Intent intent=new Intent(this, Forms.class);
-        startActivity(intent);
-        floatingmenu.collapse();
-        finish();
+//        finish();
     }
     public void openEvent()
     {
@@ -339,6 +266,6 @@ public class Intents extends AppCompatActivity {
         Intent intent=new Intent(this, Event.class);
         startActivity(intent);
         nDialog.dismiss();
-        finish();
+//        finish();
     }
 }
