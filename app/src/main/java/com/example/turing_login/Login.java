@@ -39,7 +39,6 @@ public class Login extends AppCompatActivity {
     private Button Login;
     EditText email, password;
     FirebaseAuth fauth;
-    TextView signup;
     LottieAnimationView unlock,rejected,checkmark;
     DatabaseHelper mDatabaseHelper;
     boolean loginanimation =true;
@@ -87,11 +86,11 @@ public class Login extends AppCompatActivity {
                 });
         snackbar_id.setActionTextColor(getResources().getColor(R.color.mu));
 
-        if(fauth.getCurrentUser()!=null)
-        {
-            startActivity(new Intent(getApplicationContext(), TimeTable.class));
-            finish();
-        }
+//        if(fauth.getCurrentUser()!=null)
+//        {
+//            startActivity(new Intent(getApplicationContext(), TimeTable.class));
+//            finish();
+//        }
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -120,24 +119,6 @@ public class Login extends AppCompatActivity {
                 return false;
             }
         });
-//        password.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                rejected.setVisibility(View.INVISIBLE);
-//                Login.setVisibility(View.VISIBLE);
-//                Login.setEnabled(true);
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,12 +146,6 @@ public class Login extends AppCompatActivity {
                 rejected();
             }
             else{
-//                fauth.signInWithEmailAndPassword(remail,rpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        //Login and save session
-
-//                        if(task.isSuccessful()){
                 mDatabaseHelper = new DatabaseHelper(Login.this);
                 mDatabaseHelper.addData(email.getText().toString());
                             loginanimation =true;
@@ -187,16 +162,9 @@ public class Login extends AppCompatActivity {
                                 public void run() {
                                     startActivity(new Intent(getApplicationContext(), TimeTable.class));
                                     finish();
+                                    Log.d("TT", "run: ");
                                 }
                             },2000);
-//                        }
-//                        else {
-//                            Login.setVisibility(View.INVISIBLE);
-//                            rejected.setVisibility(View.VISIBLE);
-//                            rejected.playAnimation();
-//                        }
-//                    }
-//                });
             }
         }
         else{

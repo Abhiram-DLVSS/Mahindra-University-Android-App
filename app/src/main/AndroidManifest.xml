@@ -14,6 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
+
+        <activity
+            android:name=".GradesLink"
+            android:label="@string/title_activity_grades_link"></activity>
+        <activity
+            android:name=".FeeLink"
+            android:label="@string/title_activity_fee_link"
+            android:theme="@style/splash_theme.NoActionBar" />
         <activity android:name=".Intents" />
         <activity
             android:name=".Event"
@@ -27,6 +35,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".timetable.TimeTable"
