@@ -36,7 +36,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.example.turing_login"
-            android:targetClass="com.example.turing_login.Event" />
+            android:targetClass="MU.Event" />
     </shortcut>
     <shortcut
         android:shortcutId="fee"
@@ -48,7 +48,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.example.turing_login"
-            android:targetClass="com.example.turing_login.FeeLink" />
+            android:targetClass="MU.FeeLink" />
     </shortcut>
     <shortcut
         android:shortcutId="grades"
@@ -60,6 +60,6 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.example.turing_login"
-            android:targetClass="com.example.turing_login.GradesLink" />
+            android:targetClass="MU.GradesLink" />
     </shortcut>
 </shortcuts>

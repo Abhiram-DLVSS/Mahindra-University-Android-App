@@ -1,22 +1,18 @@
-package com.example.turing_login;
+package MU;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.example.turing_login.timetable.TimeTable;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import MU.timetable.TimeTable;
+
+import com.example.turing_login.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.appcompat.widget.Toolbar;
 
-import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
 
 public class GradesLink extends AppCompatActivity {
 

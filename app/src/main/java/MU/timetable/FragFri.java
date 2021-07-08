@@ -1,4 +1,4 @@
-package com.example.turing_login.timetable;
+package MU.timetable;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,15 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.turing_login.DatabaseHelper;
+import MU.DatabaseHelper;
 import com.example.turing_login.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,15 +29,15 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragThu#newInstance} factory method to
+ * Use the {@link FragFri#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefreshListener{
+public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefreshListener{
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private int count,total;
-    private List<Listitem_tt> listitem_thufrags;
+    private List<Listitem_tt> listitem_frifrags;
     SwipeRefreshLayout mSwipeRefreshLayout;
     //to fetch data
     DatabaseReference reff;
@@ -54,7 +51,7 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
     private String mParam1;
     private String mParam2;
 
-    public FragThu() {
+    public FragFri() {
         // Required empty public constructor
     }
 
@@ -64,11 +61,11 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragThu.
+     * @return A new instance of fragment FragFri.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragThu newInstance(String param1, String param2) {
-        FragThu fragment = new FragThu();
+    public static FragFri newInstance(String param1, String param2) {
+        FragFri fragment = new FragFri();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -92,7 +89,7 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
         recyclerView= view.findViewById(R.id.recyclerView_boxFrag);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        listitem_thufrags=new ArrayList<>();
+        listitem_frifrags=new ArrayList<>();
         ReadHeader();
         return view;
     }
@@ -106,8 +103,8 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
 //        reference.addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                //Toast.makeText(getContext(), "Fetching...thu", Toast.LENGTH_SHORT).show();
-                listitem_thufrags.clear();
+//                //   Toast.makeText(getContext(), "Fetching...fri", Toast.LENGTH_SHORT).show();
+                listitem_frifrags.clear();
         DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
         Cursor data = mDatabaseHelper.getData();
         data.moveToNext();
@@ -143,13 +140,13 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
                 reference1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        total=(int) snapshot.child(year).child(branch).child("1").child("Thursday").getChildrenCount();
+                        total=(int) snapshot.child(year).child(branch).child("1").child("Friday").getChildrenCount();
                         for(count=0;count<total;count++){
                             String chil=""+count;
-                            String m1=snapshot.child(year).child(branch).child(batnum).child("Thursday").child(chil).child("header").getValue().toString();
-                            String m2=snapshot.child(year).child(branch).child(batnum).child("Thursday").child(chil).child("time").getValue().toString();
-                            String m3=snapshot.child(year).child(branch).child(batnum).child("Thursday").child(chil).child("lecturer").getValue().toString();
-                            String m4 = snapshot.child(year).child(branch).child(batnum).child("Thursday").child(chil).child("link").getValue().toString();
+                            String m1=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("header").getValue().toString();
+                            String m2=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("time").getValue().toString();
+                            String m3=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("lecturer").getValue().toString();
+                            String m4 = snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("link").getValue().toString();
                             int k;
 //                    Date currentTime = Calendar.getInstance().getTime();
                             Date d=new Date();
@@ -158,16 +155,15 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
                             int time=Integer.parseInt(currentDateTimeString);
                             Calendar c = Calendar.getInstance();
                             int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-                            if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.THURSDAY == dayOfWeek)
+                            if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&&Calendar.FRIDAY == dayOfWeek)
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Listitem_tt listitem_thufrag=new Listitem_tt(m1,m2,m3,""+k,m4);
-                            assert listitem_thufrag != null;
-                            listitem_thufrags.add(listitem_thufrag);
-                            adapter=new AdapterBox(listitem_thufrags,getContext());
+                            Listitem_tt listitem_frifrag=new Listitem_tt(m1,m2,m3,""+k,m4);
+                            assert listitem_frifrag != null;
+                            listitem_frifrags.add(listitem_frifrag);
+                            adapter=new AdapterBox(listitem_frifrags,getContext());
                             recyclerView.setAdapter(adapter);
-//                            mSwipeRefreshLayout.setRefreshing(false);
                         }
                     }
                     @Override
@@ -181,6 +177,4 @@ public class FragThu extends Fragment{//} implements SwipeRefreshLayout.OnRefres
 //            }
 //        });
     }
-//    @Override
-//    public void onRefresh() {ReadHeader();}
 }

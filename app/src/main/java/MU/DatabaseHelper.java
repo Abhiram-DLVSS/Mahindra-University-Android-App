@@ -1,4 +1,4 @@
-package com.example.turing_login;
+package MU;
 
 import android.content.ContentValues;
 import android.content.Context;

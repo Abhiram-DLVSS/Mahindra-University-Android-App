@@ -1,15 +1,12 @@
-package com.example.turing_login.timetable;
+package MU.timetable;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTransitionImpl;
 
 public class PagerAdapter extends FragmentPagerAdapter{
     private final int numOfTabs;

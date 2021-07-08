@@ -10,6 +10,6 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.example.turing_login"
-            android:targetClass="com.example.turing_login.Event" />
+            android:targetClass="MU.Event" />
     </shortcut>
 </shortcuts>

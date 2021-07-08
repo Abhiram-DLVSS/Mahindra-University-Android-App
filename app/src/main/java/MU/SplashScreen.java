@@ -1,4 +1,4 @@
-package com.example.turing_login;
+package MU;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,11 +7,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.example.turing_login.timetable.TimeTable;
-import com.google.firebase.auth.FirebaseAuth;
+import MU.timetable.TimeTable;
 
-import java.sql.Time;
+import com.example.turing_login.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
     FirebaseAuth fauth;

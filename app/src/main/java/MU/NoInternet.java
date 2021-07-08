@@ -1,4 +1,4 @@
-package com.example.turing_login;
+package MU;
 
 import android.app.Application;
 

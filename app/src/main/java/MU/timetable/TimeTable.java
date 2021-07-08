@@ -1,4 +1,4 @@
-package com.example.turing_login.timetable;
+package MU.timetable;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
@@ -11,16 +11,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.turing_login.BottomSheet;
+import MU.BottomSheet;
 import com.example.turing_login.BuildConfig;
-import com.example.turing_login.DatabaseHelper;
-import com.example.turing_login.Intents;
+import MU.DatabaseHelper;
+import MU.Intents;
 import com.example.turing_login.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;

@@ -1,4 +1,4 @@
-package com.example.turing_login.timetable;
+package MU.timetable;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

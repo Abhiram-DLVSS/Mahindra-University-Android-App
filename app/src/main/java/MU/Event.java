@@ -1,15 +1,11 @@
-package com.example.turing_login;
+package MU;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -20,10 +16,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.turing_login.timetable.TimeTable;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.turing_login.R;
 
 public class Event extends Intents {
     private int flag=1;
@@ -35,7 +28,7 @@ public class Event extends Intents {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event);
         ProgressDialog nDialog;
-        nDialog = new ProgressDialog(com.example.turing_login.Event.this);
+        nDialog = new ProgressDialog(Event.this);
         nDialog.setMessage("Loading...");
         nDialog.setIndeterminate(false);
         nDialog.show();
