@@ -1,18 +1,23 @@
 package MU;
 
 import android.annotation.SuppressLint;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.webkit.CookieManager;
+import android.webkit.DownloadListener;
+import android.webkit.URLUtil;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -186,7 +191,51 @@ public class Moodle extends Intents {
 
 
         webView.loadUrl("https://euclid-mu.in/");
+        webView.setDownloadListener(new DownloadListener()
+        {
 
+            @Override
+
+
+            public void onDownloadStart(String url, String userAgent,
+                                        String contentDisposition, String mimeType,
+                                        long contentLength) {
+
+                DownloadManager.Request request = new DownloadManager.Request(
+                        Uri.parse(url));
+
+
+                request.setMimeType(mimeType);
+
+
+                String cookies = CookieManager.getInstance().getCookie(url);
+
+
+                request.addRequestHeader("cookie", cookies);
+
+
+                request.addRequestHeader("User-Agent", userAgent);
+
+
+                request.setDescription("Downloading file...");
+
+
+                request.setTitle(URLUtil.guessFileName(url, contentDisposition,
+                        mimeType));
+
+
+                request.allowScanningByMediaScanner();
+
+
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setDestinationInExternalPublicDir(
+                        Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(
+                                url, contentDisposition, mimeType));
+                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                dm.enqueue(request);
+                Toast.makeText(getApplicationContext(), "Downloading File",
+                        Toast.LENGTH_LONG).show();
+            }});
         floatinginit();
         moodle.setOnClickListener(new View.OnClickListener() {
             @Override

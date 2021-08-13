@@ -62,4 +62,16 @@
             android:targetPackage="com.example.turing_login"
             android:targetClass="MU.GradesLink" />
     </shortcut>
+    <shortcut
+        android:shortcutId="moodle"
+        android:enabled="true"
+        android:icon="@drawable/ic_moodle_logo"
+        android:shortcutShortLabel="@string/Moodle"
+        android:shortcutLongLabel="@string/Moodle"
+        android:shortcutDisabledMessage="@string/Moodle">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.turing_login"
+            android:targetClass="MU.Moodle" />
+    </shortcut>
 </shortcuts>

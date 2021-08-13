@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -35,6 +36,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 getContext().deleteDatabase("User");
                 startActivity(new Intent(getContext(), Login.class));
                 dismiss();
+                CookieManager.getInstance().removeAllCookies(null);
             }
         });
 

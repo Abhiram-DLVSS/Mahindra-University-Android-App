@@ -152,6 +152,24 @@ public class Intents extends AppCompatActivity {
                 openMoodle();
             }
         });
+        moodle.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Uri copyUri = Uri.parse("https://euclid-mu.in/");
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newUri(getContentResolver(), "URI", copyUri);
+                clipboard.setPrimaryClip(clip);
+
+
+                Toast toast=Toast.makeText(getApplicationContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
+                toast.show();
+                // Get instance of Vibrator from current Context
+                Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                // Vibrate for 400 milliseconds
+                vib.vibrate(40);
+                return true;
+            }
+        });
         fee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
