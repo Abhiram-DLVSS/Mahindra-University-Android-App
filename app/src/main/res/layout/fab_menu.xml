@@ -40,7 +40,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             >
 
-
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_moodle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/grey_white"
+                app:fab_icon="@drawable/ic_moodle_logo"
+                app:fab_size="normal"
+                app:fab_title="Moodle" />
             <toan.android.floatingactionmenu.FloatingActionButton
                 android:id="@+id/fm_grades"
                 android:layout_width="wrap_content"

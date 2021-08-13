@@ -37,7 +37,7 @@ import toan.android.floatingactionmenu.FloatingActionsMenu;
 
 public class Intents extends AppCompatActivity {
 
-    public FloatingActionButton timetable_button,fee,event,grades;
+    public FloatingActionButton timetable_button,fee,event,grades,moodle;
     public FloatingActionsMenu floatingmenu;
     public ConstraintLayout tt;
     public View background;
@@ -47,6 +47,7 @@ public class Intents extends AppCompatActivity {
         floatingmenu=findViewById(R.id.fm_menu);
         fee=findViewById(R.id.fm_fees);
         event=findViewById(R.id.fm_events);
+        moodle=findViewById(R.id.fm_moodle);
         timetable_button=findViewById(R.id.fm_timetable);
         tt=findViewById(R.id.tt_fm);
         grades=findViewById(R.id.fm_grades);
@@ -101,6 +102,10 @@ public class Intents extends AppCompatActivity {
                             grades.setVisibility(View.GONE);
                         else
                             grades.setVisibility(View.VISIBLE);
+                        if(snapshot.child("Moodle").getValue().toString().equals("0"))
+                            moodle.setVisibility(View.GONE);
+                        else
+                            moodle.setVisibility(View.VISIBLE);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -119,6 +124,7 @@ public class Intents extends AppCompatActivity {
                 timetable_button.setVisibility(View.GONE);
                 fee.setVisibility(View.GONE);
                 event.setVisibility(View.GONE);
+                moodle.setVisibility(View.GONE);
                 grades.setVisibility(View.GONE);
                 background.setVisibility(View.GONE);
             }});
@@ -138,6 +144,12 @@ public class Intents extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openEvent();
+            }
+        });
+        moodle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMoodle();
             }
         });
         fee.setOnClickListener(new View.OnClickListener() {
@@ -262,6 +274,20 @@ public class Intents extends AppCompatActivity {
         nDialog.show();
         floatingmenu.collapse();
         Intent intent=new Intent(this, Event.class);
+        startActivity(intent);
+        nDialog.dismiss();
+//        finish();
+    }
+    public void openMoodle()
+    {
+
+        ProgressDialog nDialog;
+        nDialog = new ProgressDialog(Intents.this);
+        nDialog.setMessage("Loading the Website");
+        nDialog.setIndeterminate(false);
+        nDialog.show();
+        floatingmenu.collapse();
+        Intent intent=new Intent(this, Moodle.class);
         startActivity(intent);
         nDialog.dismiss();
 //        finish();
