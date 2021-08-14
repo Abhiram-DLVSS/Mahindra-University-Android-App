@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Intents">
+    tools:context="MU.Intents">
     <View
         android:id="@+id/background_dimmer"
         android:visibility="gone"
@@ -40,7 +40,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             >
 
-
+            <toan.android.floatingactionmenu.FloatingActionButton
+                android:id="@+id/fm_moodle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/grey_white"
+                app:fab_icon="@drawable/ic_moodle_logo"
+                app:fab_size="normal"
+                app:fab_title="Moodle" />
             <toan.android.floatingactionmenu.FloatingActionButton
                 android:id="@+id/fm_grades"
                 android:layout_width="wrap_content"
@@ -65,17 +74,6 @@
                 app:fab_title="Fee" />
 
             <toan.android.floatingactionmenu.FloatingActionButton
-                android:id="@+id/fm_forms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/grey_white"
-                app:fab_icon="@drawable/ic_forms"
-                app:fab_size="normal"
-                app:fab_title="Forms" />
-
-            <toan.android.floatingactionmenu.FloatingActionButton
                 android:id="@+id/fm_events"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,28 +83,6 @@
                 app:fab_icon="@drawable/ic_eve"
                 app:fab_size="normal"
                 app:fab_title="Events" />
-
-            <toan.android.floatingactionmenu.FloatingActionButton
-                android:id="@+id/fm_assignment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/grey_white"
-                app:fab_icon="@drawable/ic_assignments"
-                app:fab_size="normal"
-                app:fab_title="Assignments" />
-
-            <toan.android.floatingactionmenu.FloatingActionButton
-                android:id="@+id/fm_faculty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/grey_white"
-                app:fab_icon="@drawable/ic_faculty"
-                app:fab_size="normal"
-                app:fab_title="Faculty" />
 
             <toan.android.floatingactionmenu.FloatingActionButton
                 android:id="@+id/fm_timetable"
