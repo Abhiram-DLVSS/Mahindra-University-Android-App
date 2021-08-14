@@ -19,11 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
 
-        <activity android:name="MU.Moodle"></activity>
+        <activity android:name="MU.Moodle" />
 
         <activity
             android:name="MU.GradesLink"
-            android:label="@string/title_activity_grades_link"></activity>
+            android:label="@string/title_activity_grades_link" />
         <activity
             android:name="MU.FeeLink"
             android:label="@string/title_activity_fee_link"

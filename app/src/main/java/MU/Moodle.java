@@ -52,8 +52,6 @@ public class Moodle extends Intents {
         } else if (requestCode == FILECHOOSER_RESULTCODE) {
             if (null == mUploadMessage)
                 return;
-            // Use MainActivity.RESULT_OK if you're implementing WebView inside Fragment
-            // Use RESULT_OK only if you're implementing WebView inside an Activity
             Uri result = intent == null || resultCode != Moodle.RESULT_OK ? null : intent.getData();
             mUploadMessage.onReceiveValue(result);
             mUploadMessage = null;
@@ -80,7 +78,6 @@ public class Moodle extends Intents {
         webView.setWebChromeClient(new WebChromeClient()
         {
             // For 3.0+ Devices (Start)
-            // onActivityResult attached before constructor
             protected void openFileChooser(ValueCallback uploadMsg, String acceptType)
             {
                 mUploadMessage = uploadMsg;
