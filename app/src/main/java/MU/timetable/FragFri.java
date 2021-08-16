@@ -140,7 +140,7 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                 reference1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        total=(int) snapshot.child(year).child(branch).child("1").child("Friday").getChildrenCount();
+                        total=(int) snapshot.child(year).child(branch).child(batnum).child("Friday").getChildrenCount();
                         for(count=0;count<total;count++){
                             String chil=""+count;
                             String m1=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("header").getValue().toString();

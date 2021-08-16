@@ -83,7 +83,12 @@ public class AdapterBox extends RecyclerView.Adapter<AdapterBox.ViewHolder> {
                     Toast toast;
                     if( copyUri.toString().equals("null")){
                         toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
-                        toast.show();}
+                        toast.show();
+                        // Get instance of Vibrator from current Context
+                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 400 milliseconds
+                        vib.vibrate(40);
+                    }
                     else{
                         context_box.startActivity(new Intent(Intent.ACTION_VIEW,copyUri));
                         // Get instance of Vibrator from current Context
@@ -101,7 +106,12 @@ public class AdapterBox extends RecyclerView.Adapter<AdapterBox.ViewHolder> {
                     Toast toast;
                     if( copyUri.toString().equals("null")){
                         toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
-                        toast.show();}
+                        toast.show();
+                        // Get instance of Vibrator from current Context
+                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 400 milliseconds
+                        vib.vibrate(40);
+                    }
                     else{
                         ClipboardManager clipboard = (ClipboardManager) context_box.getSystemService(Context.CLIPBOARD_SERVICE);
                         ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);

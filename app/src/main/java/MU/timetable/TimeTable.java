@@ -116,7 +116,7 @@ public class TimeTable extends Intents {
                         }
                         else if(menuItem.getItemId()==R.id.update) {
                             Intent intent = new Intent(Intent.ACTION_VIEW);
-                            Uri data = Uri.parse("https://drive.google.com/drive/folders/1JOOQGWbeiIwJ2jVWP7P9fbNgHXFRPylN");
+                            Uri data = Uri.parse("https://drive.google.com/drive/folders/1EwWLzi3xKLluGMUZB1Qu2ByGqPIoZoAR?usp=sharing");
                             intent.setData(data);
                             startActivity(intent);
                         }
