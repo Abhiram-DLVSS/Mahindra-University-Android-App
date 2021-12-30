@@ -12,5 +12,5 @@
 * Moodle
 
 #### Try the app<br>
-* Download the APK File [here](https://drive.google.com/drive/folders/1JOOQGWbeiIwJ2jVWP7P9fbNgHXFRPylN?usp=sharing).
+* Download the APK File [here](https://drive.google.com/drive/folders/1EwWLzi3xKLluGMUZB1Qu2ByGqPIoZoAR?usp=sharing).
 * College ID - 19XJ1A0500
