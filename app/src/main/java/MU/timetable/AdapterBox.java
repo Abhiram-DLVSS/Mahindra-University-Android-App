@@ -47,16 +47,13 @@ public class AdapterBox extends RecyclerView.Adapter<AdapterBox.ViewHolder> {
         holder.textview_desc_boxfragv.setText(listitem_boxfrag.getDesc());
         holder.textview_lect_boxfragv.setText(listitem_boxfrag.getLect());
         holder.textview_loc_boxfragv.setText(listitem_boxfrag.getLoc());
-//        holder.textview_link_boxfragv.setText(listitem_boxfrag.getLink());
         holder.link=listitem_boxfrag.getLink();
         int color= Integer.parseInt(listitem_boxfrag.getCol());
-        int colo=ContextCompat.getColor(context_box, R.color.white);
         if (color!=-1) {
             holder.textview_heading_boxfragv.setTextColor(-1);
             holder.textview_desc_boxfragv.setTextColor(-1);
             holder.textview_lect_boxfragv.setTextColor(-1);
             holder.textview_loc_boxfragv.setTextColor(-1);
-//            holder.textview_link_boxfragv.setTextColor(-1);
             holder.textview_heading_boxfragv.setTypeface(Typeface.DEFAULT);
         }
         holder.cv.setCardBackgroundColor(color);
@@ -65,12 +62,12 @@ public class AdapterBox extends RecyclerView.Adapter<AdapterBox.ViewHolder> {
     public int getItemCount() {
         return listItems_boxfrag.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textview_heading_boxfragv;
         public TextView textview_desc_boxfragv;
         public TextView textview_lect_boxfragv;
         public TextView textview_loc_boxfragv;
-//        public TextView textview_link_boxfragv;
         public RelativeLayout rv;
         public CardView cv;
         public String link;
@@ -80,90 +77,46 @@ public class AdapterBox extends RecyclerView.Adapter<AdapterBox.ViewHolder> {
             textview_desc_boxfragv=(TextView) itemView.findViewById(R.id.textview_desc_boxfrag);
             textview_lect_boxfragv=(TextView) itemView.findViewById(R.id.textview_lecturer_boxfrag);
             textview_loc_boxfragv=(TextView) itemView.findViewById(R.id.textview_loc_boxfrag);
-//            textview_link_boxfragv=(TextView) itemView.findViewById(R.id.textview_link_boxfrag);
             rv=(RelativeLayout) itemView.findViewById(R.id.box_rl);
             cv=itemView.findViewById(R.id.box_card);
-            textview_heading_boxfragv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Uri copyUri = Uri.parse(link);
-//                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
-                    Toast toast;
-                    if( copyUri.toString().equals("null")){
-                        toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
-                        toast.show();
-                        // Get instance of Vibrator from current Context
-                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 400 milliseconds
-                        vib.vibrate(40);
-                    }
-                    else{
-                        context_box.startActivity(new Intent(Intent.ACTION_VIEW,copyUri));
-                        // Get instance of Vibrator from current Context
-                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 400 milliseconds
-                        vib.vibrate(40);}
+            textview_heading_boxfragv.setOnClickListener(v -> {
+                Uri copyUri = Uri.parse(link);
+                Toast toast;
+                if( copyUri.toString().equals("null")){
+                    toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
+                    toast.show();
                 }
+                else
+                    context_box.startActivity(new Intent(Intent.ACTION_VIEW,copyUri));
+                vibrate();
             });
-            textview_heading_boxfragv.setOnLongClickListener(new View.OnLongClickListener(){
-                @Override
-                public boolean onLongClick(View v) {
-                    Uri copyUri = Uri.parse(link);
-
-//                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
-                    Toast toast;
-                    if( copyUri.toString().equals("null")){
-                        toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
-                        toast.show();
-                        // Get instance of Vibrator from current Context
-                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 400 milliseconds
-                        vib.vibrate(40);
-                    }
-                    else{
-                        ClipboardManager clipboard = (ClipboardManager) context_box.getSystemService(Context.CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
-                        clipboard.setPrimaryClip(clip);
-                        toast=Toast.makeText(itemView.getContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
-                        toast.show();
-                        // Get instance of Vibrator from current Context
-                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 400 milliseconds
-                        vib.vibrate(40);
-                    }
-                    return true;
+            textview_heading_boxfragv.setOnLongClickListener(v -> {
+                Uri copyUri = Uri.parse(link);
+                Toast toast;
+                if(copyUri.toString().equals("null")) {
+                    toast = Toast.makeText(itemView.getContext(), "Recurring Link not found", Toast.LENGTH_SHORT);
                 }
-
+                else{
+                    ClipboardManager clipboard = (ClipboardManager) context_box.getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
+                    clipboard.setPrimaryClip(clip);
+                    toast=Toast.makeText(itemView.getContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
+                }
+                toast.show();
+                vibrate();
+                return true;
             });
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    Uri copyUri = Uri.parse(link);
-
-//                    Toast toast=Toast.makeText(itemView.getContext(),copyUri+" Copied to Clipboard",Toast.LENGTH_SHORT);
-                    Toast toast;
-                    if( copyUri.toString().equals("null")){
-                        toast=Toast.makeText(itemView.getContext(),"Recurring Link not found",Toast.LENGTH_SHORT);
-                        toast.show();
-                        // Get instance of Vibrator from current Context
-                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 400 milliseconds
-                        vib.vibrate(40);
-                    }
-                    else{
-                        ClipboardManager clipboard = (ClipboardManager) context_box.getSystemService(Context.CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newUri(itemView.getContext().getContentResolver(), "URI", copyUri);
-                        clipboard.setPrimaryClip(clip);
-                        toast=Toast.makeText(itemView.getContext(),"Link Copied to Clipboard",Toast.LENGTH_SHORT);
-                        toast.show();
-                        // Get instance of Vibrator from current Context
-                        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 400 milliseconds
-                        vib.vibrate(40);
-                    }
-                    return true;
-                }
+            itemView.setOnLongClickListener(v -> {
+                textview_heading_boxfragv.performLongClick();
+                return true;
             });
         }
+    }
+
+    public void vibrate(){
+        // Get instance of Vibrator from current Context
+        Vibrator vib = (Vibrator) context_box.getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 400 milliseconds
+        vib.vibrate(40);
     }
 }

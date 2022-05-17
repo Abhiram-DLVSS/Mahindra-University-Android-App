@@ -29,10 +29,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class TimeTable extends Intents {
-
-    private final int flag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,80 +40,65 @@ public class TimeTable extends Intents {
         statusbar();//to change status bar color
         TabLayout tabLayout = findViewById(R.id.tab_bar);
         ViewPager viewPager = findViewById(R.id.viewPager);
-        ImageView imageView = findViewById(R.id.tt_3dot);
+        ImageView threeDot = findViewById(R.id.tt_3dot);
+
+        //Accessing the Availability node in the Firebase Database
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
         ref.keepSynced(true);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String chk= snapshot.child("Update").getValue().toString();
+                //To check whether there are new updates or not and display a cue to make the users update the app
+                String chk= Objects.requireNonNull(snapshot.child("Update").getValue()).toString();
                 String versionName = BuildConfig.VERSION_NAME;
-                if(!chk.equals(versionName))
-                    imageView.setImageResource(R.drawable.tt_3dotscircle);
-                else
-                    imageView.setImageResource(R.drawable.ic_three_dot);
-                String menu= snapshot.child("Menu").getValue().toString();
+                if(!chk.equals(versionName)) {
+                    threeDot.setImageResource(R.drawable.tt_3dotscircle);
+                    threeDot.setTag("circle");
+                }
+                else {
+                    threeDot.setImageResource(R.drawable.ic_three_dot);
+                    threeDot.setTag(null);
+                }
+                //To check the database, whether to display the Floating menu or not, if needed
+                String menu= Objects.requireNonNull(snapshot.child("Menu").getValue()).toString();
                 if(menu.equals("0"))
                     floatingmenu.setVisibility(View.INVISIBLE);
                 else
                     floatingmenu.setVisibility(View.VISIBLE);
-
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        threeDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Initializing the popup menu and giving the reference as current context
-                PopupMenu popupMenu = new PopupMenu(TimeTable.this, imageView);
-
+                PopupMenu popupMenu = new PopupMenu(TimeTable.this, threeDot);
                 // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.menu_items, popupMenu.getMenu());
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
-                ref.keepSynced(true);
-                ref.addValueEventListener(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-                        String chk= snapshot.child("Update").getValue().toString();
-                        Menu menu=popupMenu.getMenu();
-                        MenuItem update= menu.findItem(R.id.update);
-                        String versionName = BuildConfig.VERSION_NAME;
-
-                        update.setVisible(!chk.equals(versionName));
-                        if(!chk.equals(versionName))
-                            imageView.setImageResource(R.drawable.tt_3dotscircle);
-                        else
-                            imageView.setImageResource(R.drawable.ic_three_dot);
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Log.d("chk", "Error: "+error);
-                    }
-                });
+                Menu menu=popupMenu.getMenu();
+                MenuItem update= menu.findItem(R.id.update);
+                //If the threeDot Element has a circle(which was based on firebase node), we will enable the Update available option
+                update.setVisible(threeDot.getTag()=="circle");
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
 
+                        //Logout
                         if(menuItem.getItemId()==R.id.logout_in_menu) {
-
                             BottomSheet bottomSheet = new BottomSheet();
-                            bottomSheet.show(getSupportFragmentManager(),
-                                    "ModalBottomSheet");
+                            bottomSheet.show(getSupportFragmentManager(), "ModalBottomSheet");
                         }
+                        //Contact Us
                         else if(menuItem.getItemId()==R.id.contact) {
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             Uri data = Uri.parse("mailto:devturing21@gmail.com?subject=" + Uri.encode("Mahindra University App") + "&body=" + Uri.encode("~Write here~"));
                             intent.setData(data);
                             startActivity(intent);
                         }
+                        //Update Available
                         else if(menuItem.getItemId()==R.id.update) {
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             Uri data = Uri.parse("https://drive.google.com/drive/folders/1EwWLzi3xKLluGMUZB1Qu2ByGqPIoZoAR?usp=sharing");
@@ -129,8 +113,11 @@ public class TimeTable extends Intents {
             }
         });
 
+        //For the Timetable fragments
         PagerAdapter pagerAdapter= new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount(),getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
+
+        //To display the present day in the Timetable by default
         Calendar c = Calendar.getInstance();
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
         if (Calendar.MONDAY == dayOfWeek) {
@@ -149,7 +136,7 @@ public class TimeTable extends Intents {
             viewPager.setCurrentItem(0, true);
         }
 
-
+        //Navigating between the tabs
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -173,6 +160,7 @@ public class TimeTable extends Intents {
         Cursor data = mDatabaseHelper.getData();
         data.moveToNext();
         data.getString(1);
+        //If we click the Timetable button in floating menu when we are in Timetable
         timetable_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,6 +168,8 @@ public class TimeTable extends Intents {
             }
         });
     }
+
+    //When back button is pressed
     @Override
     public void onBackPressed() {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
