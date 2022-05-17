@@ -2,7 +2,6 @@ package MU;
 
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
-import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -23,12 +22,11 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.turing_login.R;
+import com.MU.R;
 
 public class Moodle extends Intents {
     private int flag=1;

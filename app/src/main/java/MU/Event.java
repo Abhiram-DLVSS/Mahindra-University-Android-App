@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.turing_login.R;
+import com.MU.R;
 
 public class Event extends Intents {
     private int flag=1;

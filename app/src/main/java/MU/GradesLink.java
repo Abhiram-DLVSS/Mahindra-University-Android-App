@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import MU.timetable.TimeTable;
 
-import com.example.turing_login.R;
+import com.MU.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;

@@ -20,7 +20,7 @@ public class PagerAdapter extends FragmentPagerAdapter{
     public PagerAdapter(FragmentManager fm, int numOfTabs, Context context){
         super(fm);
         this.numOfTabs= numOfTabs;
-        this.context=context;
+        PagerAdapter.context =context;
     }
     @NonNull
     @Override

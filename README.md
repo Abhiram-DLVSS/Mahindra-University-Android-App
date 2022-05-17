@@ -9,7 +9,7 @@
     * In Floating Menu, Tap on the Fee and Grades buttons redirects to the respective Websites.
     * While a Long press and holding them will copy the respective links to the Clipboard.
 * Events in University
-* Moodle
+* Euclid
 
 #### Try the app<br>
 * Download the APK File [here](https://drive.google.com/drive/folders/1EwWLzi3xKLluGMUZB1Qu2ByGqPIoZoAR?usp=sharing).

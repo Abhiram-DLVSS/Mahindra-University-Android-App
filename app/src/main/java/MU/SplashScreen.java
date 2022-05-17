@@ -9,7 +9,7 @@ import android.os.Handler;
 
 import MU.timetable.TimeTable;
 
-import com.example.turing_login.R;
+import com.MU.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
@@ -27,6 +27,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
                 if(data.moveToNext()) {
+
                             Intent homeIntent = new Intent(SplashScreen.this, TimeTable.class);
                             startActivity(homeIntent);
                             finish();
@@ -36,6 +37,7 @@ public class SplashScreen extends AppCompatActivity {
                             startActivity(homeIntent);
                             finish();
                 }
+
             }
         },SPLASH_TIME_OUT);
     }

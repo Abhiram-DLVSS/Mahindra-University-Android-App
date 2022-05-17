@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,10 +17,10 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import MU.BottomSheet;
-import com.example.turing_login.BuildConfig;
+import com.MU.BuildConfig;
 import MU.DatabaseHelper;
 import MU.Intents;
-import com.example.turing_login.R;
+import com.MU.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -172,7 +173,6 @@ public class TimeTable extends Intents {
         Cursor data = mDatabaseHelper.getData();
         data.moveToNext();
         data.getString(1);
-//        Toast.makeText(TimeTable.this, data.getString(1), Toast.LENGTH_SHORT).show();
         timetable_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

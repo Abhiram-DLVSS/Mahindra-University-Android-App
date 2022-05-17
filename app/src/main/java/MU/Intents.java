@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import MU.timetable.TimeTable;
 
-import com.example.turing_login.R;
+import com.MU.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,7 +37,7 @@ import toan.android.floatingactionmenu.FloatingActionsMenu;
 
 public class Intents extends AppCompatActivity {
 
-    public FloatingActionButton timetable_button,fee,event,grades,moodle;
+    public FloatingActionButton timetable_button,faculty,fee,event,grades,assignments,forms,moodle;
     public FloatingActionsMenu floatingmenu;
     public ConstraintLayout tt;
     public View background;
@@ -47,6 +47,7 @@ public class Intents extends AppCompatActivity {
         floatingmenu=findViewById(R.id.fm_menu);
         fee=findViewById(R.id.fm_fees);
         event=findViewById(R.id.fm_events);
+        faculty=findViewById(R.id.fm_faculty);
         moodle=findViewById(R.id.fm_moodle);
         timetable_button=findViewById(R.id.fm_timetable);
         tt=findViewById(R.id.tt_fm);
@@ -55,6 +56,8 @@ public class Intents extends AppCompatActivity {
         open=findViewById(R.id.open);
         close=findViewById(R.id.closed);
         fab_scroll=findViewById(R.id.fab_menu_scroll);
+        forms=findViewById(R.id.fm_forms);
+
 
 
         floatingmenu.setOnClickListener(new View.OnClickListener() {
@@ -75,9 +78,10 @@ public class Intents extends AppCompatActivity {
             public void onMenuExpanded() {
 //                timetable_button.setVisibility(View.VISIBLE);
 //                fee.setVisibility(View.VISIBLE);
-//                faculty.setVisibility(View.VISIBLE);
+                faculty.setVisibility(View.VISIBLE);
 //                event.setVisibility(View.VISIBLE);
 //                grades.setVisibility(View.VISIBLE);
+                forms.setVisibility(View.VISIBLE);
                 background.setVisibility(View.VISIBLE);
                 floatingmenu.setIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_multip,null));
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
@@ -152,6 +156,18 @@ public class Intents extends AppCompatActivity {
                 openMoodle();
             }
         });
+        faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFaculty();
+            }
+        });
+        forms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openForms();
+            }
+        });
         moodle.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -195,6 +211,7 @@ public class Intents extends AppCompatActivity {
             }
         });
 
+
         grades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,6 +248,22 @@ public class Intents extends AppCompatActivity {
 
     }
 
+    public void openFaculty() {
+
+        Intent intent=new Intent(this,FacultyMenu.class);
+        startActivity(intent);
+        floatingmenu.collapse();
+        finish();
+    }
+
+    public void openForms()
+    {
+        Intent intent=new Intent(this, Forms.class);
+        startActivity(intent);
+        floatingmenu.collapse();
+        finish();
+    }
+
 
     public void statusbar(){
         //To get custom status bar color
@@ -253,20 +286,20 @@ public class Intents extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id= item.getItemId();
-        switch(id){
-            case R.id.logout_in_menu: {
-                            Toast.makeText(Intents.this, "Signing out...", Toast.LENGTH_SHORT).show();
-                            FirebaseAuth.getInstance().signOut();
-                            startActivity(new Intent(getApplicationContext(), Login.class));
-                            finish();
-            }
-            break;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item){
+//        int id= item.getItemId();
+//        switch(id){
+//            case R.id.logout_in_menu: {
+//                            Toast.makeText(Intents.this, "Signing out...", Toast.LENGTH_SHORT).show();
+//                            FirebaseAuth.getInstance().signOut();
+//                            startActivity(new Intent(getApplicationContext(), Login.class));
+//                            finish();
+//            }
+//            break;
+//        }
+//        return true;
+//    }
 
     public void openTimeTable() {
         Intent intent=new Intent(this, TimeTable.class);

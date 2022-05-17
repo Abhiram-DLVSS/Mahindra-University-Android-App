@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import MU.DatabaseHelper;
-import com.example.turing_login.R;
+import com.MU.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -147,6 +147,7 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                             String m2=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("time").getValue().toString();
                             String m3=snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("lecturer").getValue().toString();
                             String m4 = snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("link").getValue().toString();
+                            String m5 = snapshot.child(year).child(branch).child(batnum).child("Friday").child(chil).child("loc").getValue().toString();
                             int k;
 //                    Date currentTime = Calendar.getInstance().getTime();
                             Date d=new Date();
@@ -159,7 +160,7 @@ public class FragFri extends Fragment {//implements SwipeRefreshLayout.OnRefresh
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Listitem_tt listitem_frifrag=new Listitem_tt(m1,m2,m3,""+k,m4);
+                            Listitem_tt listitem_frifrag=new Listitem_tt(m1,m2,m3,""+k,m4,m5);
                             assert listitem_frifrag != null;
                             listitem_frifrags.add(listitem_frifrag);
                             adapter=new AdapterBox(listitem_frifrags,getContext());

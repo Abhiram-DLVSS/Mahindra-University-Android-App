@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.turing_login">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.MU">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -34,8 +32,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
+            android:name="MU.Forms"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="MU.FacultyMenu"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="MU.SplashScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,12 +52,41 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
+            android:name="MU.Login"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
             android:name="MU.timetable.TimeTable"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="MU.Login"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
+
+<!--        <activity-->
+<!--            android:name="MU.SingleAccountModeFragment"-->
+<!--            android:screenOrientation="portrait" />-->
+
+        <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!--
+                    Add in your scheme/host from registered redirect URI
+                    note that the leading "/" is required for android:path
+                -->
+                <data
+                    android:host="com.azuresamples.msalandroidapp"
+                    android:path="/1wIqXSqBj7w+h11ZifsnqwgyKrY="
+                    android:scheme="msauth" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

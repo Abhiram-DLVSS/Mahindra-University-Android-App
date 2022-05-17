@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 
 import MU.DatabaseHelper;
-import com.example.turing_login.R;
+import com.MU.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -152,6 +152,7 @@ public class FragMon extends Fragment {
                             String m2 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("time").getValue().toString();
                             String m3 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("lecturer").getValue().toString();
                             String m4 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("link").getValue().toString();
+                            String m5 = snapshot.child(year).child(branch).child(batnum).child("Monday").child(chil).child("loc").getValue().toString();
                             int k;
 //                    Date currentTime = Calendar.getInstance().getTime();
                             Date d=new Date();
@@ -164,7 +165,7 @@ public class FragMon extends Fragment {
                                 k=-7596779;
                             else
                                 k=-1;//-16777216;
-                            Listitem_tt listitem_monfrag = new Listitem_tt(m1, m2, m3,""+k,m4);
+                            Listitem_tt listitem_monfrag = new Listitem_tt(m1, m2, m3,""+k,m4,m5);
                             assert listitem_monfrag != null;
                             listitem_monfrags.add(listitem_monfrag);
                             adapter = new AdapterBox(listitem_monfrags, getContext());

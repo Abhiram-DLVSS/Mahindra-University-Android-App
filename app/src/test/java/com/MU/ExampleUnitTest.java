@@ -1,4 +1,4 @@
-package com.example.turing_login;
+package com.MU;
 
 import org.junit.Test;
 

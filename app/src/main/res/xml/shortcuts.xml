@@ -9,7 +9,7 @@
         android:shortcutDisabledMessage="@string/Events">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.example.turing_login"
+            android:targetPackage="com.MU"
             android:targetClass="MU.Event" />
     </shortcut>
 </shortcuts>
