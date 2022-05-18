@@ -132,8 +132,7 @@ dependencies {
         // For developer team only.
         localImplementation project(':msal')
         externalImplementation "com.microsoft.identity.client:msal:${msalVersion}"
-    }
-    else {
+    } else {
         // Downloads and Builds MSAL from maven central.
         implementation "com.microsoft.identity.client:msal:${msalVersion}"
     }

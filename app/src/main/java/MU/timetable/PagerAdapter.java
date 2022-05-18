@@ -2,25 +2,28 @@ package MU.timetable;
 
 import android.content.Context;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 //Functionality: When selected a Tab, open that tab
-public class PagerAdapter extends FragmentPagerAdapter{
-    private final int numOfTabs;
+public class PagerAdapter extends FragmentPagerAdapter {
     private static Context context;
-    public PagerAdapter(FragmentManager fm, int numOfTabs, Context context){
+    private final int numOfTabs;
+
+    public PagerAdapter(FragmentManager fm, int numOfTabs, Context context) {
         super(fm);
-        this.numOfTabs= numOfTabs;
-        PagerAdapter.context =context;
+        this.numOfTabs = numOfTabs;
+        PagerAdapter.context = context;
     }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Log.d("Tab", "Tab Number:"+position);
-        switch (position){
+        Log.d("Tab", "Tab Number:" + position);
+        switch (position) {
             case 0:
                 return new Frag("Monday");
             case 1:
@@ -37,6 +40,9 @@ public class PagerAdapter extends FragmentPagerAdapter{
                 return null;
         }
     }
+
     @Override
-    public int getCount() { return numOfTabs; }
+    public int getCount() {
+        return numOfTabs;
+    }
 }

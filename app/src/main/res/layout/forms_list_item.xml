@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="10dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/assign_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/assign_card"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="20dp"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:id="@+id/assign_rl"
@@ -35,11 +33,11 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:text="Heading"
                 android:textColor="#0645AD"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:gravity="center">
+                android:textStyle="bold">
 
             </TextView>
 
@@ -57,8 +55,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="55dp"
                 android:layout_toEndOf="@+id/textview_heading_assign"
-                android:text="Deadline"
                 android:gravity="center"
+                android:text="Deadline"
                 android:textAlignment="center"
                 android:textColor="#F44336"
                 android:textSize="18sp">
@@ -77,8 +75,8 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="10dp"
-                android:text="By"
                 android:gravity="center"
+                android:text="By"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />

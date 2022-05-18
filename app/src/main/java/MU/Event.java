@@ -11,7 +11,6 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -19,9 +18,9 @@ import android.widget.Toast;
 import com.MU.R;
 
 public class Event extends Intents {
-    private int flag=1;
-    private Button invisibleButton;
+    private int flag = 1;
     private WebView webView;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,25 +34,20 @@ public class Event extends Intents {
         statusbar();
         ImageView imageView = findViewById(R.id.event_3dot);
 
-        webView=findViewById(R.id.event_webview);
+        webView = findViewById(R.id.event_webview);
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().getDomStorageEnabled();
         webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
-        webView.setOnKeyListener(new View.OnKeyListener()
-        {
+        webView.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if(event.getAction() == KeyEvent.ACTION_DOWN)
-                {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     WebView webView = (WebView) v;
 
-                    switch(keyCode)
-                    {
+                    switch (keyCode) {
                         case KeyEvent.KEYCODE_BACK:
-                            if(webView.canGoBack())
-                            {
+                            if (webView.canGoBack()) {
                                 webView.goBack();
                                 return true;
                             }
@@ -68,26 +62,26 @@ public class Event extends Intents {
         webView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                int dy=scrollY-oldScrollY;
+                int dy = scrollY - oldScrollY;
 //                Log.d("chk", "onScrollChange: "+(scrollY-oldScrollY));
-                if (dy > 10&&flag==1 ){
-                    flag=0;
-                    final Animation animation = new TranslateAnimation(0,0,0,250);
+                if (dy > 10 && flag == 1) {
+                    flag = 0;
+                    final Animation animation = new TranslateAnimation(0, 0, 0, 250);
                     animation.setDuration(500);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if(flag==0)
-                            floatingmenu.setVisibility(View.GONE);
+                            if (flag == 0)
+                                floatingmenu.setVisibility(View.GONE);
                         }
                     }, 500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
-                } else if (dy < -10&&flag==0){
+                } else if (dy < -10 && flag == 0) {
                     floatingmenu.setVisibility(View.VISIBLE);
-                    flag=1;
+                    flag = 1;
                     floatingmenu.setVisible(true);
-                    final Animation animation = new TranslateAnimation(0,0,250,0);
+                    final Animation animation = new TranslateAnimation(0, 0, 250, 0);
                     animation.setDuration(500);
                     animation.setFillAfter(true);
                     floatingmenu.startAnimation(animation);
@@ -134,7 +128,7 @@ public class Event extends Intents {
                                     + "}"
                                     + "})()");
                         }
-                    }, i*1000);
+                    }, i * 1000);
                 }
             }
         });
@@ -156,7 +150,7 @@ public class Event extends Intents {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        if(menuItem.getItemId()==R.id.refresh_in_event) {
+                        if (menuItem.getItemId() == R.id.refresh_in_event) {
                             openEvent();
                             finish();
                         }

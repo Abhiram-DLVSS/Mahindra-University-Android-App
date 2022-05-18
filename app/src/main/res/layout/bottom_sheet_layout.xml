@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:paddingBottom="16dp">
 
     <ImageView
         android:id="@+id/bar_sheet"
@@ -34,7 +33,6 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:padding="10dp"
         android:id="@+id/confirm_sheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,15 +42,16 @@
         android:layout_marginBottom="10dp"
         android:layout_toStartOf="@+id/nothing"
         android:background="@drawable/round_red_shade_radius"
+        android:padding="10dp"
         android:text="Yes, Log out"
         android:textAppearance="@style/MyTheme.ActionBar.TitleTextStyle"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/nothing"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/nothing"
         android:layout_below="@+id/Logout_in_sheet"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp">

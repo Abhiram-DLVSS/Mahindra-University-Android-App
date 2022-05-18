@@ -1,6 +1,7 @@
 # Mahindra University App
 
 ### Features
+* Login with Microsoft account provided by University.
 * Real-time TimeTable using Firebase Database.
 * Quick Links for Online Classes.
     * In TimeTable, Tap on the Subject code redirects to the Meeting link.
@@ -13,4 +14,3 @@
 
 #### Try the app<br>
 * Download the APK File [here](https://drive.google.com/drive/folders/1EwWLzi3xKLluGMUZB1Qu2ByGqPIoZoAR?usp=sharing).
-* College ID - 19XJ1A0500

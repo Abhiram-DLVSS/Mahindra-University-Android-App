@@ -5,8 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="MU.NoInternet"
@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
 
-        <activity android:name="MU.Moodle" />
+        <activity android:name="MU.Euclid" />
 
         <activity
             android:name="MU.GradesLink"
@@ -32,15 +32,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
-            android:name="MU.Forms"
+            android:name="MU.Forms.Forms"
             android:screenOrientation="portrait" />
         <activity
-            android:name="MU.FacultyMenu"
+            android:name="MU.Faculty.FacultyMenu"
             android:screenOrientation="portrait" />
         <activity
             android:name="MU.SplashScreen"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,11 +52,10 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name="MU.Login"
+            android:name="MU.MSAuth.Login"
+            android:exported="true"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:exported="true">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="MU.timetable.TimeTable"
             android:screenOrientation="portrait" />

@@ -1,77 +1,51 @@
-<!--<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">-->
-<!--    <shortcut-->
-<!--        android:shortcutId="call"-->
-<!--        android:enabled="true"-->
-<!--        android:icon="@drawable/ic_phone"-->
-<!--        android:shortcutShortLabel="@string/call_shortcut_short_label"-->
-<!--        android:shortcutLongLabel="@string/call_shortcut_long_label"-->
-<!--        android:shortcutDisabledMessage="@string/call_disabled_label">-->
-<!--        <intent-->
-<!--            android:action="android.intent.action.VIEW"-->
-<!--            android:targetPackage="com.bendriss.shortcutsapp"-->
-<!--            android:targetClass="com.bendriss.shortcutsapp.CallActivity" />-->
-<!--    </shortcut>-->
-<!--    <shortcut-->
-<!--        android:shortcutId="messages"-->
-<!--        android:enabled="true"-->
-<!--        android:icon="@drawable/ic_camera"-->
-<!--        android:shortcutShortLabel="@string/camera_shortcut_short_label"-->
-<!--        android:shortcutLongLabel="@string/camera_shortcut_long_label"-->
-<!--        android:shortcutDisabledMessage="@string/camera_disabled_label">-->
-<!--        <intent-->
-<!--            android:action="android.intent.action.VIEW"-->
-<!--            android:targetPackage="com.bendriss.shortcutsapp"-->
-<!--            android:targetClass="com.bendriss.shortcutsapp.CameraActivity" />-->
-<!--    </shortcut>-->
-<!--</shortcuts>-->
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
 
     <shortcut
-        android:shortcutId="events"
         android:enabled="true"
         android:icon="@drawable/ic_eve"
-        android:shortcutShortLabel="@string/Events"
+        android:shortcutDisabledMessage="@string/Events"
+        android:shortcutId="events"
         android:shortcutLongLabel="@string/Events"
-        android:shortcutDisabledMessage="@string/Events">
+        android:shortcutShortLabel="@string/Events">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.MU"
-            android:targetClass="MU.Event" />
+            android:targetClass="MU.Event"
+            android:targetPackage="com.MU" />
     </shortcut>
     <shortcut
-        android:shortcutId="fee"
         android:enabled="true"
         android:icon="@drawable/ic_rupee"
-        android:shortcutShortLabel="@string/Fee"
+        android:shortcutDisabledMessage="@string/Fee"
+        android:shortcutId="fee"
         android:shortcutLongLabel="@string/Fee"
-        android:shortcutDisabledMessage="@string/Fee">
+        android:shortcutShortLabel="@string/Fee">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.MU"
-            android:targetClass="MU.FeeLink" />
+            android:targetClass="MU.FeeLink"
+            android:targetPackage="com.MU" />
     </shortcut>
     <shortcut
-        android:shortcutId="grades"
         android:enabled="true"
         android:icon="@drawable/ic_grade"
-        android:shortcutShortLabel="@string/Grades"
+        android:shortcutDisabledMessage="@string/Grades"
+        android:shortcutId="grades"
         android:shortcutLongLabel="@string/Grades"
-        android:shortcutDisabledMessage="@string/Grades">
+        android:shortcutShortLabel="@string/Grades">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.MU"
-            android:targetClass="MU.GradesLink" />
+            android:targetClass="MU.GradesLink"
+            android:targetPackage="com.MU" />
     </shortcut>
     <shortcut
-        android:shortcutId="moodle"
         android:enabled="true"
-        android:icon="@drawable/ic_moodle_logo"
-        android:shortcutShortLabel="@string/Moodle"
-        android:shortcutLongLabel="@string/Moodle"
-        android:shortcutDisabledMessage="@string/Moodle">
+        android:icon="@drawable/ic_euclid_logo"
+        android:shortcutDisabledMessage="@string/Euclid"
+        android:shortcutId="euclid"
+        android:shortcutLongLabel="@string/Euclid"
+        android:shortcutShortLabel="@string/Euclid">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.MU"
-            android:targetClass="MU.Moodle" />
+            android:targetClass="MU.Euclid"
+            android:targetPackage="com.MU" />
     </shortcut>
 </shortcuts>

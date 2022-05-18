@@ -2,19 +2,15 @@ package MU.timetable;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-
-import MU.DatabaseHelper;
 import com.MU.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +24,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import MU.DatabaseHelper;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Frag#newInstance} factory method to
@@ -35,26 +33,25 @@ import java.util.List;
  */
 public class Frag extends Fragment {
 
-    public int flag=1;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private int count, total;
-    private List<Listitem_tt> listitem;
-    //to fetch data
-    DatabaseReference reff;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private final String day;
+    public int flag = 1;
+    //to fetch data
+    DatabaseReference reff;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private int count, total;
+    private List<Listitem_tt> listitem;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String day;
+
     public Frag(String day) {
         // Required empty public constructor
-        this.day=day;
+        this.day = day;
     }
 
     /**
@@ -94,6 +91,7 @@ public class Frag extends Fragment {
         ReadHeader();
         return view;
     }
+
     private void ReadHeader() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listitem = new ArrayList<>();
@@ -106,7 +104,7 @@ public class Frag extends Fragment {
         String year = rollnumber.substring(0, 2);
         String branch = rollnumber.substring(7, 8);
         String rno = rollnumber.substring(8, 10);
-        int batch=-1;
+        int batch = -1;
         if (Integer.parseInt(branch) == 1) {
             if (Integer.parseInt(rno) <= 44)
                 batch = 1;
@@ -128,7 +126,7 @@ public class Frag extends Fragment {
             else
                 batch = 2;
         }
-        String batnum=""+batch;
+        String batnum = "" + batch;
 
 
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("TimeTable");
@@ -145,37 +143,38 @@ public class Frag extends Fragment {
                     String m4 = snapshot.child(year).child(branch).child(batnum).child(day).child(chil).child("link").getValue().toString();
                     String m5 = snapshot.child(year).child(branch).child(batnum).child(day).child(chil).child("loc").getValue().toString();
                     int k;
-                    Date d=new Date();
-                    SimpleDateFormat sdf=new SimpleDateFormat("HHmm");
+                    Date d = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
                     String currentDateTimeString = sdf.format(d);
-                    int time=Integer.parseInt(currentDateTimeString);
+                    int time = Integer.parseInt(currentDateTimeString);
                     Calendar c = Calendar.getInstance();
                     int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-                    int cal=-1;
+                    int cal = -1;
                     //To highlight the box color based on the time and day(The current class will be highlighted)
-                    if(day.equals("Monday"))
-                        cal=Calendar.MONDAY;
-                    else if(day.equals("Tuesday"))
-                        cal=Calendar.TUESDAY;
-                    else if(day.equals("Wednesday"))
-                        cal=Calendar.WEDNESDAY;
-                    else if(day.equals("Thursday"))
-                        cal=Calendar.THURSDAY;
-                    else if(day.equals("Friday"))
-                        cal=Calendar.FRIDAY;
-                    else if(day.equals("Saturday"))
-                        cal=Calendar.SATURDAY;
-                    if(time>=Integer.parseInt(m2.substring(0,2)+m2.substring(3,5))&&time<=Integer.parseInt(m2.substring(8,10)+m2.substring(11,13))&& cal== dayOfWeek)
-                        k=-7596779;
+                    if (day.equals("Monday"))
+                        cal = Calendar.MONDAY;
+                    else if (day.equals("Tuesday"))
+                        cal = Calendar.TUESDAY;
+                    else if (day.equals("Wednesday"))
+                        cal = Calendar.WEDNESDAY;
+                    else if (day.equals("Thursday"))
+                        cal = Calendar.THURSDAY;
+                    else if (day.equals("Friday"))
+                        cal = Calendar.FRIDAY;
+                    else if (day.equals("Saturday"))
+                        cal = Calendar.SATURDAY;
+                    if (time >= Integer.parseInt(m2.substring(0, 2) + m2.substring(3, 5)) && time <= Integer.parseInt(m2.substring(8, 10) + m2.substring(11, 13)) && cal == dayOfWeek)
+                        k = -7596779;
                     else
-                        k=-1;//-16777216;
-                    Listitem_tt listitem_frag = new Listitem_tt(m1, m2, m3,""+k,m4,m5);
+                        k = -1;//-16777216;
+                    Listitem_tt listitem_frag = new Listitem_tt(m1, m2, m3, "" + k, m4, m5);
                     assert listitem != null;
                     listitem.add(listitem_frag);
                     adapter = new AdapterBox(listitem, getContext());
                     recyclerView.setAdapter(adapter);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }

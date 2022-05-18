@@ -3,7 +3,6 @@ package MU;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -25,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 +" TEXT)";
+                COL2 + " TEXT)";
         db.execSQL(createTable);
     }
 
@@ -50,9 +49,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Returns all the data from database
+     *
      * @return
      */
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor data = db.rawQuery(query, null);
@@ -61,10 +61,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Returns only the ID that matches the name passed in
+     *
      * @param name
      * @return
      */
-    public Cursor getItemID(String name){
+    public Cursor getItemID(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL1 + " FROM " + TABLE_NAME +
                 " WHERE " + COL2 + " = '" + name + "'";
@@ -74,11 +75,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Updates the name field
+     *
      * @param newName
      * @param id
      * @param oldName
      */
-    public void updateName(String newName, int id, String oldName){
+    public void updateName(String newName, int id, String oldName) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " + COL2 +
                 " = '" + newName + "' WHERE " + COL1 + " = '" + id + "'" +
@@ -90,10 +92,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Delete from database
+     *
      * @param id
      * @param name
      */
-    public void deleteName(int id, String name){
+    public void deleteName(int id, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME + " WHERE "
                 + COL1 + " = '" + id + "'" +

@@ -32,6 +32,7 @@
         app:layout_constraintStart_toEndOf="@+id/Name_events_textview"
         app:layout_constraintTop_toTopOf="@+id/Name_events_textview"
         app:srcCompat="@drawable/ic_three_dot" />
+
     <WebView
         android:id="@+id/event_webview"
         android:layout_width="match_parent"
@@ -40,9 +41,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="52dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,8 +53,8 @@
     </WebView>
 
     <include
-        layout="@layout/fab_menu"
         android:id="@+id/tt_fm"
+        layout="@layout/fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
