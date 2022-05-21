@@ -77,6 +77,7 @@
         android:id="@+id/Name_timetable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:capitalize="none"
         android:text="TimeTable"
         android:textColor="#FFFFFF"
         android:textSize="24sp"

@@ -2,6 +2,7 @@ package MU.timetable;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,6 +102,12 @@ public class Frag extends Fragment {
         Cursor data = mDatabaseHelper.getData();
         data.moveToNext();
         String rollnumber = data.getString(1);
+        Log.d(getTag(),data.getString(2));
+
+
+
+
+//        data.moveToNext();
         String year = rollnumber.substring(0, 2);
         String branch = rollnumber.substring(7, 8);
         String rno = rollnumber.substring(8, 10);

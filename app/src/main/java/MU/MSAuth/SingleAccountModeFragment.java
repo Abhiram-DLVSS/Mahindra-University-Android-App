@@ -289,13 +289,15 @@ public class SingleAccountModeFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         /* Successfully called graph, process data and send to UI */
                         Log.d(TAG, "Response: " + response.toString());
-                        displayGraphResult(response);
                         DatabaseHelper mDatabaseHelper;
                         mDatabaseHelper = new DatabaseHelper(getContext());
                         try {
                             String mail = response.getString("mail");
                             int index = mail.indexOf("@");
-                            mDatabaseHelper.addData("19XJ1A0" + mail.substring(index - 3, index));
+                            mDatabaseHelper.addData("19XJ1A0" + mail.substring(index - 3, index),mail.substring(0,index - 5));
+
+                            Log.d(TAG, "Response: " + "Name-" +mail.substring(0,index - 5) );
+
                             Log.d(TAG, "Response: " + "19XJ1A0" + mail.substring(index - 3, index));
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -318,12 +320,6 @@ public class SingleAccountModeFragment extends Fragment {
                         displayError(error);
                     }
                 });
-    }
-
-    /**
-     * Display the graph response
-     */
-    private void displayGraphResult(@NonNull final JSONObject graphResponse) {
     }
 
     public void signout() {

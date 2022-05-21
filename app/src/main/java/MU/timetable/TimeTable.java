@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,9 +39,30 @@ public class TimeTable extends Intents {
         setContentView(R.layout.tt_time_table);
 
         statusbar();//to change status bar color
+        TextView timetable_name=findViewById(R.id.Name_timetable_textview);
         TabLayout tabLayout = findViewById(R.id.tab_bar);
         ViewPager viewPager = findViewById(R.id.viewPager);
         ImageView threeDot = findViewById(R.id.tt_3dot);
+
+        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getApplicationContext());
+        Cursor data = mDatabaseHelper.getData();
+        data.moveToNext();
+        String name=data.getString(2);
+        try {
+            String strdata = this.getIntent().getExtras().getString("Uniqid");
+            if (strdata.equals("Splash")) {
+                timetable_name.setText("Welcome " + name.substring(0, 1).toUpperCase() + name.substring(1) + "!");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        timetable_name.setText("Timetable");
+                    }
+                }, 3000);
+            }
+        }
+        catch (Exception e){
+
+        }
 
         //Accessing the Availability node in the Firebase Database
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
@@ -154,11 +178,6 @@ public class TimeTable extends Intents {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         //floating
         floatinginit();
-        //Sql data
-        DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
-        Cursor data = mDatabaseHelper.getData();
-        data.moveToNext();
-        data.getString(1);
         //If we click the Timetable button in floating menu when we are in Timetable
         timetable_button.setOnClickListener(new View.OnClickListener() {
             @Override

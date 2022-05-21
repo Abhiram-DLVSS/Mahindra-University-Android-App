@@ -26,7 +26,9 @@ public class SplashScreen extends AppCompatActivity {
                 Cursor data = mDatabaseHelper.getData();
                 if (data.moveToNext()) {
 
-                    Intent homeIntent = new Intent(SplashScreen.this, TimeTable.class);
+                    Intent homeIntent = new Intent();
+                    homeIntent.setClass(SplashScreen.this,TimeTable.class);
+                    homeIntent.putExtra("Uniqid","Splash");
                     startActivity(homeIntent);
                     finish();
                 } else {
