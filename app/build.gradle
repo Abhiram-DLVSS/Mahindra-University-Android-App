@@ -136,5 +136,7 @@ dependencies {
         // Downloads and Builds MSAL from maven central.
         implementation "com.microsoft.identity.client:msal:${msalVersion}"
     }
+    //Gson - to read Json
+    implementation 'com.google.code.gson:gson:2.8.9'
 
 }

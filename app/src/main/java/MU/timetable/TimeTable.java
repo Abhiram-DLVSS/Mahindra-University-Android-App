@@ -63,7 +63,6 @@ public class TimeTable extends Intents {
         catch (Exception e){
 
         }
-
         //Accessing the Availability node in the Firebase Database
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Availability");
         ref.keepSynced(true);
@@ -127,6 +126,11 @@ public class TimeTable extends Intents {
                             Uri data = Uri.parse("https://drive.google.com/drive/folders/1EwWLzi3xKLluGMUZB1Qu2ByGqPIoZoAR?usp=sharing");
                             intent.setData(data);
                             startActivity(intent);
+                        }
+                        //Quote
+                        else if (menuItem.getItemId() == R.id.quote) {
+                            QuoteSheet quoteSheet = new QuoteSheet();
+                            quoteSheet.show(getSupportFragmentManager(), "QuoteBottomSheet");
                         }
                         return true;
                     }
