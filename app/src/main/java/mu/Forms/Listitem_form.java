@@ -1,4 +1,4 @@
-package MU.Forms;
+package mu.Forms;
 
 public class Listitem_form {
     private final String head;

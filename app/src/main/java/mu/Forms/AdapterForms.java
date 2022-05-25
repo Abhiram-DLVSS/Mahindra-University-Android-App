@@ -1,4 +1,4 @@
-package MU.Forms;
+package mu.Forms;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

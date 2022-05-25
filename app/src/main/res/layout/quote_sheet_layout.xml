@@ -33,25 +33,46 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/author_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/quote_textview"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center"
         android:layout_marginTop="15dp"
         android:text="~author here~"
+        android:textAlignment="center"
         android:textColor="@color/stan"
         android:textSize="16sp"
         android:textStyle="italic" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/nothing"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/arrow_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/quote_textview"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="15dp"
+        android:drawableRight="@drawable/baseline_trending_flat_24"
+        android:text="Next"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+        android:id="@+id/confirm_sheet"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/author_textview"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_red_shade_radius"
+        android:text="Next"
+        android:textAppearance="@style/MyTheme.ActionBar.TitleTextStyle"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
 
 </RelativeLayout>

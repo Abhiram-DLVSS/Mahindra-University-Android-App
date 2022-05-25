@@ -1,11 +1,10 @@
-package MU.timetable;
+package mu.timetable;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,8 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 import java.util.Objects;
 
-import MU.DatabaseHelper;
-import MU.Intents;
+import mu.DatabaseHelper;
+import mu.Intents;
 
 public class TimeTable extends Intents {
     @Override
@@ -116,7 +115,7 @@ public class TimeTable extends Intents {
                         //Contact Us
                         else if (menuItem.getItemId() == R.id.contact) {
                             Intent intent = new Intent(Intent.ACTION_VIEW);
-                            Uri data = Uri.parse("mailto:devturing21@gmail.com?subject=" + Uri.encode("Mahindra University App") + "&body=" + Uri.encode("~Write here~"));
+                            Uri data = Uri.parse("mailto:devturing21@gmail.com?subject=" + Uri.encode("Mahindra University App Feedback") + "&body=" + Uri.encode("~Write here~"));
                             intent.setData(data);
                             startActivity(intent);
                         }
@@ -127,7 +126,7 @@ public class TimeTable extends Intents {
                             intent.setData(data);
                             startActivity(intent);
                         }
-                        //Quote
+                        //Quotes
                         else if (menuItem.getItemId() == R.id.quote) {
                             QuoteSheet quoteSheet = new QuoteSheet();
                             quoteSheet.show(getSupportFragmentManager(), "QuoteBottomSheet");

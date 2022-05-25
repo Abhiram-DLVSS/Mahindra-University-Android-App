@@ -1,8 +1,7 @@
-package MU.timetable;
+package mu.timetable;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import MU.DatabaseHelper;
+import mu.DatabaseHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -102,7 +101,6 @@ public class Frag extends Fragment {
         Cursor data = mDatabaseHelper.getData();
         data.moveToNext();
         String rollnumber = data.getString(1);
-        Log.d(getTag(),data.getString(2));
 
 
 

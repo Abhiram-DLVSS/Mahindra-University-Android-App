@@ -1,4 +1,4 @@
-package MU.Faculty;
+package mu.Faculty;
 
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;

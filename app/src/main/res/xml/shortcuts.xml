@@ -9,7 +9,7 @@
         android:shortcutShortLabel="@string/Events">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="MU.Event"
+            android:targetClass="mu.Event"
             android:targetPackage="com.MU" />
     </shortcut>
 </shortcuts>

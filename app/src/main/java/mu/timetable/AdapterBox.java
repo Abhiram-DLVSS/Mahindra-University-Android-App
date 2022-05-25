@@ -1,4 +1,4 @@
-package MU.timetable;
+package mu.timetable;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

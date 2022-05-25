@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="MU.NoInternet"
+        android:name="mu.NoInternet"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Mahindra University"
@@ -17,28 +17,28 @@
         android:supportsRtl="true"
         android:theme="@style/splash_theme">
 
-        <activity android:name="MU.Euclid" />
+        <activity android:name="mu.Euclid" />
 
         <activity
-            android:name="MU.GradesLink"
+            android:name="mu.GradesLink"
             android:label="@string/title_activity_grades_link" />
         <activity
-            android:name="MU.FeeLink"
+            android:name="mu.FeeLink"
             android:label="@string/title_activity_fee_link"
             android:theme="@style/splash_theme.NoActionBar" />
-        <activity android:name="MU.Intents" />
+        <activity android:name="mu.Intents" />
         <activity
-            android:name="MU.Event"
+            android:name="mu.Event"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
-            android:name="MU.Forms.Forms"
+            android:name="mu.Forms.Forms"
             android:screenOrientation="portrait" />
         <activity
-            android:name="MU.Faculty.FacultyMenu"
+            android:name="mu.Faculty.FacultyMenu"
             android:screenOrientation="portrait" />
         <activity
-            android:name="MU.SplashScreen"
+            android:name="mu.SplashScreen"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -52,23 +52,24 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name="MU.MSAuth.Login"
+            android:name="mu.MSAuth.Login"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="MU.timetable.TimeTable"
+            android:name="mu.timetable.TimeTable"
             android:screenOrientation="portrait" />
 
-        <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
+        <activity android:name="com.microsoft.identity.client.BrowserTabActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="com.azuresamples.msalandroidapp"
-                    android:path="/1wIqXSqBj7w+h11ZifsnqwgyKrY="
+                    android:host="com.mu"
+                    android:path="/df/WrQM67qwAZFa/4i5uTORfZgI="
                     android:scheme="msauth" />
             </intent-filter>
         </activity>

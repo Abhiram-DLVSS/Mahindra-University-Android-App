@@ -1,11 +1,10 @@
-package MU;
+package mu;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -36,11 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", item);
         contentValues.put("IDn", name);
-
-        Log.d(TAG, "addData: Adding " + item + " 2 " + TABLE_NAME);
-
         long result = db.insert(TABLE_NAME, null, contentValues);
-        Log.d(TAG, "addData"+String.valueOf(result != -1));
         return result != -1;
     }
 

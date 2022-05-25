@@ -1,4 +1,4 @@
-package MU;
+package mu;
 
 import android.app.Application;
 

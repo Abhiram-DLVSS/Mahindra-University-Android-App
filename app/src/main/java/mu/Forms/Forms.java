@@ -1,10 +1,9 @@
-package MU.Forms;
+package mu.Forms;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import MU.Intents;
+import mu.Intents;
 
 public class Forms extends Intents {
     public int flag = 1;
@@ -90,7 +89,6 @@ public class Forms extends Intents {
     }
 
     public void ReadHeader() {
-        Log.d("Forms", "ReadHeader: ");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listitem_forms = new ArrayList<>();
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Forms");
@@ -105,7 +103,6 @@ public class Forms extends Intents {
                     String m2 = Objects.requireNonNull(snapshot.child(chil).child("time").getValue()).toString();
                     String m3 = Objects.requireNonNull(snapshot.child(chil).child("by").getValue()).toString();
                     String m4 = Objects.requireNonNull(snapshot.child(chil).child("loc").getValue()).toString();
-                    Log.d("forms", "onDataChange: " + m1 + m2 + m3 + m4);
                     Listitem_form listitem_form = new Listitem_form(m1, m2, m3, m4);
                     assert listitem_form != null;
                     listitem_forms.add(listitem_form);

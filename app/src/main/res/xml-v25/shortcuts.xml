@@ -9,7 +9,7 @@
         android:shortcutShortLabel="@string/Events">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="MU.Event"
+            android:targetClass="mu.Event"
             android:targetPackage="com.MU" />
     </shortcut>
     <shortcut
@@ -21,7 +21,7 @@
         android:shortcutShortLabel="@string/Fee">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="MU.FeeLink"
+            android:targetClass="mu.FeeLink"
             android:targetPackage="com.MU" />
     </shortcut>
     <shortcut
@@ -33,7 +33,7 @@
         android:shortcutShortLabel="@string/Grades">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="MU.GradesLink"
+            android:targetClass="mu.GradesLink"
             android:targetPackage="com.MU" />
     </shortcut>
     <shortcut
@@ -45,7 +45,7 @@
         android:shortcutShortLabel="@string/Euclid">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="MU.Euclid"
+            android:targetClass="mu.Euclid"
             android:targetPackage="com.MU" />
     </shortcut>
 </shortcuts>

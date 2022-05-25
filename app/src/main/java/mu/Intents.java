@@ -1,4 +1,4 @@
-package MU;
+package mu;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -21,9 +21,9 @@ import androidx.core.widget.NestedScrollView;
 
 import com.MU.R;
 
-import MU.Faculty.FacultyMenu;
-import MU.Forms.Forms;
-import MU.timetable.TimeTable;
+import mu.Faculty.FacultyMenu;
+import mu.Forms.Forms;
+import mu.timetable.TimeTable;
 import toan.android.floatingactionmenu.FloatingActionButton;
 import toan.android.floatingactionmenu.FloatingActionsMenu;
 

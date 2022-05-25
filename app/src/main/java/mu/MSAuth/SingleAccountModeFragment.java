@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package MU.MSAuth;
+package mu.MSAuth;
 
 import android.content.Context;
 import android.content.Intent;
@@ -61,8 +61,8 @@ import org.json.JSONObject;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import MU.DatabaseHelper;
-import MU.timetable.TimeTable;
+import mu.DatabaseHelper;
+import mu.timetable.TimeTable;
 
 public class SingleAccountModeFragment extends Fragment {
     private static final String TAG = SingleAccountModeFragment.class.getSimpleName();
@@ -223,9 +223,6 @@ public class SingleAccountModeFragment extends Fragment {
             @Override
             public void onSuccess(IAuthenticationResult authenticationResult) {
                 unlock.playAnimation();
-                Log.d(TAG, "Successfully authenticated");
-
-                /* Successfully got a token, use it to call a protected resource - MSGraph */
                 callGraphAPI(authenticationResult);
             }
 
@@ -234,7 +231,6 @@ public class SingleAccountModeFragment extends Fragment {
                 /* Failed to acquireToken */
 
                 Toast.makeText(getContext(), "Failed out", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "Authentication failed: " + exception.toString());
                 displayError(exception);
             }
         };
@@ -250,13 +246,8 @@ public class SingleAccountModeFragment extends Fragment {
 
             @Override
             public void onSuccess(IAuthenticationResult authenticationResult) {
-                /* Successfully got a token, use it to call a protected resource - MSGraph */
-                Log.d(TAG, "Successfully authenticated");
-                Log.d(TAG, "ID Token: " + authenticationResult.getAccount().getClaims().get("id_token"));
 
-                /* Update account */
                 mAccount = authenticationResult.getAccount();
-                /* call graph */
                 callGraphAPI(authenticationResult);
             }
 
@@ -295,10 +286,6 @@ public class SingleAccountModeFragment extends Fragment {
                             String mail = response.getString("mail");
                             int index = mail.indexOf("@");
                             mDatabaseHelper.addData("19XJ1A0" + mail.substring(index - 3, index),mail.substring(0,index - 5));
-
-                            Log.d(TAG, "Response: " + "Name-" +mail.substring(0,index - 5) );
-
-                            Log.d(TAG, "Response: " + "19XJ1A0" + mail.substring(index - 3, index));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

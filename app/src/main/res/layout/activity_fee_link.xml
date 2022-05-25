@@ -4,7 +4,7 @@
     android:id="@+id/feeLink"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="MU.FeeLink">
+    tools:context="mu.FeeLink">
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

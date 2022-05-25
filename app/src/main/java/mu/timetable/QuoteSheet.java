@@ -1,9 +1,6 @@
-package MU.timetable;
-
-import static android.content.ContentValues.TAG;
+package mu.timetable;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +26,8 @@ public class QuoteSheet extends BottomSheetDialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.quote_sheet_layout, container, false);
+
+        TextView next = v.findViewById(R.id.arrow_textview);
         String jsonString;
         try {
             InputStream is = getContext().getResources().openRawResource(R.raw.quotes);
@@ -46,7 +45,6 @@ public class QuoteSheet extends BottomSheetDialogFragment {
             int min = 0;
             int max = 1642;
             int rand_num = (int)(Math.random()*(max-min+1)+min);
-            Log.d(TAG, "quote: "+Integer.toString(rand_num));
 
             TextView quote_textview=v.findViewById(R.id.quote_textview);
             TextView author_textview=v.findViewById(R.id.author_textview);
@@ -59,7 +57,41 @@ public class QuoteSheet extends BottomSheetDialogFragment {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String jsonString;
+                try {
+                    InputStream is = getContext().getResources().openRawResource(R.raw.quotes);
+                    int size = is.available();
+                    byte[] buffer = new byte[size];
+                    is.read(buffer);
+                    is.close();
+                    jsonString = new String(buffer, "UTF-8");
+                    JSONArray jsonArray=new JSONArray(jsonString);
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                        quotelist.add(obj.getString("text"));
+                        authorlist.add(obj.getString("author"));
+                    }
+                    int min = 0;
+                    int max = 1642;
+                    int rand_num = (int)(Math.random()*(max-min+1)+min);
+
+                    TextView quote_textview=v.findViewById(R.id.quote_textview);
+                    TextView author_textview=v.findViewById(R.id.author_textview);
+                    quote_textview.setText(quotelist.get(rand_num));
+                    String author=authorlist.get(rand_num);
+                    if(author.equals("null"))
+                        author_textview.setText("~Anonymous");
+                    else
+                        author_textview.setText("~"+author);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         return v;
     }
-
 }

@@ -1,4 +1,4 @@
-package MU;
+package mu;
 
 
 import android.content.Intent;
@@ -19,8 +19,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import MU.MSAuth.Login;
-import MU.timetable.TimeTable;
+import mu.MSAuth.Login;
+import mu.timetable.TimeTable;
 
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_TIME_OUT = 1000;

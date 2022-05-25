@@ -4,7 +4,7 @@
     android:id="@+id/gradesLink"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="MU.GradesLink">
+    tools:context="mu.GradesLink">
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

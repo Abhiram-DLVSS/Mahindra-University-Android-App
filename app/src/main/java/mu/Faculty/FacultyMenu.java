@@ -1,10 +1,9 @@
-package MU.Faculty;
+package mu.Faculty;
 
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -25,8 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import MU.DatabaseHelper;
-import MU.Intents;
+import mu.DatabaseHelper;
+import mu.Intents;
 
 public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefreshListener {
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -369,7 +368,6 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     for (count = 0; count < total; count++) {
                         String m1 = snapshot.child("" + count).getValue().toString();
                         free[count] = Integer.parseInt(m1);
-                        Log.d("fac", "onDataChange: " + count + "=" + free[count]);
                     }
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);

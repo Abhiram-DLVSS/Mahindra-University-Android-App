@@ -1,4 +1,4 @@
-package MU;
+package mu;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,7 +11,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.MU.R;
 
-import MU.timetable.TimeTable;
+import mu.timetable.TimeTable;
 
 public class GradesLink extends AppCompatActivity {
 

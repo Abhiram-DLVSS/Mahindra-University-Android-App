@@ -1,4 +1,4 @@
-package MU.timetable;
+package mu.timetable;
 
 public class Listitem_tt {
     private final String head;

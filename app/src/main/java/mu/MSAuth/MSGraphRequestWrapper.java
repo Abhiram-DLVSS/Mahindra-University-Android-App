@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package MU.MSAuth;
+package mu.MSAuth;
 
 import android.content.Context;
 import android.util.Log;

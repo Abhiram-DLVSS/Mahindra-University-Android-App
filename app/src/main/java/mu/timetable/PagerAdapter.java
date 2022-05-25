@@ -1,7 +1,6 @@
-package MU.timetable;
+package mu.timetable;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,7 +21,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Log.d("Tab", "Tab Number:" + position);
         switch (position) {
             case 0:
                 return new Frag("Monday");
