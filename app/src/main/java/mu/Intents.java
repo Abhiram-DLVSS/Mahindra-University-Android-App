@@ -155,13 +155,13 @@ public class Intents extends AppCompatActivity {
         grades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("http://mu-parentsportal.com/grade");
+                gotoUrl("https://muerp.mahindrauniversity.edu.in/");
             }
         });
         grades.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Uri copyUri = Uri.parse("http://mu-parentsportal.com/grade");
+                Uri copyUri = Uri.parse("https://muerp.mahindrauniversity.edu.in/");
                 clipboard(copyUri);
                 toast();
                 return true;

@@ -36,7 +36,7 @@ public class GradesLink extends AppCompatActivity {
     }
 
     private void gotoUrl() {
-        Uri uri = Uri.parse("http://mu-parentsportal.com/grade");
+        Uri uri = Uri.parse("https://muerp.mahindrauniversity.edu.in/");
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 }

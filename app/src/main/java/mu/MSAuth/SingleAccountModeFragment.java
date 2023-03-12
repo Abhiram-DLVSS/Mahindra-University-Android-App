@@ -294,6 +294,7 @@ public class SingleAccountModeFragment extends Fragment {
                             @Override
                             public void run() {
                                 Intent homepage = new Intent(getContext(), TimeTable.class);
+                                homepage.putExtra("Uniqid","Splash");
                                 startActivity(homepage);
                                 getActivity().finish();
                             }

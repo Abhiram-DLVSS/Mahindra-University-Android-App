@@ -94,44 +94,33 @@ public class Event extends Intents {
             public void onPageFinished(WebView view, String url) {
                 nDialog.dismiss();
                 view.loadUrl("javascript:(function() { " +
-                        "var head = document.getElementsByTagName('header')[0];"
-                        + "head.parentNode.removeChild(head);" +
-                        "})()");
-                view.loadUrl("javascript:(function() { " +
-                        "var foot = document.getElementsByTagName('footer')[0];"
-                        + "foot.parentNode.removeChild(foot);" +
-                        "})()");
-                view.loadUrl("javascript:(function() { " +
-                        "var foot = document.getElementsByTagName('div')[0];"
-                        + "foot.parentNode.removeChild(foot);" +
-                        "})()");
-                view.loadUrl("javascript:(function() { " +
-                        "var div = document.getElementsByClassName('footer-bar-mobile')[0];"
+                        "var div = document.getElementsByClassName('mu-header')[0];"
                         + "div.parentNode.removeChild(div);" +
                         "})()");
 
-                for (int i = 1; i <= 10; i++) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            view.loadUrl("javascript:(function() { " +
-                                    "var divs = document.getElementsByTagName('iframe');"
-                                    + "var div;"
-                                    + "var i = divs.length;"
-                                    + "while (i--) {"
-                                    + "  div = divs[i];"
-                                    + "  if (div.getAttribute('title') == 'chat widget') {"
-                                    + "    div.parentNode.removeChild(div);"
-                                    + "  }"
-                                    + "}"
-                                    + "})()");
-                        }
-                    }, i * 1000);
-                }
+                view.loadUrl("javascript:(function() { " +
+                        "var div = document.getElementsByClassName('region-breadcrumb')[0];"
+                        + "div.parentNode.removeChild(div);" +
+                        "})()");
+
+                view.loadUrl("javascript:(function() { " +
+                        "var div = document.getElementsByClassName('chat-ambassador')[0];"
+                        + "div.parentNode.removeChild(div);" +
+                        "})()");
+
+                view.loadUrl("javascript:(function() { " +
+                        "var div = document.getElementsByClassName('new-enquery')[0];"
+                        + "div.parentNode.removeChild(div);" +
+                        "})()");
+
+                view.loadUrl("javascript:(function() { " +
+                        "var div = document.getElementsByClassName('footer-section')[0];"
+                        + "div.parentNode.removeChild(div);" +
+                        "})()");
             }
         });
 
-        webView.loadUrl("https://www.mahindraecolecentrale.edu.in/events");
+        webView.loadUrl("https://www.mahindrauniversity.edu.in/events");
         floatinginit();
         event.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -119,69 +119,31 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
 
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
-                    titles.add("Prof. Arya Kumar Bhattacharya");
-                    titles.add("Prof. Rama Murthy");
-                    titles.add("Prof. Raghu Kishore Neelisetti");
-                    titles.add("Prof. Prafulla Kalapatapu");
-                    titles.add("Prof. Bhanukiran Perabathini");
-                    titles.add("Prof. Neha Bharill");
-                    titles.add("Prof. Om Prakash Patel");
-                    titles.add("Prof. Pavan Kumar Perepu");
-                    titles.add("Prof. Praveen Kumar Alapati");
-                    titles.add("Prof. Rajesh Tavva");
-                    titles.add("Prof. Ravi Kishore");
-                    titles.add("Prof. Sanatan Sukhija");
-                    titles.add("Prof. Sunny Rai");
-                    titles.add("Prof. Veeraiah");
-                    titles.add("Prof. Yayati Gupta");
-                    titles.add("Prof. Ani Thomas");
-                    titles.add("Prof. Raj Narayanan");
-                    titles.add("Prof. Ranjith Shankaran");
-                    titles.add("Prof. Sayoni Laha");
-                    titles.add("Prof. Tamal Kanti Paul");
-                    images.add(R.drawable.fac_arya);
-                    images.add(R.drawable.fac_rama);
-                    images.add(R.drawable.fac_raghu);
-                    images.add(R.drawable.fac_prafulla);
-                    images.add(R.drawable.fac_bhanukiran);
-                    images.add(R.drawable.fac_neha);
-                    images.add(R.drawable.fac_om);
-                    images.add(R.drawable.fac_pavan);
-                    images.add(R.drawable.fac_praveen);
-                    images.add(R.drawable.fac_rajesh);
-                    images.add(R.drawable.fac_ravi);
-                    images.add(R.drawable.fac_sanathan);
-                    images.add(R.drawable.fac_sunny);
-                    images.add(R.drawable.fac_veeraiah);
-                    images.add(R.drawable.fac_yayati);
-                    images.add(R.drawable.fac_ani);
-                    images.add(R.drawable.fac_raj);
-                    images.add(R.drawable.fac_ranjith);
-                    images.add(R.drawable.fac_sayoni);
-                    images.add(R.drawable.fac_tamal);
-                    pos.add("DEAN RESEARCH AND HOD");
-                    pos.add("PROFESSOR");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
+                    titles.add("Professor 1");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Dean Academics");
 
+                    titles.add("Professor 2");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Sr.Associate Professor");
 
-                    for (int i = 0; i <= 19; i++) {
+                    titles.add("Professor 3");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Associate Professor ");
+
+                    titles.add("Professor 4");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Assistant Professor ");
+
+                    titles.add("Professor 5");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Assistant Professor ");
+
+                    titles.add("Professor 6");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Assistant Professor ");
+
+                    for (int i = 0; i <= 6; i++) {
                         if (free[i] == 0)
                             row.add(getResources().getDrawable(R.drawable.round_red_shade));
                         else if (free[i] == 1)
@@ -213,52 +175,31 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     }
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
-                    titles.add("Prof. Prabhakar Singh");
-                    titles.add("Prof. Visalakshi Talakokula");
-                    titles.add("Prof. Jayaprakash Vemuri");
-                    titles.add("Prof. Ganesh Babu Kodeboyina");
-                    titles.add("Prof. Ataullah Khan");
-                    titles.add("Prof. Avirneni Deepti");
-                    titles.add("Prof. Hari Prasad");
-                    titles.add("Prof. Jyoti Kainthola");
-                    titles.add("Prof. Saladi S.V. Subbarao");
-                    titles.add("Prof. Venkata Dilip Kumar Pasupuleti");
-                    titles.add("Prof. Ani Thomas");
-                    titles.add("Prof. Raj Narayanan");
-                    titles.add("Prof. Ranjith Shankaran");
-                    titles.add("Prof. Sayoni Laha");
-                    titles.add("Prof. Tamal Kanti Paul");
-                    images.add(R.drawable.fac_prabhakar);
-                    images.add(R.drawable.fac_visalakshi);
-                    images.add(R.drawable.fac_jayaprakash);
-                    images.add(R.drawable.fac_ganesh);
-                    images.add(R.drawable.fac_ataullah);
-                    images.add(R.drawable.fac_avirneni);
-                    images.add(R.drawable.fac_hari);
-                    images.add(R.drawable.fac_jyoti);
-                    images.add(R.drawable.fac_saladi);
-                    images.add(R.drawable.fac_venkata);
-                    images.add(R.drawable.fac_ani);
-                    images.add(R.drawable.fac_raj);
-                    images.add(R.drawable.fac_ranjith);
-                    images.add(R.drawable.fac_sayoni);
-                    images.add(R.drawable.fac_tamal);
-                    pos.add("ASSOCIATE PROFESSOR AND HOD");
-                    pos.add("PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ADJUNCT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    for (int i = 0; i <= 19; i++) {
+                    titles.add("Professor 1 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof1 Professor ");
+
+                    titles.add("Professor 2 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof2 Professor ");
+
+                    titles.add("Professor 3 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof3 Professor ");
+
+                    titles.add("Professor 4 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof4 Professor ");
+
+                    titles.add("Professor 5 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof5 Professor ");
+
+                    titles.add("Professor 6 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof6 Professor ");
+
+                    for (int i = 0; i <= 6; i++) {
                         if (free[i] == 0)
                             row.add(getResources().getDrawable(R.drawable.round_red_shade));
                         else if (free[i] == 1)
@@ -288,61 +229,31 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     }
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
-                    titles.add("Prof. J. L. Bhattacharya");
-                    titles.add("Prof. Bhuvaneswari Gurumoorthy");
-                    titles.add("Prof. Sunil Bhooshan");
-                    titles.add("Prof. Bharghava Rajaram");
-                    titles.add("Prof. Sayantan Hazra");
-                    titles.add("Prof. K. R. Sarma");
-                    titles.add("Prof. Aditya Abburi");
-                    titles.add("Prof. Ankita Jain");
-                    titles.add("Prof. Gopinath G R");
-                    titles.add("Prof. Krishna Chaitanya Bulusu");
-                    titles.add("Prof. Pooran Singh");
-                    titles.add("Prof. Sreedhar Madichetty");
-                    titles.add("Prof. Subbarao Boddu");
-                    titles.add("Prof. Ani Thomas");
-                    titles.add("Prof. Raj Narayanan");
-                    titles.add("Prof. Ranjith Shankaran");
-                    titles.add("Prof. Sayoni Laha");
-                    titles.add("Prof. Tamal Kanti Paul");
-                    images.add(R.drawable.fac_jl);
-                    images.add(R.drawable.fac_bhuvaneswari);
-                    images.add(R.drawable.fac_sunil);
-                    images.add(R.drawable.fac_bhargav);
-                    images.add(R.drawable.fac_sayantan);
-                    images.add(R.drawable.fac_kr);
-                    images.add(R.drawable.fac_aditya);
-                    images.add(R.drawable.fac_ankita);
-                    images.add(R.drawable.fac_gopinath);
-                    images.add(R.drawable.fac_krishna);
-                    images.add(R.drawable.fac_pooran);
-                    images.add(R.drawable.fac_sreedhar);
-                    images.add(R.drawable.fac_subbarao);
-                    images.add(R.drawable.fac_ani);
-                    images.add(R.drawable.fac_raj);
-                    images.add(R.drawable.fac_ranjith);
-                    images.add(R.drawable.fac_sayoni);
-                    images.add(R.drawable.fac_tamal);
-                    pos.add("PROFESSOR AND HOD");
-                    pos.add("PROFESSOR");
-                    pos.add("PROFESSOR");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ADJUNCT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    for (int i = 0; i <= 19; i++) {
+                    titles.add("Professor 1 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof1 Professor ");
+
+                    titles.add("Professor 2 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof2 Professor ");
+
+                    titles.add("Professor 3 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof3 Professor ");
+
+                    titles.add("Professor 4 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof4 Professor ");
+
+                    titles.add("Professor 5 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof5 Professor ");
+
+                    titles.add("Professor 6 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof6 Professor ");
+
+                    for (int i = 0; i <= 6; i++) {
                         if (free[i] == 0)
                             row.add(getResources().getDrawable(R.drawable.round_red_shade));
                         else if (free[i] == 1)
@@ -371,61 +282,31 @@ public class FacultyMenu extends Intents implements SwipeRefreshLayout.OnRefresh
                     }
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                     FacultyMenu.setLayoutManager(gridLayoutManager);
-                    titles.add("Prof. Bhaskar Tamma");
-                    titles.add("Prof. Ranjith Kunnath");
-                    titles.add("Prof. Abhijit Bhattacharyya");
-                    titles.add("Prof. Jagan Mohan Padbidri");
-                    titles.add("Prof. Palash Roy Choudhury");
-                    titles.add("Prof. Prasad Pokkunuri");
-                    titles.add("Prof. Deep Seth");
-                    titles.add("Prof. Harshavardhan Kalathur");
-                    titles.add("Prof. Kondaiah P");
-                    titles.add("Prof. Manish Kumar Agrawal");
-                    titles.add("Prof. Ravikiran Bompelly");
-                    titles.add("Prof. Sebastian Uppapalli");
-                    titles.add("Prof. Senbagaraman Sudarsanam");
-                    titles.add("Prof. Ani Thomas");
-                    titles.add("Prof. Raj Narayanan");
-                    titles.add("Prof. Ranjith Shankaran");
-                    titles.add("Prof. Sayoni Laha");
-                    titles.add("Prof. Tamal Kanti Paul");
-                    images.add(R.drawable.fac_bhaskar);
-                    images.add(R.drawable.fac_ranjith1);
-                    images.add(R.drawable.fac_abhijit);
-                    images.add(R.drawable.fac_jagan);
-                    images.add(R.drawable.fac_palash);
-                    images.add(R.drawable.fac_prasad);
-                    images.add(R.drawable.fac_deep);
-                    images.add(R.drawable.fac_harshavardhan);
-                    images.add(R.drawable.fac_kondaiah);
-                    images.add(R.drawable.fac_manish);
-                    images.add(R.drawable.fac_ravikiran);
-                    images.add(R.drawable.fac_sebastian);
-                    images.add(R.drawable.fac_senbagaraman);
-                    images.add(R.drawable.fac_ani);
-                    images.add(R.drawable.fac_raj);
-                    images.add(R.drawable.fac_ranjith);
-                    images.add(R.drawable.fac_sayoni);
-                    images.add(R.drawable.fac_tamal);
-                    pos.add("PROFESSOR AND HOD");
-                    pos.add("PROFESSOR");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ASSISTANT PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ASSOCIATE PROFESSOR");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    pos.add("ACADEMIC ASSOCIATE");
-                    for (int i = 0; i <= 19; i++) {
+                    titles.add("Professor 1 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof1 Professor ");
+
+                    titles.add("Professor 2 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof2 Professor ");
+
+                    titles.add("Professor 3 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof3 Professor ");
+
+                    titles.add("Professor 4 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof4 Professor ");
+
+                    titles.add("Professor 5 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof5 Professor ");
+
+                    titles.add("Professor 6 Name");
+                    images.add(R.drawable.portait_placeholder);
+                    pos.add("Prof6 Professor ");
+
+                    for (int i = 0; i <= 6; i++) {
                         if (free[i] == 0)
                             row.add(getResources().getDrawable(R.drawable.round_red_shade));
                         else if (free[i] == 1)
